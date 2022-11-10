@@ -7,11 +7,13 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { ProductsComponent } from './products/products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule, Routes } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 const routers: Routes=[
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
+  {path:'addProduct',component: AddProductComponent},
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
 
@@ -19,7 +21,8 @@ const routers: Routes=[
   declarations: [
     AppComponent,
     FrontPageComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddProductComponent
   ],
   imports: [ AppRoutingModule,
     BrowserModule,
