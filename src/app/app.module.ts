@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FrontPageComponent } from './front-page/front-page.component';
@@ -24,12 +24,14 @@ const routers: Routes=[
     ProductsComponent,
     AddProductComponent
   ],
-  imports: [ AppRoutingModule,
+  imports: [ 
+    RouterModule.forRoot(routers),
+    AppRoutingModule,
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routers)
-    
-    
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule   
   ],
   providers: [],
   bootstrap: [AppComponent]
