@@ -16,17 +16,10 @@ export class TryComponent implements OnInit {
   constructor( private _productCategoryService: ProductCategoryService) { }
 
   ngOnInit(): void {
-     this.listOfProductCategories
+    this._productCategoryService.getCategories().subscribe(
+      data=>this.productCategories=data
+    )
   }
 
-  listOfProductCategories(){
-  this._productCategoryService.getCategories().subscribe(
-    data=>this.productCategories=data
-
-   
-
-    
-  )
-  }
 
 }
