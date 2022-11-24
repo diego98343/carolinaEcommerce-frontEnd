@@ -22,12 +22,15 @@ export class TryComponent implements OnInit {
                ) { }
 
   ngOnInit(): void {
+
+    
     this._productCategoryService.getCategories().subscribe(
       data=>this.productCategories=data
+      
     )
 
     this._productService.getProduct().subscribe(
-      data=> this.products=data
+      data=>this.products=data
     )
   }
 

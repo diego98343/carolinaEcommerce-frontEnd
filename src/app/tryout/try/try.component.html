@@ -1,14 +1,8 @@
 <h1>Product Category</h1>
-<div *ngFor="let category of productCategories">
-    <p>{{category.categoryName}}</p>
-    <p></p>
-    <p></p>
-    <p>hey</p>
-</div>
 
-<h1>Product</h1>
-<div *ngFor="let product of products">
-    <p>{{product.description}}</p>
-    <p></p>
-    <p></p>
-</div>
+<select>
+    <option>Categoria</option>
+    <option *ngFor="let category of productCategories" [value]="category.categoryId">
+        {{category.categoryName}}
+    </option>
+</select>
