@@ -16,7 +16,9 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit(): void {
     this._productCategoryService.getCategories().subscribe(
-      data=>this.productCategories=data
+      data=>{
+        this.productCategories=data
+      }
       
     )
   }

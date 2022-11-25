@@ -8,14 +8,17 @@ import { ProductsComponent } from './products/products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
-import { TryComponent } from './tryout/try/try.component';
+import { ProductToTryComponent } from './productToTry/product-to-try/product-to-try.component';
+
+
 
 
 const routers: Routes=[
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
   {path:'addProduct',component: AddProductComponent},
-  {path:'try',component: TryComponent},
+  {path:'try',component: ProductToTryComponent},
+ 
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
 
@@ -25,7 +28,9 @@ const routers: Routes=[
     FrontPageComponent,
     ProductsComponent,
     AddProductComponent,
-    TryComponent
+    ProductToTryComponent,
+    
+    
   ],
   imports: [ 
     RouterModule.forRoot(routers),

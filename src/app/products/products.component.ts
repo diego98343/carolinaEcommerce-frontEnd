@@ -16,16 +16,16 @@ export class ProductsComponent implements OnInit {
   constructor( private _productService:ProductServiceService) { }
 
   ngOnInit(): void {
-    this.listProducts
-  }
-
-  listProducts(){
     this._productService.getProduct().subscribe(
       data=>{
-        this.products=data;
+        this.products= data
       }
     )
   }
+
+  
+ 
+  
 
 
 }
