@@ -1,14 +1,5 @@
 
 
-
-
-
-<body class="body">
-  <div class="nav-wrapper">
-    <div class="top-banner">
-      <div class="top-banner-text">hasta 20% ENdescuENTO en pedidos al por mayor</div>
-    </div>
-  </div>
   <div class="logo-section">
     <div class="logo-text">Carolina Colonia<br></div>
   </div>
@@ -30,12 +21,13 @@
     </a>
   </div>
  <div>
-
 <div class="container col-md-4">
-  <form >
+
+
+
+  <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
     <div class="mb-3">
       <div class="mb-5"></div>
-  
       <div class="mb-3">
         <div class="form-group">
           <label for="exampleInputEmail1">Producto</label>
@@ -76,7 +68,24 @@
                  placeholder="cantidad total en inventario"
                  [(ngModel)]="product.unitsInStock"
                  name="unitsInStock"
-                 >n
+                 >
+                 
+        </div>
+      </div>
+
+
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Precio</label>
+          <input type="number"
+                 min="0.00"
+                 class="form-control" 
+                 id="exampleInputPassword1" 
+                 placeholder="cantidad total en inventario"
+                 [(ngModel)]="product.productPrice"
+                 name="productPrice"
+                 >
                  
         </div>
       </div>
@@ -98,7 +107,11 @@
       <div class="mb-3">
         <select class="form-select" aria-label="Default select example">
           <option >Categoria</option>
-          <option  *ngFor="let productCategory of productCategories" [value]="productCategory.categoryName" >{{productCategory.categoryName}}</option>
+          <option  *ngFor="let productCategory of productCategories" 
+                   [value]="productCategory.categoryId" 
+                  
+                   name="productCategory">
+                   {{productCategory.categoryName}}</option>
         </select>
       </div>
   

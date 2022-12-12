@@ -20,4 +20,11 @@ export class ProductService {
       map(response=>response)
     )
   }
+
+
+  public addProduct(product:Product){
+
+     return this._httpClient.post<Product>(this.baseUrl,product)
+  }
+
 }

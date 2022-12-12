@@ -1,4 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { response } from 'express';
 import { Product } from 'src/app/models/productClass/product';
 import { ProductService } from 'src/app/services/productService/product.service';
 import { ProductCategory } from '../../models/productCategoryClass/product-category';
@@ -11,6 +14,7 @@ import { ProductCategoryService } from '../../services/productCategoryService/pr
 })
 export class AddProductComponent implements OnInit {
 
+
   
   productCategories: ProductCategory[]=[];
   products: Product[]=[];
@@ -20,7 +24,6 @@ export class AddProductComponent implements OnInit {
     description:"",
     unitsInStock:0,
     dateCreated:new Date(),
-    productCategory:"",
     productPrice:0,
     
     
@@ -44,9 +47,22 @@ export class AddProductComponent implements OnInit {
 
   displayProducts(){
     this._productService.getProduct().subscribe(data=>{
-      console.log(data)
+      console.log(data);
       this.products=data
     })
   }
+
+  addProduct(productForm:NgForm) {
+    this._productService.addProduct(this.product).subscribe(
+      (response:Product)=>{
+         console.log(response);
+      },
+      (error:HttpErrorResponse)=>{
+        console.log(error)
+      }
+     );
+    }
+
+
 
 }

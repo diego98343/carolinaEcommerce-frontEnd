@@ -1,3 +1,4 @@
+import { ProductCategory } from "../productCategoryClass/product-category";
 
 
 export class Product {
@@ -10,7 +11,7 @@ export class Product {
         public active?:boolean,
         public lastUpdated?:Date,
         public unitsInStock?:number,
-        public productCategory?:string,
+        public productCategory?:ProductCategory,
         public productPrice?:number,
         public attachmentFile?:File
     ){
