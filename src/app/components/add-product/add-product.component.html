@@ -39,40 +39,80 @@
       <div class="mb-3">
         <div class="form-group">
           <label for="exampleInputEmail1">Producto</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <input [(ngModel)]="product.productName"
+                name="productName"
+                type="email" 
+                class="form-control" 
+                id="exampleInputEmail1" 
+                placeholder="nombre del producto"
+                >
+                
         </div>
       </div>
   
-      <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Descripcion</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-      </div>
+    
   
       <div class="mb-3">
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <label for="exampleInputPassword1">Description</label>
+          <input 
+                 type="text" 
+                 class="form-control" 
+                 id="exampleInputPassword1" 
+                 placeholder="description del producto"
+                 [(ngModel)]="product.description"
+                 name="description">
+                 
         </div>
       </div>
+
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Cantidad</label>
+          <input type="number" 
+                 class="form-control" 
+                 id="exampleInputPassword1" 
+                 placeholder="cantidad total en inventario"
+                 [(ngModel)]="product.unitsInStock"
+                 name="unitsInStock"
+                 >n
+                 
+        </div>
+      </div>
+
   
       <div class="mb-3">
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <label for="exampleInputPassword1">Fecha</label>
+          <input type="date" 
+                 class="form-control" 
+                 id="exampleInputPassword1" 
+                 [(ngModel)]="product.dateCreated"
+                 name="dateCreated" >
         </div>
       </div>
+
+      
   
       <div class="mb-3">
         <select class="form-select" aria-label="Default select example">
-          <option  >Categoria</option>
-          <option  *ngFor="let category of productCategories" [value]="category.categoryId" >{{category.categoryName}}</option>
-        
-        
+          <option >Categoria</option>
+          <option  *ngFor="let productCategory of productCategories" [value]="productCategory.categoryName" >{{productCategory.categoryName}}</option>
         </select>
       </div>
   
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Foto del producto</label>
+          <input type="file" 
+                 class="form-control" 
+                 id="exampleInputPassword1" 
+                 >
+        </div>
+      </div>
+
+
       <button type="submit" class="btn btn-primary">Añadir producto</button>
     </div>
   </form>
