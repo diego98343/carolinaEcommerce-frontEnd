@@ -67,8 +67,8 @@
       <div class="mb-3">
         <select class="form-select" aria-label="Default select example">
           <option  >Categoria</option>
-          <option  *ngFor="let category of productCategories" [value]="category.categoryId" >One</option>
-          <option value="2">one</option>
+          <option  *ngFor="let category of productCategories" [value]="category.categoryId" >{{category.categoryName}}</option>
+        
         
         </select>
       </div>
