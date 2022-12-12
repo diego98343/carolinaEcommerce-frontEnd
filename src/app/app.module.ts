@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FrontPageComponent } from './front-page/front-page.component';
-import { ProductsComponent } from './products/products.component';
+import { FrontPageComponent } from './components/home-page/front-page.component';
+import { ProductsComponent } from './components/products/products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule, Routes } from '@angular/router';
-import { AddProductComponent } from './add-product/add-product.component';
-import { ProductToTryComponent } from './productToTry/product-to-try/product-to-try.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+
+import { UserLogInComponent } from './components/user-log-in/user-log-in.component';
+
 
 
 
@@ -17,7 +19,7 @@ const routers: Routes=[
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
   {path:'addProduct',component: AddProductComponent},
-  {path:'try',component: ProductToTryComponent},
+  {path:'userLogIn',component: UserLogInComponent},
  
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
@@ -28,7 +30,8 @@ const routers: Routes=[
     FrontPageComponent,
     ProductsComponent,
     AddProductComponent,
-    ProductToTryComponent,
+    UserLogInComponent,
+    
     
     
   ],

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductCategory } from '../models/productCategoryModel/product-category';
-import { ProductCategoryService } from '../services/productCategoryService/product-category.service';
+import { ProductCategory } from '../../models/productCategoryClass/product-category';
+import { ProductCategoryService } from '../../services/productCategoryService/product-category.service';
 
 @Component({
   selector: 'app-add-product',
@@ -17,6 +17,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this._productCategoryService.getCategories().subscribe(
       data=>{
+        console.log(data)
         this.productCategories=data
       }
       
