@@ -6,11 +6,13 @@ export class Product {
     constructor(
         public productId?:number,
         public productName?:string, 
+        public productReference?:string,
         public description?:string,
         public imageUrl?:string,
         public dateCreated?:Date,
         public active?:boolean,
         public lastUpdated?:Date,
+        public displayProduct?:boolean,
         public unitsInStock?:number,
         public productCategory?:ProductCategory,
         public productPrice?:number,

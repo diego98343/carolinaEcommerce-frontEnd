@@ -1,40 +1,56 @@
 
 
   <div class="logo-section">
-    <div class="logo-text">Carolina Colonia<br></div>
+    <div class="logo-text">Inventario<br></div>
   </div>
-
-<div  class="container" style="margin-top: 50px ;">
-    <table   class="table table-hover">
-        <thead >
-          <tr >
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Ultima actualization</th>
-            <th scope="col">Precio</th>
-            <th scope="col">disponibles</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let tempProduct of products" >
-            <th  scope="row">{{tempProduct.productId}}</th>
-            <td  >{{tempProduct.productName}}</td>
-            <td  >{{tempProduct.description}}</td>
-            <td  >{{tempProduct.lastUpdated}}</td>
-            <td  >{{tempProduct.productPrice}}</td>
-            <td  >{{tempProduct.unitsInStock}}</td>
-            <td  ><button type="button" class="btn btn-primary">Eliminar</button></td>
-            <td  ><button type="button" class="btn btn-primary">Editar</button></td>
-          </tr>
-
-         
-        </tbody>
-      </table>
-      <button type="button" routerLink="/addProduct" class="btn btn-primary">volver</button>
+  <div class="container" style="margin-top: 50px ;">
+    <div class="form-outline mb-4">
+      <input type="search" class="form-control" id="datatable-search-input">
+      <label class="form-label" for="datatable-search-input">Search</label>
+    </div>
+  </div>
   
+  <div id="datatable">
+
+    <div  class="container">
+      <table   class="table table-hover">
+          <thead >
+            <tr >
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Referencia</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Ultima actualization</th>
+              <th scope="col">Precio</th>
+              <th scope="col">disponibles</th>
+              <th scope="col">Mostrar</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tempProduct of products" >
+              <th  scope="row">{{tempProduct.productId}}</th>
+              <td  >{{tempProduct.productName}}</td>
+              <td  >{{tempProduct.productReference}}</td>
+              <td  >{{tempProduct.description}}</td>
+              <td  >{{tempProduct.lastUpdated}}</td>
+              <td  >{{tempProduct.productPrice}}</td>
+              <td  >{{tempProduct.unitsInStock}}</td>
+              <td  >{{tempProduct.displayProduct}}</td>
+              <td  ><button type="button" class="btn btn-primary">Eliminar</button></td>
+              <td  ><button type="button" class="btn btn-primary">Editar</button></td>
+            </tr>
+  
+           
+          </tbody>
+        </table>
+        <button type="button" routerLink="/addProduct" class="btn btn-primary">volver</button>
+    
+    </div>
+    <div class="mb-5"></div>
+    <div class="mb-5"></div>
+
+
   </div>
-  <div class="mb-5"></div>
-  <div class="mb-5"></div>
+
+
