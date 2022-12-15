@@ -13,6 +13,8 @@ export class ProductService {
   
  private baseUrl: string= "http://localhost:8090/api/products"
 
+ private baseUrl2: string= "http://localhost:8090/api/addNewProduct"
+
   constructor(private _httpClient:HttpClient) { }
 
   getProduct():Observable<Product[]> {
@@ -22,8 +24,7 @@ export class ProductService {
   }
 
 
-  public addProduct(product:Product){
-
+   public addProduct(product:Product){
      return this._httpClient.post<Product>(this.baseUrl,product)
   }
 

@@ -23,7 +23,13 @@
  <div>
 <div class="container col-md-4">
 
+
+
+  
+
   <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+
+    
     <div class="mb-3">
       <div class="mb-5"></div>
       <div class="mb-3">
@@ -35,8 +41,7 @@
                 class="form-control" 
                 id="exampleInputEmail1" 
                 placeholder="nombre del producto"
-                >
-                
+                >       
         </div>
       </div>
   
@@ -101,14 +106,12 @@
       </div>
 
       
-  
       <div class="mb-3">
-        <select class="form-select" aria-label="Default select example">
-          <option >Categoria</option>
+        <select [(ngModel)]="product.productCategory" name="productCategory" class="form-select">
+          <option [ngValue]="undefined">Categoria</option>
           <option  *ngFor="let productCategory of productCategories" 
-                   [value]="productCategory.categoryId" 
-                  
-                   name="productCategory">
+                   [ngValue]="productCategory" 
+                   >
                    {{productCategory.categoryName}}</option>
         </select>
       </div>
@@ -116,9 +119,12 @@
       <div class="mb-3">
         <div class="form-group">
           <label for="exampleInputPassword1">Foto del producto</label>
-          <input type="file" 
-                 class="form-control" 
-                 id="exampleInputPassword1" 
+          <input
+                 class="form-control"
+                 type="file"
+                 multiple value="select"
+                 #selectFile
+                 
                  >
         </div>
       </div>
