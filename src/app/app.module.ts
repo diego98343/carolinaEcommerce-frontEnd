@@ -10,6 +10,7 @@ import { Route, RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './components/add-product/add-product.component';
 
 import { UserLogInComponent } from './components/user-log-in/user-log-in.component';
+import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
 
 
 
@@ -20,6 +21,7 @@ const routers: Routes=[
   {path:'products',component: ProductsComponent},
   {path:'addProduct',component: AddProductComponent},
   {path:'userLogIn',component: UserLogInComponent},
+  {path:'productList',component: ListOfProductsComponent},
  
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
@@ -31,6 +33,7 @@ const routers: Routes=[
     ProductsComponent,
     AddProductComponent,
     UserLogInComponent,
+    ListOfProductsComponent,
     
     
     

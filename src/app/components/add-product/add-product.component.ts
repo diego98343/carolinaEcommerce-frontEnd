@@ -31,7 +31,7 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayProductCategories();
-    this.displayProducts();
+    // this.displayProducts();
   }
 
 

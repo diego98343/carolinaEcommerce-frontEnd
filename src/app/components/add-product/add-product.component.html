@@ -50,7 +50,7 @@
       <div class="mb-3">
         <div class="form-group">
           <label for="exampleInputPassword1">Description</label>
-          <input 
+          <input  
                  type="text" 
                  class="form-control" 
                  id="exampleInputPassword1" 
@@ -85,7 +85,7 @@
                  min="0.00"
                  class="form-control" 
                  id="exampleInputPassword1" 
-                 placeholder="cantidad total en inventario"
+                 placeholder="precio del producto"
                  [(ngModel)]="product.productPrice"
                  name="productPrice"
                  >
@@ -133,6 +133,9 @@
       <button type="submit" class="btn btn-primary">Añadir producto</button>
     </div>
   </form>
+  <button type="button" routerLink="/productList" class="btn btn-primary">Ver Inventario</button>
   </div>
   <div class="mb-5"></div>
   <div class="mb-5"></div>
+
+ 
