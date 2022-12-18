@@ -8,7 +8,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './components/add-product/add-product.component';
-
+import { Router } from 'express';
 import { UserLogInComponent } from './components/user-log-in/user-log-in.component';
 import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
 
@@ -22,7 +22,8 @@ const routers: Routes=[
   {path:'addProduct',component: AddProductComponent},
   {path:'userLogIn',component: UserLogInComponent},
   {path:'productList',component: ListOfProductsComponent},
- 
+  {path:'editProduct/:id',component: AddProductComponent},
+
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
 

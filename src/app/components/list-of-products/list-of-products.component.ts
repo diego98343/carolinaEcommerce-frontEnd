@@ -40,4 +40,10 @@ export class ListOfProductsComponent implements OnInit {
     )
   }
 
+  editProduct(productId: number|undefined) {
+    console.log(productId)
+    }
+    
+  
+
 }

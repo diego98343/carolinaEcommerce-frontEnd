@@ -2,6 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { FileHandle } from 'src/app/models/file-handle.models';
 import { Product } from 'src/app/models/productClass/product';
 import { ProductService } from 'src/app/services/productService/product.service';
@@ -16,6 +18,8 @@ import { ProductCategoryService } from '../../services/productCategoryService/pr
 export class AddProductComponent implements OnInit {
 
 
+
+
   
   productCategories: ProductCategory[]=[];
   products: Product[]=[];
@@ -26,14 +30,33 @@ export class AddProductComponent implements OnInit {
 
   constructor(private _productCategoryService: ProductCategoryService,
               private _productService:ProductService,
-              private sanitizer:DomSanitizer
+              private sanitizer:DomSanitizer,
+              private _routerActive:ActivatedRoute,
+              private _router:Router
     ) { }
 
   ngOnInit(): void {
-    this.displayProductCategories();
-    // this.displayProducts();
+   this.displayProductCategories();
+   this.editProduct();
   }
 
+
+  editProduct(){
+
+    const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
+
+    if(isIdPresent){
+ 
+      const id =+ this._routerActive.snapshot.paramMap.get("id")!
+ 
+      this._productService.editProductById(id).subscribe(
+        data=> this.product = data
+
+      )
+    }
+
+
+  }
 
   displayProductCategories(){
 
@@ -41,10 +64,10 @@ export class AddProductComponent implements OnInit {
       data=>{
         console.log(data)
         this.productCategories=data
+        
       } 
     )
   }
-
 
   displayProducts(){
     this._productService.getProduct().subscribe(data=>{
@@ -53,15 +76,16 @@ export class AddProductComponent implements OnInit {
     })
   }
 
-
-
   addProduct(productForm:NgForm) {
 
   //  const productFormData =this.prepareFormData(this.product)
 
+
     this._productService.addProduct(this.product).subscribe(
       (response:Product)=>{
          console.log(response);
+         this._router.navigateByUrl("/productList")
+         
       },
       (error:HttpErrorResponse)=>{
         console.log(error)
@@ -69,9 +93,39 @@ export class AddProductComponent implements OnInit {
      );
     }
 
+    deleteProduct(id: number|undefined) {
+      this._productService.deleteExpense(id).subscribe(
+        data=>{
+          console.log('deleted object',data)
+          this._router.navigateByUrl("/productList")
+        }
+      )
+      }
+
+
+
+    // onFileSelected($event:any) {
+
+    //  if($event.target.files){
+
+    //   const file =$event.target.files[0];
+
+    //   const fileHandle: FileHandle={
+    //     file: file,
+    //     url: this.sanitizer.bypassSecurityTrustUrl(
+    //       window.URL.createObjectURL(file)
+    //     )
+    //   }
+    //   console.log(fileHandle)
+    //   this.product.productImage?.push(fileHandle);
+    //  }
+    //   }
 
 
     //FORM DATA FUCTIONS------------------------------
+
+
+
 
 // prepareFormData(product:Product):FormData{
 
@@ -82,12 +136,17 @@ export class AddProductComponent implements OnInit {
 //   new Blob([JSON.stringify(product)],{type:'application/json'})
 // );
 
-//   for(var i=0 ; product.productImage?.length; i++){
+//   for(let i=0 ; product.productImage?.length; i++){
+
 //    formData.append(
 //     'imageFile',
-//     product.productImage[i].file
+//     product.productImage[i].file,
+//     product.productImage[i].file.name,
 //    );
+   
 //   }
+
+//   console.log(formData);
 //   return formData;
 // }
 
@@ -95,21 +154,7 @@ export class AddProductComponent implements OnInit {
 
 
 
-  // onFileSelected(event:any){
-  //   if(event.target.files){
 
-  //     const file= event.target.files[0];
-
-  //     const fileHandle:FileHandle={
-  //       file:file,
-  //       url: this.sanitizer.bypassSecurityTrustUrl(
-  //         window.URL.createObjectURL(file)
-  //       )
-  //     }
-
-  //     this.product.productImage?.push(file)
-  //   }
-  // }
 
 
 }

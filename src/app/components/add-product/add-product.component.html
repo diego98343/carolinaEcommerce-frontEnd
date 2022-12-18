@@ -24,7 +24,7 @@
 <div class="container col-md-4">
 
 
-  <h1 class="text-center" style="margin-top: 20px ;">Agregar Producto</h1>
+  <h1 class="text-center" style="margin-top: 20px ;" *ngIf="">Agregar Producto</h1>
   
 
   <form #productForm="ngForm"  (ngSubmit)="addProduct(productForm)">
@@ -120,13 +120,15 @@
       <div class="mb-3">
         <div class="form-check">
           <input class="form-check-input" 
-                 type="checked" 
+                 type="checkbox" 
                  [(ngModel)]="product.displayProduct"
                  name="displayProduct">
           <label class="form-check-label">
             Mostras producto
           </label>
         </div>
+
+        
       </div>
       
      
@@ -146,6 +148,7 @@
         <div class="form-group">
           <label for="exampleInputPassword1">Foto del producto</label>
           <input
+              
                  class="form-control"
                  type="file"
                  multiple value="select"
@@ -156,10 +159,12 @@
       </div>
 
 
-      <button type="submit" href="/productList" class="btn btn-primary">Añadir producto</button>
+      <button type="submit" class="btn btn-primary" >Añadir producto</button>
+      <button type="button" class="btn btn-danger"  *ngIf="product.productId"   (click)="deleteProduct(product.productId)">Eliminar producto</button>
     </div>
   </form>
-  <button type="button" routerLink="/productList" class="btn btn-primary">Ver Inventario</button>
+  <button type="button" routerLink="/productList"   class="btn btn-primary">Ver Inventario</button>
+
   </div>
   <div class="mb-5"></div>
   <div class="mb-5"></div>

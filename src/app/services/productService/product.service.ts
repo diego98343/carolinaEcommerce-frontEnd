@@ -23,9 +23,18 @@ export class ProductService {
     )
   }
 
-
-   public addProduct(product:Product){
+  addProduct(product:Product){
      return this._httpClient.post<Product>(this.baseUrl,product)
+  }
+
+  editProductById(id:number): Observable<Product>{
+    return this._httpClient.get<Product>(`${this.baseUrl}/${id}`).pipe(
+      map(response=>response)
+    )
+   }
+
+  deleteExpense(id:number|undefined){
+    return this._httpClient.delete(`${this.baseUrl}/${id}`,{responseType: 'text'})
   }
 
 }
