@@ -44,7 +44,7 @@
 
 <div class="nav-bar">
   <a href="/products" class="link-block w-inline-block"  *ngFor="let category of productCategories">
-    <div class="nav-bar-link" style="text-transform: uppercase;">{{category.categoryName}}</div>
+    <div class="nav-bar-link" style="text-transform: uppercase;" routerLink="/productCategories">{{category.categoryName}}</div>
   </a>
  
 

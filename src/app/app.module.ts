@@ -23,6 +23,7 @@ const routers: Routes=[
   {path:'userLogIn',component: UserLogInComponent},
   {path:'productList',component: ListOfProductsComponent},
   {path:'editProduct/:id',component: AddProductComponent},
+  {path:'productCategories',component: ProductsComponent},
 
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
