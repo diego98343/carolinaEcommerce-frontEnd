@@ -3,6 +3,9 @@ import { ProductCategory } from 'src/app/models/productCategoryClass/product-cat
 import { Product } from 'src/app/models/productClass/product';
 import { ProductCategoryService } from 'src/app/services/productCategoryService/product-category.service';
 import { ProductService } from 'src/app/services/productService/product.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AddProductComponent } from '../add-product/add-product.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-of-products',
@@ -11,16 +14,21 @@ import { ProductService } from 'src/app/services/productService/product.service'
 })
 export class ListOfProductsComponent implements OnInit {
 
+
   products: Product[]=[];
   productCategories: ProductCategory[]=[];
 
 
   constructor(private _productService:ProductService,
-    private _productCategoryService: ProductCategoryService) { }
+              private _productCategoryService: ProductCategoryService,
+              private _dialogRef: MatDialog
+             ) { }
 
   ngOnInit(): void {
     this.displayProducts();
+    this.loadListProducts()
   }
+
 
 
   displayProducts(){
@@ -29,6 +37,7 @@ export class ListOfProductsComponent implements OnInit {
       this.products=data
     })
   }
+
 
   displayProductCategories(){
 
@@ -40,10 +49,27 @@ export class ListOfProductsComponent implements OnInit {
     )
   }
 
-  editProduct(productId: number|undefined) {
+
+   editProduct(productId: number|undefined) {
     console.log(productId)
     }
+
     
-  
+    
+    deleteProduct(productId: number|undefined) {
+      this._productService.deleteExpense(productId).subscribe(
+        data=>{
+          console.log('deleted object',data)
+          this.loadListProducts()
+        }
+      )
+      }
+
+
+      loadListProducts(){
+        this._productService.getProduct().subscribe(
+          data=> this.products= data
+        )
+      }
 
 }

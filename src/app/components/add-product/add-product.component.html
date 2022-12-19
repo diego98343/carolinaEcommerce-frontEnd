@@ -1,197 +1,170 @@
 
 
-  <!-- <div class="logo-section">
-    <div class="logo-text">Añadir<br></div>
-  </div> -->
-  <div class="nav-bar">
-    <a href="/products" class="link-block w-inline-block">
-      <div class="nav-bar-link">PRODUCTOS</div>
-    </a>
-    <a href="/home" class="link-block w-inline-block">
-      <div class="nav-bar-link">HOME</div>
-    </a>
-    <a href="#" class="link-block w-inline-block">
-      <div class="nav-bar-link">HISTORIA</div>
-    </a>
-    <a href="#" class="link-block w-inline-block">
-      <div class="nav-bar-link">CONTACTANOS</div>
-    </a>
-    <a href="#" class="link-block w-inline-block">
-      <div class="nav-bar-link">FICHA TECNICA</div>
-    </a>
-  </div>
- <div>
-<div class="container col-md-4">
+<div >
+  <div class="container col-md-4">
 
-
-
+    <form #productForm="ngForm"  (ngSubmit)="addProduct(productForm)">
   
-
-  
-
-  <form #productForm="ngForm"  (ngSubmit)="addProduct(productForm)">
-
-    <h1 class="text-center" style="margin-top: 20px ;" *ngIf="product.productId; displayAddProduct "  style="color: red;" > Editar Producto</h1>
-   
-    
-
-    <div class="mb-3">
-      <div class="mb-5"></div>
-      <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Producto</label>
-          <input [(ngModel)]="product.productName"
-                name="productName"
-                type="email" 
-                class="form-control" 
-                id="exampleInputEmail1" 
-                placeholder="nombre del producto"
-                >       
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Referencia</label>
-          <input  
-                 type="text" 
-                 class="form-control" 
-                 id="exampleInputPassword1" 
-                 placeholder="numero de referencia"
-                 [(ngModel)]="product.productReference"
-                 name="productReference">  
-        </div>
-      </div>
-  
-    
-  
-      <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Description</label>
-          <input  
-                 type="text" 
-                 class="form-control" 
-                 id="exampleInputPassword1" 
-                 placeholder="description del producto"
-                 [(ngModel)]="product.description"
-                 name="description">
-                 
-        </div>
-      </div>
-
-
-      <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Cantidad</label>
-          <input type="number" 
-                 class="form-control" 
-                 id="exampleInputPassword1" 
-                 placeholder="cantidad total en inventario"
-                 [(ngModel)]="product.unitsInStock"
-                 name="unitsInStock"
-                 >
-                 
-        </div>
-      </div>
-
-
-
-      <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Precio</label>
-          <input type="number"
-                 min="0.00"
-                 class="form-control" 
-                 id="exampleInputPassword1" 
-                 placeholder="precio del producto"
-                 [(ngModel)]="product.productPrice"
-                 name="productPrice"
-                 >
-                 
-        </div>
-      </div>
-
-  
-      <!-- <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Mostras producto</label>
-          <input type="checkbox" 
-              
-                 id="exampleInputPassword1" 
-                 [(ngModel)]="product.displayProduct"
-                 name="dateCreated" >
-        </div>
-      </div> -->
-
-
-      <div class="mb-3" >
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
-          <label class="form-check-label" for="flexRadioDefault1">
-            Mostrar producto
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-          <label class="form-check-label" for="flexRadioDefault2">
-            No mostrar producto
-          </label>
-        </div>
-      </div>
-
-
-      <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Link de imagen</label>
-          <input  
-                 type="text" 
-                 class="form-control" 
-                 id="exampleInputPassword1" 
-                 placeholder="Link"
-                 [(ngModel)]="product.imageURl"
-                 name="imageURl">
-                 
-        </div>
-      </div>
-      
+      <h1 class="text-center" style="margin-top: 20px ;" *ngIf="product.productId; displayAddProduct "  style="color: red;" > Editar Producto</h1>
      
-
-      
       <div class="mb-3">
-        <select [(ngModel)]="product.productCategory" name="productCategory" class="form-select">
-          <option [ngValue]="undefined">Categoria</option>
-          <option  *ngFor="let productCategory of productCategories" 
-                   [ngValue]="productCategory" 
-                   >
-                   {{productCategory.categoryName}}</option>
-        </select>
-      </div>
-  
-      <div class="mb-3">
-        <div class="form-group">
-          <label for="exampleInputPassword1">Foto del producto</label>
-          <input
-              
-                 class="form-control"
-                 type="file"
-                 multiple value="select"
-                 #selectFile
-                 
-                 >
+        <div class="mb-5"></div>
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Producto</label>
+            <input [(ngModel)]="product.productName"
+                  name="productName"
+                  type="email" 
+                  class="form-control" 
+                  id="exampleInputEmail1" 
+                  placeholder="nombre del producto"
+                  >       
+          </div>
         </div>
-      </div>
-
-
-      <button type="submit" class="btn btn-primary" *ngIf="!product.productId" ><span  >Agregar</span></button>
-      <button type="submit" class="btn btn-primary" *ngIf="product.productId" ><span  >Editar</span></button>
+  
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Referencia</label>
+            <input  
+                   type="text" 
+                   class="form-control" 
+                   id="exampleInputPassword1" 
+                   placeholder="numero de referencia"
+                   [(ngModel)]="product.productReference"
+                   name="productReference">  
+          </div>
+        </div>
+    
       
-      <button type="button" class="btn btn-danger"  *ngIf="product.productId"   (click)="deleteProduct(product.productId)">Eliminar producto</button>
+    
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Description</label>
+            <input  
+                   type="text" 
+                   class="form-control" 
+                   id="exampleInputPassword1" 
+                   placeholder="description del producto"
+                   [(ngModel)]="product.description"
+                   name="description">
+                   
+          </div>
+        </div>
+  
+  
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Cantidad</label>
+            <input type="number" 
+                   class="form-control" 
+                   id="exampleInputPassword1" 
+                   placeholder="cantidad total en inventario"
+                   [(ngModel)]="product.unitsInStock"
+                   name="unitsInStock"
+                   >
+                   
+          </div>
+        </div>
+  
+  
+  
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Precio</label>
+            <input type="number"
+                   min="0.00"
+                   class="form-control" 
+                   id="exampleInputPassword1" 
+                   placeholder="precio del producto"
+                   [(ngModel)]="product.productPrice"
+                   name="productPrice"
+                   >
+                   
+          </div>
+        </div>
+  
+    
+        <!-- <div class="mb-3">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Mostras producto</label>
+            <input type="checkbox" 
+                
+                   id="exampleInputPassword1" 
+                   [(ngModel)]="product.displayProduct"
+                   name="dateCreated" >
+          </div>
+        </div> -->
+  
+  
+        <div class="mb-3" >
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
+            <label class="form-check-label" for="flexRadioDefault1">
+              Mostrar producto
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              No mostrar producto
+            </label>
+          </div>
+        </div>
+  
+  
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Link de imagen</label>
+            <input  
+                   type="text" 
+                   class="form-control" 
+                   id="exampleInputPassword1" 
+                   placeholder="Link"
+                   [(ngModel)]="product.imageURl"
+                   name="imageURl">
+                   
+          </div>
+        </div>
+        
+       
+  
+        
+        <div class="mb-3">
+          <select [(ngModel)]="product.productCategory" name="productCategory" class="form-select">
+            <option [ngValue]="undefined">Categoria</option>
+            <option  *ngFor="let productCategory of productCategories" 
+                     [ngValue]="productCategory" 
+                     >
+                     {{productCategory.categoryName}}</option>
+          </select>
+        </div>
+    
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Foto del producto</label>
+            <input
+                
+                   class="form-control"
+                   type="file"
+                   multiple value="select"
+                   #selectFile
+                   
+                   >
+          </div>
+        </div>
+  
+  
+        <button type="submit" class="btn btn-primary" *ngIf="!product.productId" ><span  >Agregar</span></button>
+        <button type="submit" class="btn btn-primary" *ngIf="product.productId" ><span  >Editar</span></button>
+        
+        <button type="button" class="btn btn-danger"  *ngIf="product.productId"   (click)="deleteProduct(product.productId)">Eliminar producto</button>
+      </div>
+    </form>
+    <button type="button" routerLink="/productList"   class="btn btn-primary">Ver Inventario</button>
     </div>
-  </form>
-  <button type="button" routerLink="/productList"   class="btn btn-primary">Ver Inventario</button>
-
-  </div>
-  <div class="mb-5"></div>
-  <div class="mb-5"></div>
+    <div class="mb-5"></div>
+    <div class="mb-5"></div>
+  
+</div>
 
  

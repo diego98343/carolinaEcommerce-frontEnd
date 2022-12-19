@@ -13,6 +13,11 @@ import { UserLogInComponent } from './components/user-log-in/user-log-in.compone
 import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
 
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -37,8 +42,6 @@ const routers: Routes=[
     UserLogInComponent,
     ListOfProductsComponent,
     
-    
-    
   ],
   imports: [ 
     RouterModule.forRoot(routers),
@@ -47,9 +50,14 @@ const routers: Routes=[
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule   
+    HttpClientModule ,
+    MatDialogModule, 
+    MatButtonModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[AddProductComponent]
 })
 export class AppModule { }

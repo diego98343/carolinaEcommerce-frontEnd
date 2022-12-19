@@ -1,21 +1,38 @@
 
+ <div class="logo-section">
+  <div class="logo-text">Carolina Colonia<br></div>
+</div>
+<div class="nav-bar">
+  <a href="/products" class="link-block w-inline-block">
+    <div class="nav-bar-link">PRODUCTOS</div>
+  </a>
+  <a href="/home" class="link-block w-inline-block">
+    <div class="nav-bar-link">HOME</div>
+  </a>
+  <a href="#" class="link-block w-inline-block">
+    <div class="nav-bar-link">HISTORIA</div>
+  </a>
+  <a href="#" class="link-block w-inline-block">
+    <div class="nav-bar-link">CONTACTANOS</div>
+  </a>
+  <a href="#" class="link-block w-inline-block">
+    <div class="nav-bar-link">FICHA TECNICA</div>
+  </a>
+</div>
+<div>
+<div>
+
+
 
 <div class="logo-section">
   <h1 class="text-center" style="margin-top: 20px ;" >Inventario</h1>
 </div>
 
+<div class="container">
+  <button type="button" class="btn btn-primary" mat-raised-button routerLink="/addProduct" ><span  >Agregar producto</span></button>
+</div>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Employee Management System</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addEmployee" type="submit">Add Employee</button>
-    </div>
-  </div>
-</nav>
+
 
   <div class="container" style="margin-top: 50px ;">
     <div class="form-outline mb-4">
@@ -52,16 +69,13 @@
               <td  >{{tempProduct.unitsInStock}}</td>
               <td  >{{tempProduct.displayProduct}}</td>
               <td  ><button type="button" class="btn btn-primary"  routerLink="/editProduct/{{tempProduct.productId}}">Editar</button></td>
-              <td  ><button type="button" class="btn btn-danger" (click)="editProduct(tempProduct.productId)">Eliminar</button></td>
+              <td  ><button type="button" class="btn btn-danger" (click)="deleteProduct(tempProduct.productId)">Eliminar</button></td>
              
             </tr>
   
            
           </tbody>
         </table>
-        <button type="button" routerLink="/addProduct" class="btn btn-primary">volver</button>
-
-        
     
     </div>
     <div class="mb-5"></div>
