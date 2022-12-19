@@ -8,7 +8,7 @@ export class Product {
         public productName?:string, 
         public productReference?:string,
         public description?:string,
-        public imageUrl?:string,
+        public imageURl?:string,
         public dateCreated?:Date,
         public active?:boolean,
         public lastUpdated?:Date,

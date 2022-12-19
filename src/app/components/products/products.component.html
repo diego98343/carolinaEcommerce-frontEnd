@@ -43,15 +43,10 @@
 </div>
 
 <div class="nav-bar">
-  <a href="/products" class="link-block w-inline-block">
-    <div class="nav-bar-link">JEANS</div>
+  <a href="/products" class="link-block w-inline-block"  *ngFor="let category of productCategories">
+    <div class="nav-bar-link" style="text-transform: uppercase;">{{category.categoryName}}</div>
   </a>
-  <a href="/home" class="link-block w-inline-block">
-    <div class="nav-bar-link">CAMISAS</div>
-  </a>
-  <a href="#" class="link-block w-inline-block">
-    <div class="nav-bar-link">CALZADO</div>
-  </a>
+ 
 
 </div>
 <div>
@@ -61,91 +56,11 @@
 <div class="container-13">
   <div class="gallery-wrapper-2">
 
-    <div class="container-13">
-      <div class="gallery-grid-2"><img src="/assets/images/image1CarolinaEcomerce.jpg" loading="lazy" id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e8-5dda562d" height="400" srcset="/assets/images/image1CarolinaEcomerce.jpg  500w, /assets/images/image1CarolinaEcomerce.jpg  800w, /assets/images/image1CarolinaEcomerce.jpg 1080w, /assets/images/image1CarolinaEcomerce.jpg 1080w" sizes="(max-width: 479px) 95vw, (max-width: 767px) 45vw, (max-width: 991px) 344px, 286.65625px" alt="" class="gallery-image-2 shadow-two">
+    <div class="container-13"  *ngFor="let tempProduct of products" >
+      <div class="gallery-grid-2"><img src="{{tempProduct.imageURl}}" loading="lazy" id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e8-5dda562d" height="400" srcset="{{tempProduct.imageURl}}  500w, {{tempProduct.imageURl}}  800w, {{tempProduct.imageURl}} 1080w, {{tempProduct.imageURl}} 1080w" sizes="(max-width: 479px) 95vw, (max-width: 767px) 45vw, (max-width: 991px) 344px, 286.65625px" alt="" class="gallery-image-2 shadow-two">
         <div id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e9-5dda562d" class="div-block-26">
           <div class="div-block-25">
-            <div class="text-block-9">Description del productos.</div>
-            <div>
-              <a href="#" class="link-block-5 w-inline-block">
-                <div class="text-block-10">Ver detalles.</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-13" >
-      <!-- <div *ngFor="let product of products">
-       <div>{{product.productCategory}}</div>
-      </div> -->
-      <div class="gallery-grid-2"><img src="/assets/images/image1CarolinaEcomerce.jpg" loading="lazy" id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e8-5dda562d" height="400" srcset="/assets/images/image1CarolinaEcomerce.jpg  500w, /assets/images/image1CarolinaEcomerce.jpg  800w, /assets/images/image1CarolinaEcomerce.jpg 1080w, /assets/images/image1CarolinaEcomerce.jpg 1080w" sizes="(max-width: 479px) 95vw, (max-width: 767px) 45vw, (max-width: 991px) 344px, 286.65625px" alt="" class="gallery-image-2 shadow-two">
-        <div id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e9-5dda562d" class="div-block-26">
-          <div class="div-block-25">
-            <div class="text-block-9">Description del productos.</div>
-            <div>
-              <a href="#" class="link-block-5 w-inline-block">
-                <div class="text-block-10">Ver detalles.</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="w-node-af799f0a-bd69-28e4-5c23-70a93aee8149-5dda562d">
-      <div class="gallery-grid-2"><img src="/assets/images/image1CarolinaEcomerce.jpg" loading="lazy" id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e8-5dda562d" height="400" srcset="/assets/images/image1CarolinaEcomerce.jpg  500w, /assets/images/image1CarolinaEcomerce.jpg  800w, /assets/images/image1CarolinaEcomerce.jpg 1080w, /assets/images/image1CarolinaEcomerce.jpg 1080w" sizes="(max-width: 479px) 95vw, (max-width: 767px) 45vw, (max-width: 991px) 344px, 286.65625px" alt="" class="gallery-image-2 shadow-two">
-        <div id="w-node-_03130421-40da-94df-68fc-ade47abfb8f3-5dda562d" class="div-block-26">
-          <div class="div-block-25">
-            <div class="text-block-9">Description del productos.</div>
-            <div>
-              <a href="#" class="link-block-5 w-inline-block">
-                <div class="text-block-10">Ver detalles.</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="w-node-_9ada2c15-3819-ddbb-ac6c-faf1e5ba3b41-5dda562d">
-      <div class="gallery-grid-2"><img src="/assets/images/image1CarolinaEcomerce.jpg" loading="lazy" id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e8-5dda562d" height="400" srcset="/assets/images/image1CarolinaEcomerce.jpg  500w, /assets/images/image1CarolinaEcomerce.jpg  800w, /assets/images/image1CarolinaEcomerce.jpg 1080w, /assets/images/image1CarolinaEcomerce.jpg 1080w" sizes="(max-width: 479px) 95vw, (max-width: 767px) 45vw, (max-width: 991px) 344px, 286.65625px" alt="" class="gallery-image-2 shadow-two">
-        <div id="w-node-bf73f767-e030-31e9-d3e1-51f39e64f689-5dda562d" class="div-block-26">
-          <div class="div-block-25">
-            <div class="text-block-9">Description del productos.</div>
-            <div>
-              <a href="#" class="link-block-5 w-inline-block">
-                <div class="text-block-10">Ver detalles.</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-    <div  id="w-node-cd812ee6-c8fe-f434-6a31-2761f39c4c59-5dda562d">
-      <div class="gallery-grid-2"><img src="/assets/images/image1CarolinaEcomerce.jpg" loading="lazy" id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e8-5dda562d" height="400" srcset="/assets/images/image1CarolinaEcomerce.jpg  500w, /assets/images/image1CarolinaEcomerce.jpg  800w, /assets/images/image1CarolinaEcomerce.jpg 1080w, /assets/images/image1CarolinaEcomerce.jpg 1080w" sizes="(max-width: 479px) 95vw, (max-width: 767px) 45vw, (max-width: 991px) 344px, 286.65625px" alt="" class="gallery-image-2 shadow-two">
-        <div id="w-node-cd812ee6-c8fe-f434-6a31-2761f39c4c5c-5dda562d" class="div-block-26">
-          <div class="div-block-25">
-            <div class="text-block-9"></div>
-            <div>
-              <a href="#" class="link-block-5 w-inline-block">
-                <div class="text-block-10">Ver detalles.</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div id="w-node-e388ef6e-6755-4abc-0b42-6df5b6abd3e5-5dda562d">
-      <div class="gallery-grid-2"><img src="/assets/images/image1CarolinaEcomerce.jpg" loading="lazy" id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e8-5dda562d" height="400" srcset="/assets/images/image1CarolinaEcomerce.jpg  500w, /assets/images/image1CarolinaEcomerce.jpg  800w, /assets/images/image1CarolinaEcomerce.jpg 1080w, /assets/images/image1CarolinaEcomerce.jpg 1080w" sizes="(max-width: 479px) 95vw, (max-width: 767px) 45vw, (max-width: 991px) 344px, 286.65625px" alt="" class="gallery-image-2 shadow-two">
-        <div id="w-node-e388ef6e-6755-4abc-0b42-6df5b6abd3e8-5dda562d" class="div-block-26">
-          <div class="div-block-25">
-            <div class="text-block-9">Description del productos.</div>
+            <div class="text-block-9">{{tempProduct.productName}}</div>
             <div>
               <a href="#" class="link-block-5 w-inline-block">
                 <div class="text-block-10">Ver detalles.</div>
@@ -159,12 +74,6 @@
 </div>
 </section>
 </div>
-
-
-
-
-
-
 
 
 

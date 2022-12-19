@@ -24,12 +24,15 @@
 <div class="container col-md-4">
 
 
-  <h1 class="text-center" style="margin-top: 20px ;" *ngIf="">Agregar Producto</h1>
+
   
 
   <form #productForm="ngForm"  (ngSubmit)="addProduct(productForm)">
 
+    <h1 class="text-center" style="margin-top: 20px ;" *ngIf="product.productId; displayAddProduct "  style="color: red;" > Editar Producto</h1>
+   
     
+
     <div class="mb-3">
       <div class="mb-5"></div>
       <div class="mb-3">
@@ -117,18 +120,36 @@
                  name="dateCreated" >
         </div>
       </div> -->
-      <div class="mb-3">
+
+
+      <div class="mb-3" >
         <div class="form-check">
-          <input class="form-check-input" 
-                 type="checkbox" 
-                 [(ngModel)]="product.displayProduct"
-                 name="displayProduct">
-          <label class="form-check-label">
-            Mostras producto
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
+          <label class="form-check-label" for="flexRadioDefault1">
+            Mostrar producto
           </label>
         </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+          <label class="form-check-label" for="flexRadioDefault2">
+            No mostrar producto
+          </label>
+        </div>
+      </div>
 
-        
+
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Link de imagen</label>
+          <input  
+                 type="text" 
+                 class="form-control" 
+                 id="exampleInputPassword1" 
+                 placeholder="Link"
+                 [(ngModel)]="product.imageURl"
+                 name="imageURl">
+                 
+        </div>
       </div>
       
      
@@ -159,7 +180,9 @@
       </div>
 
 
-      <button type="submit" class="btn btn-primary" >Añadir producto</button>
+      <button type="submit" class="btn btn-primary" *ngIf="!product.productId" ><span  >Agregar</span></button>
+      <button type="submit" class="btn btn-primary" *ngIf="product.productId" ><span  >Editar</span></button>
+      
       <button type="button" class="btn btn-danger"  *ngIf="product.productId"   (click)="deleteProduct(product.productId)">Eliminar producto</button>
     </div>
   </form>
