@@ -17,6 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+
 
 
 
@@ -41,6 +43,8 @@ const routers: Routes=[
     AddProductComponent,
     UserLogInComponent,
     ListOfProductsComponent,
+    UserRegistrationComponent,
+   
     
   ],
   imports: [ 

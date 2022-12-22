@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { FileHandle } from 'src/app/models/file-handle.models';
+
 import { Product } from 'src/app/models/productClass/product';
 import { ProductService } from 'src/app/services/productService/product.service';
 import { ProductCategory } from '../../models/productCategoryClass/product-category';
