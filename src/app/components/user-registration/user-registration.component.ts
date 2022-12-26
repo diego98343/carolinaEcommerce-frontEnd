@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { response } from 'express';
 import { User } from 'src/app/models/userClass/user';
 import { UserRegistration } from 'src/app/models/userRegistrationClass/user-registration';
@@ -23,7 +24,8 @@ export class UserRegistrationComponent implements OnInit {
 
 
   constructor(  private formBuilder: FormBuilder,
-                private userService: UserRegisService) { }
+                private userService: UserRegisService,
+                private _router:Router) { }
 
   ngOnInit(): void {
 
@@ -36,7 +38,7 @@ export class UserRegistrationComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       name:['',Validators.required],
       email:['',Validators.required],
-      address:['',Validators.required],
+      homeAddress:['',Validators.required],
       phoneNumber:['',Validators.required],
       passWord:['',Validators.required]
      });
@@ -47,10 +49,12 @@ export class UserRegistrationComponent implements OnInit {
 
   addUser() {
     
-    if(confirm("Has sido registrado"))
+    // if(confirm("Todos los datos estan correctos?"))
+
     this.userService.addUser(this.registerForm.value).subscribe(
     (data: User)=>{
       console.log(data)
+      this._router.navigateByUrl("/userLogIn")
     }
     )
 
