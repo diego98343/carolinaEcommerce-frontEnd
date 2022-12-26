@@ -57,6 +57,7 @@ export class ListOfProductsComponent implements OnInit {
     
     
     deleteProduct(productId: number|undefined) {
+      if(confirm("Seguro quieres eliminar el productos?"))
       this._productService.deleteExpense(productId).subscribe(
         data=>{
           console.log('deleted object',data)

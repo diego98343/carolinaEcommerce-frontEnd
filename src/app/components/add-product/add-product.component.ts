@@ -43,12 +43,14 @@ export class AddProductComponent implements OnInit {
 
   editProduct(){
 
+    
     const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
 
     if(isIdPresent){
- 
+      
+
       const id =+ this._routerActive.snapshot.paramMap.get("id")!
- 
+      
       this._productService.editProductById(id).subscribe(
         data=> this.product = data
 
@@ -95,6 +97,7 @@ export class AddProductComponent implements OnInit {
     }
 
     deleteProduct(id: number|undefined) {
+      if(confirm("Seguro quieres eliminar el producto?"))
       this._productService.deleteExpense(id).subscribe(
         data=>{
           console.log('deleted object',data)

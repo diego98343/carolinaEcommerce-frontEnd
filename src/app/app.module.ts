@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,7 @@ const routers: Routes=[
   {path:'products',component: ProductsComponent},
   {path:'addProduct',component: AddProductComponent},
   {path:'userLogIn',component: UserLogInComponent},
+  {path:'userRegistration',component: UserRegistrationComponent},
   {path:'productList',component: ListOfProductsComponent},
   {path:'editProduct/:id',component: AddProductComponent},
   {path:'productCategories',component: ProductsComponent},
@@ -58,7 +60,8 @@ const routers: Routes=[
     MatDialogModule, 
     MatButtonModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

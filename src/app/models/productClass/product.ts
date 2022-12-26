@@ -1,4 +1,4 @@
-import { FileHandle } from "../file-handle.models";
+// import { FileHandle } from "../file-handle.models";
 import { ProductCategory } from "../productCategoryClass/product-category";
 
 
@@ -16,7 +16,7 @@ export class Product {
         public unitsInStock?:number,
         public productCategory?:ProductCategory,
         public productPrice?:number,
-        public productImage?:FileHandle[]
+        // public productImage?:FileHandle[]
     ){
         
     }

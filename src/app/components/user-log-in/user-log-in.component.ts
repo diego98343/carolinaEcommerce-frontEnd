@@ -14,14 +14,14 @@ export class UserLogInComponent implements OnInit {
   constructor(private userService:LogINService) { }
 
   ngOnInit(): void {
-    this.userLogIn();
+    // this.userLogIn();
   }
 
-  userLogIn(){
-    this.userService.logInUser(this.user).subscribe(data=>{
-      alert("log in successfully")
-    },error=>alert("sorry enter the right password"));
+  // userLogIn(){
+  //   this.userService.logInUser(this.user).subscribe(data=>{
+  //     alert("log in successfully")
+  //   },error=>alert("sorry enter the right password"));
     
-  }
+  // }
 
 }
