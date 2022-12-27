@@ -36,11 +36,11 @@ export class UserRegistrationComponent implements OnInit {
 
   userForm(){
     this.registerForm = this.formBuilder.group({
-      name:['',Validators.required],
-      email:['',Validators.required],
-      homeAddress:['',Validators.required],
-      phoneNumber:['',Validators.required],
-      passWord:['',Validators.required]
+      name:[null,Validators.required, ],
+      email:[null,Validators.required, ],
+      homeAddress:[null,Validators.required, ],
+      phoneNumber:[null,Validators.required, ],
+      passWord:[null,Validators.required, ]
      });
     
   }
@@ -60,4 +60,12 @@ export class UserRegistrationComponent implements OnInit {
 
     }
 
+
+    noEmptyInputValidator(control:FormControl){
+
+    if(control.value != null){
+      return {emptyInput:false}
+    }
+    return null;
+    }
 }

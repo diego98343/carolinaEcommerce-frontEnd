@@ -25,6 +25,9 @@
       <a  routerLink="/userLogIn" class="link-block w-inline-block">
         <div class="nav-bar-link">INGRESAR</div>
       </a>
+      <a  routerLink="/cart" class="link-block w-inline-block">
+        <div class="nav-bar-link">CARRITO</div>
+      </a>
     </div>
    <div>
     
@@ -51,9 +54,13 @@
                                  id="form3Example1c" 
                                  class="form-control" 
                                  formControlName="name" 
+                                 required
                                  />
                           <label class="form-label" for="form3Example1c" >Nombre</label>
                         </div>
+                      </div>
+                      <div *ngIf="registerForm.get('registerForm.name')?.errors     " class="alert alert-danger" role="alert">
+                          ingrese nombre
                       </div>
     
                       <div class="d-flex flex-row align-items-center mb-4">

@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 
@@ -33,6 +34,8 @@ const routers: Routes=[
   {path:'productList',component: ListOfProductsComponent},
   {path:'editProduct/:id',component: AddProductComponent},
   {path:'productCategories',component: ProductsComponent},
+  {path:'cart',component: ShoppingCartComponent},
+  
 
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
@@ -46,6 +49,7 @@ const routers: Routes=[
     UserLogInComponent,
     ListOfProductsComponent,
     UserRegistrationComponent,
+    ShoppingCartComponent,
    
     
   ],
