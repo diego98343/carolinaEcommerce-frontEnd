@@ -42,28 +42,49 @@
 <div>
   
 
-<section class="gallery-overview-2 wf-section">
-<div class="container-13">
-  <div class="gallery-wrapper-2">
+<section style="background-color: #eee;">
+  <div class="text-center container py-5" >
+    <!-- <h4 class="mt-4 mb-5"><strong>Nuestro Productos</strong></h4> -->
 
-    <div class="container-13"  *ngFor="let tempProduct of products" >
-      <div class="gallery-grid-2"><img src="{{tempProduct.imageURl}}" loading="lazy" id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e8-5dda562d" height="400" srcset="{{tempProduct.imageURl}}  500w, {{tempProduct.imageURl}}  800w, {{tempProduct.imageURl}} 1080w, {{tempProduct.imageURl}} 1080w" sizes="(max-width: 479px) 95vw, (max-width: 767px) 45vw, (max-width: 991px) 344px, 286.65625px" alt="" class="gallery-image-2 shadow-two">
-        <div id="w-node-_9908ab66-3c10-a3ae-ebcb-5146ed8c37e9-5dda562d" class="div-block-26">
-          <div class="div-block-25">
-            <div class="text-block-9">{{tempProduct.productName}}</div>
-            <div>
-              <a href="#" class="link-block-5 w-inline-block">
-                <div class="text-block-10">Ver detalles.</div>
-              </a>
-            </div>
+    <div class="row" >
+      <div class="col-lg-4 col-md-12 mb-4" *ngFor="let tempProduct of products">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            <img src="{{tempProduct.imageURl}}" style="height:450px; "
+              class="w-100" />
+            <a href="#!">
+              <div class="mask">
+                <div class="d-flex justify-content-start align-items-end h-100">
+                  <h5><span class="badge bg-primary ms-2">New</span></h5>
+                </div>
+              </div>
+              <div class="hover-overlay">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+            </a>
+          </div>
+          <div class="card-body">
+            <a href="" class="text-reset">
+              <h5 class="card-title mb-3">{{tempProduct.productName}}</h5>
+            </a>
+            <a href="" class="text-reset">
+              <p>{{tempProduct.productCategory}}</p>
+            </a>
+            <h6 class="mb-3">$61.99</h6>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </section>
-</div>
+ 
+
+
+
+
+
+
 
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->
