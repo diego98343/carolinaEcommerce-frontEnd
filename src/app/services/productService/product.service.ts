@@ -37,4 +37,13 @@ export class ProductService {
     return this._httpClient.delete(`${this.baseUrl}/${id}`,{responseType: 'text'})
   }
 
+
+  getProductById(id:number|undefined):Observable<Product>{
+
+    const productUrl=`${this.baseUrl}/${id}`
+
+    return this._httpClient.get<Product>(productUrl);
+    
+  }
+
 }

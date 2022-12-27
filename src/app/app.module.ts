@@ -36,9 +36,8 @@ const routers: Routes=[
   {path:'editProduct/:id',component: AddProductComponent},
   {path:'productCategories',component: ProductsComponent},
   {path:'cart',component: ShoppingCartComponent},
-  {path:'productDetails',component: ProductDetailsComponent},
+  {path:'products/:id',component: ProductDetailsComponent},
   
-
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
 

@@ -36,20 +36,7 @@
         </div>
     
       
-    
-        <div class="mb-3">
-          <div class="form-group">
-            <label for="exampleInputPassword1">Description</label>
-            <input  
-                   type="text" 
-                   class="form-control" 
-                   id="exampleInputPassword1" 
-                   placeholder="description del producto"
-                   [(ngModel)]="product.description"
-                   name="description">
-                   
-          </div>
-        </div>
+
   
   
         <div class="mb-3">
@@ -135,6 +122,23 @@
                    #selectFile
                    
                    >
+          </div>
+        </div>
+
+
+          
+        <div class="mb-3">
+          <div class="form-group">
+                 <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                    <textarea 
+                       class="form-control rounded-0" 
+                       id="exampleFormControlTextarea2" 
+                       rows="6"
+                       placeholder="description del producto"
+                       [(ngModel)]="product.description"
+                       name="description"> </textarea>
+                  </div>
           </div>
         </div>
   
