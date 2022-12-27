@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 
@@ -35,6 +36,7 @@ const routers: Routes=[
   {path:'editProduct/:id',component: AddProductComponent},
   {path:'productCategories',component: ProductsComponent},
   {path:'cart',component: ShoppingCartComponent},
+  {path:'productDetails',component: ProductDetailsComponent},
   
 
   {path:'',redirectTo:'/home',pathMatch:'full'},
@@ -50,6 +52,7 @@ const routers: Routes=[
     ListOfProductsComponent,
     UserRegistrationComponent,
     ShoppingCartComponent,
+    ProductDetailsComponent,
    
     
   ],
@@ -65,7 +68,8 @@ const routers: Routes=[
     MatButtonModule,
     MatInputModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
