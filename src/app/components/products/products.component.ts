@@ -14,8 +14,13 @@ import { ProductService } from 'src/app/services/productService/product.service'
 export class ProductsComponent implements OnInit {
 
 
+
  products: Product[]=[];
  productCategories: ProductCategory[]=[];
+
+ filters= {
+  keyword:''
+ }
 
 
   constructor( private _productService:ProductService,
@@ -37,15 +42,25 @@ export class ProductsComponent implements OnInit {
   }
 
   displayProducts(){
+
     this._productService.getProduct().subscribe(data=>{
-      console.log(data)
-      this.products=data
+      // console.log(data)
+    
+      this.products= this.filderProduct(data)
+     
     })
   }
 
-  
- 
-  
+
+  filderProduct(products:Product[]) {
+
+    //everytime the a product enters its gonne be filter and compare with the array of products 
+    return products.filter((p)=>{
+      return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
+     })
+
+    }
+    
   }
  
   

@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductCategory } from './models/productCategoryClass/product-category';
 
 
 
@@ -37,6 +38,7 @@ const routers: Routes=[
   {path:'productCategories',component: ProductsComponent},
   {path:'cart',component: ShoppingCartComponent},
   {path:'products/:id',component: ProductDetailsComponent},
+  {path:'productCategories/:id',component: ProductCategory},
   
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
