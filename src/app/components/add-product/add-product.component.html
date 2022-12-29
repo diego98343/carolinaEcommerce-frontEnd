@@ -21,6 +21,12 @@
                   >       
           </div>
         </div>
+
+
+        <div class="alert alert-danger" role="alert" *ngIf="product.productName === null">
+          Nombre no puede estar vacio
+        </div>
+
   
         <div class="mb-3">
           <div class="form-group">
@@ -34,7 +40,13 @@
                    name="productReference">  
           </div>
         </div>
+
+       
     
+        <div class="alert alert-danger" role="alert" *ngIf="product.productReference === null">
+          Referencia no puede estar vacia
+        </div>
+        
       
         <div class="mb-3">
           <div class="form-group">
@@ -48,6 +60,10 @@
                    >
                    
           </div>
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="product.unitsInStock === 0">
+          Cantidad tiene que ser mayor que 0
         </div>
   
   
@@ -65,6 +81,10 @@
                    >
                    
           </div>
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="product.productPrice === 0">
+          Precio tiene que ser mayor que 0
         </div>
   
     
@@ -94,6 +114,11 @@
                    
           </div>
         </div>
+
+
+        <div class="alert alert-danger" role="alert" *ngIf="product.productReference === null">
+          Imagen Url no puede estar vacio 
+        </div>
         
        
         <div class="mb-3">
@@ -105,6 +130,9 @@
                      {{productCategory.categoryName}}</option>
           </select>
         </div>
+
+
+  
     
         <div class="mb-3">
           <div class="form-group">

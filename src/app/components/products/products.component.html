@@ -5,55 +5,80 @@
       <div class="top-banner-text">hasta 20% ENdescuENTO en pedidos al por mayor</div>
     </div>
   </div>
-  <div class="logo-section">
+  <div class="logo-section" style="margin-bottom: 20px;">
     <div class="logo-text">Carolina Colonia<br></div>
   </div>
 
 
-<div class="div-block-11"></div>
+  <div class="nav-bar  " style="background-color: #0a4175e0;">
+  <a href="/products" class="link-block w-inline-block">
+    <div class="nav-bar-link" style="color: aliceblue;" >PRODUCTOS</div>
+  </a>
+  <a href="/home" class="link-block w-inline-block">
+    <div class="nav-bar-link" style="color: aliceblue;" >HOME</div>
+  </a>
+  <a href="#" class="link-block w-inline-block">
+    <div class="nav-bar-link" style="color: aliceblue;">HISTORIA</div>
+  </a>
+  <a href="#" class="link-block w-inline-block">
+    <div class="nav-bar-link" style="color: aliceblue;">CONTACTANOS</div>
+  </a>
+  <a  routerLink="/userLogIn" class="link-block w-inline-block">
+    <div class="nav-bar-link" style="color: aliceblue;">INGRESAR</div>
+  </a>
+  <a  routerLink="/cart" class="link-block w-inline-block">
+    <div class="nav-bar-link" style="color: aliceblue;">CARRITO</div>
+  </a>
+</div>
 <div>
-<div class="div-block-22">
-  <div>
-    <form action="/search" class="search-2-w-form">
 
-      <input [(ngModel)]="filters.keyword" 
-             name="keyword"
-             (input)="displayProducts()"
-             type="search" 
-             class="search-input-w-input" 
-             maxlength="256" name="query" 
-             placeholder="Buscar por Nombre" 
-             id="search" 
-             >
 
-      <input type="button" value="Buscar" class="w-button">
-    </form>
-  </div>
-</div>
-</div>
+<div class="div-block-11"></div>
 
-<div class="nav-bar" >
+
+
+<div class="nav-bar" style="background-color: rgb(255, 255, 255);" >
 
     <a  *ngFor="let category of productCategories"  routerLink="/productCategories/{{category.categoryId}}" class="link-block w-inline-block"  >
       <div class="nav-bar-link" style="text-transform: uppercase;" >{{category.categoryName}}</div>
     </a>
  
 
-  <a routerLink="/"  class="link-block w-inline-block" >
-    <div class="nav-bar-link" style="text-transform: uppercase;" >HOME</div>
-  </a>
-
-  <a href="/products" class="link-block w-inline-block" >
-    <div class="nav-bar-link" style="text-transform: uppercase;" ><a routerLink="/productList" type="button" class="btn btn-success">Añadir</a></div>
-  </a>
-
 </div>
+
 <div>
+
+
+  <div class="div-block-22">
+    <div>
+      <form action="/search" class="search-2-w-form">
+  
+        <input [(ngModel)]="filters.keyword" 
+               name="keyword"
+               (input)="displayProducts()"
+               type="search" 
+               class="search-input-w-input" 
+               maxlength="256" name="query" 
+               placeholder="Buscar por Nombre" 
+               id="search" 
+               >
+  
+        <input type="button" value="Buscar" class="w-button">
+      </form>
+    </div>
+
+    <a href="/products" class="link-block w-inline-block" >
+      <div class="nav-bar-link" style="text-transform: uppercase;" ><a routerLink="/productList" type="button" class="btn btn-success">Añadir</a></div>
+    </a>
+  </div>
+  
   
 
 
 
 <div class="bg-slate-100">
+  
+  
   <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
     
 
