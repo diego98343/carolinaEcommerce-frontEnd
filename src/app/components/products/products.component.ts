@@ -35,7 +35,7 @@ export class ProductsComponent implements OnInit {
   productCategory(){
     this._productCategoryService.getCategories().subscribe(
       data=>{
-        console.log(data)
+        // console.log(data)
         this.productCategories=data
       }
     )
@@ -45,22 +45,31 @@ export class ProductsComponent implements OnInit {
 
     this._productService.getProduct().subscribe(data=>{
       // console.log(data)
-    
       this.products= this.filderProduct(data)
-     
+
+      console.log(this.products)
     })
   }
 
-
   filderProduct(products:Product[]) {
+
+
+    
 
     //everytime the a product enters its gonne be filter and compare with the array of products 
     return products.filter((p)=>{
       return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
      })
 
+
     }
     
+
+
+
+
+
+
   }
  
   

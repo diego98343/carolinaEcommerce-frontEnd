@@ -55,7 +55,15 @@
 
 <div class="bg-slate-100">
   <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-    <h2 class="sr-only">Products</h2>
+    
+
+    <div class="alert alert-dark text-center" role="alert" *ngIf="products.length ===0" >
+      <h4 class="alert-heading">OH NO!</h4>
+      <p>Lo sentimos pero creemos que el producto que esta buscando podria no estar en inventario .</p>
+      <hr>
+      <p class="mb-0">Si necesita mas informacion sobre un producto  especifico y no lo encuentra en nustra pagina no dude en concactarnos a carolinacolonia@gmail.com.</p>
+    </div>
+
 
     <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 
@@ -68,8 +76,7 @@
       </a>
 
 
-      <!-- <h1 *ngIf="displayProducts()===null">NO SE ENCONTRO PRODUCTO</h1> -->
-
+    
       <!-- More products... -->
     </div>
   </div>
