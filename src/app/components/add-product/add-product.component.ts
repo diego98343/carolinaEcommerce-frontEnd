@@ -21,8 +21,8 @@ export class AddProductComponent implements OnInit {
 
 
   
-  productCategories: ProductCategory[]=[];
-  products: Product[]=[];
+  productCategories?: ProductCategory[]=[];
+  products?: Product[]=[];
 
 
   product: Product = new Product();
