@@ -22,6 +22,7 @@ import { UserRegistrationComponent } from './components/user-registration/user-r
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductCategory } from './models/productCategoryClass/product-category';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 
@@ -39,6 +40,7 @@ const routers: Routes=[
   {path:'cart',component: ShoppingCartComponent},
   {path:'products/:id',component: ProductDetailsComponent},
   {path:'productCategories/:id',component: ProductCategory},
+  {path:'contact',component: ContactComponent},
   
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
@@ -54,6 +56,7 @@ const routers: Routes=[
     UserRegistrationComponent,
     ShoppingCartComponent,
     ProductDetailsComponent,
+    ContactComponent,
    
     
   ],
