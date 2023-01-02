@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/services/productService/product.service'
 })
 export class ProductDetailsComponent implements OnInit {
 
+
  product!:Product;
 
 
@@ -33,5 +34,12 @@ export class ProductDetailsComponent implements OnInit {
       }
     )
   }
+
+
+  addProductToChart(product:Product) {
+    console.log(product)
+    }
+
+
 
 }
