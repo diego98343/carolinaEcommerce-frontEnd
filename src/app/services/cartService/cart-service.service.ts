@@ -16,18 +16,26 @@ export class CartServiceService {
 
   addToCard(cartItem:CartItem){
 
-    
+    console.log(this.cartItems);
+
     //chenck if we have the item in the cart
 
     let alreadyExistInCart:boolean=false;
     let existingCartItem: CartItem= undefined!;
 
+
+    
     if(this.cartItems.length>0){
       
+      // we are looping thr all the items in the cartItems Array 
       for(let tempCartItem of this.cartItems){
-        existingCartItem = tempCartItem;
+     // once we loop, we make sure the cartItems Array values DO not have the same id as the function input 
+        if(tempCartItem.id === cartItem.id){
+          tempCartItem = existingCartItem;
+          break;
+        }
 
-        break;
+        
 
       }
       //check if we found the product 
@@ -42,7 +50,7 @@ export class CartServiceService {
     }else {
 
       this.cartItems.push(cartItem);
-
+      
     }
 
    //compute cart totral price and total quantity
