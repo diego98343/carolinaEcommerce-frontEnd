@@ -14,17 +14,17 @@ export class CartServiceService {
 
   constructor() { }
 
+
+
   addToCard(cartItem:CartItem){
 
-    console.log(this.cartItems);
+    console.log(this.totalPrice);
 
     //chenck if we have the item in the cart
 
     let alreadyExistInCart:boolean=false;
     let existingCartItem: CartItem= undefined!;
 
-
-    
     if(this.cartItems.length>0){
       
       // we are looping thr all the items in the cartItems Array 
@@ -34,15 +34,11 @@ export class CartServiceService {
           tempCartItem = existingCartItem;
           break;
         }
-
-        
-
       }
       //check if we found the product 
       alreadyExistInCart = (existingCartItem != undefined);
     }
-
-
+    
     if(alreadyExistInCart){
       // increment the quantity
       existingCartItem.quantity++;
@@ -77,10 +73,17 @@ export class CartServiceService {
    }
 
 
+   this.totalPrice.next(totalPriceValue);
+   this.totalQuantity.next(totalQuantityValue);
+
+
+   
      //publish the new values .... all subscribers will receive the new data 
 
-     this.totalPrice.next(totalPriceValue);
-     this.totalQuantity.next(totalQuantityValue);
+     
+
+
+
 
 
      

@@ -47,7 +47,7 @@ export class ProductsComponent implements OnInit {
       // console.log(data)
       this.products= this.filderProduct(data)
 
-      console.log(this.products)
+      // console.log(this.products)
     })
   }
 

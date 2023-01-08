@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
  product!:Product;
 
 
+
   constructor(private productService: ProductService,
               private route:ActivatedRoute,
               private cartService:CartServiceService) { }
