@@ -1,74 +1,44 @@
 
 
 
-  <!-- <div class="logo-section" style="margin-bottom: 20px;">
-    <div class="logo-text">Carolina Colonia<br></div>
-  </div> -->
 
-
-  <!-- <div class="nav-bar  " style="background-color: #0a4175e0;">
-  <a href="/products" class="link-block w-inline-block">
-    <div class="nav-bar-link" style="color: aliceblue;" >PRODUCTOS</div>
-  </a>
-  <a href="/home" class="link-block w-inline-block">
-    <div class="nav-bar-link" style="color: aliceblue;" >HOME</div>
-  </a>
-  
-  <a routerLink="/contact"class="link-block w-inline-block">
-    <div class="nav-bar-link" style="color: aliceblue;">CONTACTANOS</div>
-  </a>
-  <a  routerLink="/userLogIn" class="link-block w-inline-block">
-    <div class="nav-bar-link" style="color: aliceblue;">INGRESAR</div>
-  </a>
-  <a  routerLink="/cart" class="link-block w-inline-block">
-    <div class="nav-bar-link" style="color: aliceblue;">CARRITO</div>
-  </a>
-</div>
-<div> -->
-
-<div>
-  <div class="div-block-22">
-    <div>
-      <form action="/search" class="search-2-w-form">
-        <input [(ngModel)]="filters.keyword" 
-               name="keyword"
-               (input)="displayProducts()"
-               type="search" 
-               class="search-input-w-input" 
-               maxlength="256" name="query" 
-               placeholder="Buscar por Nombre" 
-               id="search" 
-               >
-  
-        <input type="button" value="Buscar" class="w-button">
-      </form>
-
-     
-
-
-
-
-    </div>
-    <a href="/products" class="link-block w-inline-block" >
-      <div class="nav-bar-link" style="text-transform: uppercase;" ><a routerLink="/productList" type="button" class="btn btn-success">Añadir</a></div>
-    </a>
+<div class="flex justify-center" style="margin-top: 70px;">
+  <div class="mb-3 xl:w-96">
+    <label for="exampleSearch2" class="form-label inline-block mb-2 text-gray-700">Buscar</label>
+    <input
+      type="search"
+      class="
+        form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      "
+      [(ngModel)]="filters.keyword" 
+      name="keyword"
+      (input)="displayProducts()"
+      type="search" 
+      
+      maxlength="256" name="query" 
+      placeholder="Buscar por Nombre" 
+      id="search" 
+    />
   </div>
-  
-  <!-- <div class="nav-bar" style="background-color: rgba(255, 255, 255, 0.349);" >
-
-    <a  *ngFor="let category of productCategories"  routerLink="/productCategories/{{category.categoryId}}" class="link-block w-inline-block"  >
-      <div class="nav-bar-link" style="text-transform: uppercase;" >{{category.categoryName}}</div>
-    </a>
-  </div> -->
-
 </div>
 
-
-
-<div class="bg-white">
 
   <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-  
+
     <div class="alert alert-dark text-center" role="alert" *ngIf="products.length ===0" >
       <h4 class="alert-heading">OH NO!</h4>
       <p>Lo sentimos pero creemos que el producto que esta buscando podria no estar en inventario .</p>
@@ -92,7 +62,7 @@
       <!-- More products... -->
     </div>
   </div>
-</div>
+
 
 <!-- Footer -->
 
