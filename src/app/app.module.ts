@@ -23,6 +23,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductCategory } from './models/productCategoryClass/product-category';
 import { ContactComponent } from './components/contact/contact.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 
 
@@ -57,6 +58,7 @@ const routers: Routes=[
     ShoppingCartComponent,
     ProductDetailsComponent,
     ContactComponent,
+    NavBarComponent,
    
     
   ],

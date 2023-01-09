@@ -1,19 +1,16 @@
 
 
 <body class="body">
-    <div class="nav-wrapper">
-      <div class="top-banner">
-        <div class="top-banner-text">hasta 20% ENdescuENTO en pedidos al por mayor</div>
-      </div>
-    </div>
+
+  
 
 
-    <div class="logo-section" style="margin-bottom: 20px;">
+    <!-- <div class="logo-section" style="margin-bottom: 20px;">
       <div class="logo-text">Carolina Colonia<br></div>
-    </div>
+    </div> -->
 
 
-    <div class="nav-bar  " style="background-color: #0a4175e0;">
+    <!-- <div class="nav-bar  " style="background-color: #0a4175e0;">
       <a href="/products" class="link-block w-inline-block">
         <div class="nav-bar-link" style="color: aliceblue;" >PRODUCTOS</div>
       </a>
@@ -30,142 +27,177 @@
       <a  routerLink="/cart" class="link-block w-inline-block">
         <div class="nav-bar-link" style="color: aliceblue ;" >CARRITO <span style="color: rgb(242, 67, 67); background-color: aliceblue; padding: 1px 6px; border-radius: 10%;">{{totalQuantity}}</span></div>
       </a>
-    </div>
+    </div> -->
+
+
     <div>
 
 
 
 
-
-
-    <main class="mx-auto max-w-2xl px-4 pt-16 pb-24 sm:px-6 lg:max-w-7xl lg:px-8">
-     
-
-      <form class="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
-        <section aria-labelledby="cart-heading" class="lg:col-span-7">
-
-          <!-- <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shopping Cart</h2> -->
-            <div class="max-w-screen-xl px-0 py-0 mx-auto sm:px-6 sm:py-2 lg:px-8">
-              <div class="max-w-3xl mx-auto">
-                <div class="mt-8">
+      <section class="h-100 h-custom" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+              <div class="card">
+                <div class="card-body p-4">
       
-                 
-
-
-
-
-                  
-                    <div class="flex items-center" *ngFor="let tempCartComponent of cartItems" >
-                      <img
-                        src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
-                        alt=""
-                        class="object-cover w-16 h-16 rounded"
-                      />
-          
-                      <div class="ml-4">
-                        <h3 class="text-sm text-gray-900">Basic Tee 6-Pack</h3>
-          
-                        <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
-                          <div>
-                            <dt class="inline">Size:</dt>
-                            <dd class="inline">XXS</dd>
-                          </div>
-          
-                          <div>
-                            <dt class="inline">Color:</dt>
-                            <dd class="inline">White</dd>
-                          </div>
-                        </dl>
+                  <div class="row">
+      
+                    <div class="col-lg-7">
+                      <h5 class="mb-3"><a href="#!" class="text-body" routerLink="/products"><i
+                            class="fas fa-long-arrow-alt-left me-2" ></i>Continuar comprando</a></h5>
+                      <hr>
+      
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                          <p class="mb-1">Tú compra</p>
+                          <p class="mb-0">tienes {{totalQuantity}} productos en el carrito</p>
+                        </div>
+                        <div>
+                          <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
+                              class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
+                        </div>
                       </div>
-          
-                      <div class="flex items-center justify-end flex-1 gap-2">
-                        <form>
-                          <label for="Line1Qty" class="sr-only"> Quantity </label>
-          
-                          <input
-                            type="number"
-                            min="1"
-                            value="1"
-                            id="Line1Qty"
-                            class="h-8 w-12 rounded border-gray-200 bg-gray-50 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                          />
-                        </form>
-          
-                        <button class="text-gray-600 transition hover:text-red-600">
-                          <span class="sr-only">Remove item</span>
-          
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                     </div>
-                    
-          
 
-                  
-        
+
+                      <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert" *ngIf="cartItems.length===0">
+                        <p class="font-bold">Mensaje</p>
+                        <p class="text-sm">No se ha añadido nada al carrito</p>
+                      </div>
+
+
+      
+                      <div class="card mb-3" >
+                        <div class="card-body" *ngFor="let tempCartItem of cartItems" >
+                          <div class="d-flex justify-content-between" style="margin: 5px;" >
+                            <div class="d-flex flex-row align-items-center">
+                              <div>
+                                <img
+                                  src="{{tempCartItem.imageUrl}}"
+                                  class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                              </div>
+                              <div class="ms-3">
+                                <h5>{{tempCartItem.name}}</h5>
+                                <p class="small mb-0">{{tempCartItem.reference}}</p>
+                              </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center">
+                              <div style="width: 50px;">
+                                <h5 class="fw-normal mb-0">{{tempCartItem.quantity}}</h5>
+                              </div>
+                              <div style="width: 80px;">
+                                <h5 class="mb-0">${{tempCartItem.unitPrice}}</h5>
+                              </div>
+                              <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+      
+                      
+      
+                    </div>
+
+
+
+                    <div class="col-lg-5">
+                      <div class="card bg-primary text-white rounded-3">
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="mb-0">Card details</h5>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                              class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+                          </div>
+      
+                          <p class="small mb-2">Card type</p>
+                          <a href="#!" type="submit" class="text-white"><i
+                              class="fab fa-cc-mastercard fa-2x me-2"></i></a>
+                          <a href="#!" type="submit" class="text-white"><i
+                              class="fab fa-cc-visa fa-2x me-2"></i></a>
+                          <a href="#!" type="submit" class="text-white"><i
+                              class="fab fa-cc-amex fa-2x me-2"></i></a>
+                          <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
+      
+                          <form class="mt-4">
+                            <div class="form-outline form-white mb-4">
+                              <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                                placeholder="Cardholder's Name" />
+                              <label class="form-label" for="typeName">Cardholder's Name</label>
+                            </div>
+      
+                            <div class="form-outline form-white mb-4">
+                              <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                                placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
+                              <label class="form-label" for="typeText">Card Number</label>
+                            </div>
+      
+                            <div class="row mb-4">
+                              <div class="col-md-6">
+                                <div class="form-outline form-white">
+                                  <input type="text" id="typeExp" class="form-control form-control-lg"
+                                    placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
+                                  <label class="form-label" for="typeExp">Expiration</label>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-outline form-white">
+                                  <input type="password" id="typeText" class="form-control form-control-lg"
+                                    placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+                                  <label class="form-label" for="typeText">Cvv</label>
+                                </div>
+                              </div>
+                            </div>
+      
+                          </form>
+      
+                          <hr class="my-4">
+      
+                          <div class="d-flex justify-content-between">
+                            <p class="mb-2">Subtotal</p>
+                            <p class="mb-2">$4798.00</p>
+                          </div>
+<!--       
+                          <div class="d-flex justify-content-between">
+                            <p class="mb-2">Shipping</p>
+                            <p class="mb-2">$20.00</p>
+                          </div> -->
+      
+                          <div class="d-flex justify-content-between mb-4">
+                            <p class="mb-2">Total(Incl. taxes)</p>
+                            <p class="mb-2">${{totalPrice}}</p>
+                          </div>
+      
+                          <button type="button" class="btn btn-info btn-block btn-lg">
+                            <div class="d-flex justify-content-between">
+                              <span>${{totalPrice }}</span>
+                              <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                            </div>
+                          </button>
+      
+                        </div>
+                      </div>
+      
+                    </div>
+      
+                  </div>
+      
                 </div>
               </div>
             </div>
-        </section>
-
-        <!-- Order summary -->
-        <section aria-labelledby="summary-heading" class="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
-          <h2 id="summary-heading" class="text-lg font-medium text-gray-900">Order summary</h2>
-
-          <dl class="mt-6 space-y-4">
-            <div class="flex items-center justify-between">
-              <dt class="text-sm text-gray-600">Subtotal</dt>
-              <dd class="text-sm font-medium text-gray-900">$99.00</dd>
-            </div>
-            <div class="flex items-center justify-between border-t border-gray-200 pt-4">
-              <dt class="flex items-center text-sm text-gray-600">
-                <span>Shipping estimate</span>
-                <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                  <span class="sr-only">Learn more about how shipping is calculated</span>
-                  <!-- <QuestionMarkCircleIcon class="h-5 w-5" aria-hidden="true" /> -->
-                </a>
-              </dt>
-              <dd class="text-sm font-medium text-gray-900">$5.00</dd>
-            </div>
-            <div class="flex items-center justify-between border-t border-gray-200 pt-4">
-              <dt class="flex text-sm text-gray-600">
-                <span>Tax estimate</span>
-                <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                  <span class="sr-only">Learn more about how tax is calculated</span>
-                  <!-- <QuestionMarkCircleIcon class="h-5 w-5" aria-hidden="true" /> -->
-                </a>
-              </dt>
-              <dd class="text-sm font-medium text-gray-900">$8.32</dd>
-            </div>
-            <div class="flex items-center justify-between border-t border-gray-200 pt-4">
-              <dt class="text-base font-medium text-gray-900">Order total</dt>
-              <dd class="text-base font-medium text-gray-900">$112.32</dd>
-            </div>
-          </dl>
-
-          <div class="mt-6">
-            <button type="submit" class="w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</button>
           </div>
-        </section>
-      </form>
+        </div>
+      </section>
+   
 
-      <!-- Related products -->
-      
-    </main>
-    
+
+
+
+
+
+
+
+
 
 
 
