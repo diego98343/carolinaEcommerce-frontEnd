@@ -2,44 +2,49 @@
 
 
 
-<div class="flex justify-center" style="margin-top: 70px;">
-  <div class="mb-3 xl:w-96">
-    <label for="exampleSearch2" class="form-label inline-block mb-2 text-gray-700">Buscar</label>
-    <input
-      type="search"
-      class="
-        form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-      "
-      [(ngModel)]="filters.keyword" 
-      name="keyword"
-      (input)="displayProducts()"
-      type="search" 
-      
-      maxlength="256" name="query" 
-      placeholder="Buscar por Nombre" 
-      id="search" 
-    />
-  </div>
-</div>
-
 
   <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 
-    <div class="alert alert-dark text-center" role="alert" *ngIf="products.length ===0" >
+
+
+    <div class="flex justify-center" >
+      <div class="mb-3 xl:w-96">
+        <label for="exampleSearch2" class="form-label inline-block mb-2 text-gray-700">Buscar</label>
+        <input
+          type="search"
+          class="
+            form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+          "
+          [(ngModel)]="filters.keyword" 
+          name="keyword"
+          (input)="displayProducts()"
+          type="search" 
+          
+          maxlength="256" name="query" 
+          placeholder="Buscar por Nombre" 
+          id="search" 
+        />
+      </div>
+    </div>
+
+
+
+
+    <div class="alert alert-dark text-center" role="alert" *ngIf="products.length ===0"  style="margin-top: 30px;">
       <h4 class="alert-heading">OH NO!</h4>
       <p>Lo sentimos pero creemos que el producto que esta buscando podria no estar en inventario .</p>
       <hr>
@@ -47,7 +52,7 @@
     </div>
 
 
-    <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+    <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8" style="margin-top: 30px;">
 
 
       <a style=" text-decoration: none;" href="#" class="group"  *ngFor="let tempProduct of products"  routerLink="/products/{{tempProduct.productId}}">
@@ -64,7 +69,6 @@
   </div>
 
 
-<!-- Footer -->
 
 
 
