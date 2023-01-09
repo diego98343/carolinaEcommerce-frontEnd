@@ -14,6 +14,7 @@ export class ShoppingCartComponent implements OnInit {
   cartItems: CartItem[]=[];
   totalPrice: number = 0;
   totalQuantity: number= 0;
+  totalPriceWithTaxes: number=0;
  
 
   constructor( private cartService: CartServiceService) { }
@@ -39,7 +40,15 @@ export class ShoppingCartComponent implements OnInit {
     data=>this.totalQuantity= data
    )
 
+
+   this.cartService.totalQuantityVWithTaxes.subscribe( data=>{
+    this.totalPriceWithTaxes=data;
+   })
+
    this.cartService.computeCartTotals();
+
+  
+
 
   }
 
