@@ -29,13 +29,7 @@ export class CartServiceService {
     if(this.cartItems.length>0){
       
       // we are looping thr all the items in the cartItems Array 
-      for(let tempCartItem of this.cartItems){
-     // once we loop, we make sure the cartItems Array values DO not have the same id as the function input 
-        if(tempCartItem.id === cartItem.id){
-          tempCartItem = existingCartItem;
-          break;
-        }
-      }
+      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id ===cartItem.id)!
       //check if we found the product 
       alreadyExistInCart = (existingCartItem != undefined);
     }
