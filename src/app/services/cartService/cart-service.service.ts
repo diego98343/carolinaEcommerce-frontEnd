@@ -80,15 +80,39 @@ export class CartServiceService {
    
      //publish the new values .... all subscribers will receive the new data 
 
-     
-
-
-
-
-
-     
-
+  
   }
 
 
+  decrementQuantity(cartItem: CartItem){
+
+ //decrease the quantity  
+    cartItem.quantity--;
+
+    if(cartItem.quantity===0){
+     this.remove(cartItem);
+    }else{
+      this.computeCartTotals();
+    }
+
+
+
 }
+
+remove(cartItem:CartItem){
+
+// get the index of the item in the array
+const itemIndex = this.cartItems.findIndex(tempCartItem=> tempCartItem.id ===cartItem.id)
+
+// if the item is found remove the item from the array / we use splice to delete the element of an arra y
+if(itemIndex>-1){
+  this.cartItems.splice(itemIndex,1);
+}
+
+
+
+}
+
+}
+
+

@@ -50,14 +50,35 @@
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center">
-                        <div style="width: 50px;">
-                          <h5 class="fw-normal mb-0">Q: {{tempCartItem.quantity}}</h5>
-                        </div>
-                        <div style="width: 80px;">
+
+                        <div style="width: 80px; margin: 10px;">
                           <h5 class="mb-0">${{tempCartItem.unitPrice}}</h5>
                         </div>
-                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                        
+                        <div >
+                          <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                           <i class="fas fa-plus" ></i>
+                          </button>
+                        </div>
+                       
+                        <div style="margin: 10px;">
+                          <h5 class="fw-normal mb-0">{{tempCartItem.quantity}}</h5>
+                        </div>
+                        
+                        <div >
+                          <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                            <i class="fas fa-minus"></i>
+                           </button>
+                        </div>
+
+                        <a href="#!" style="color: #cecece; margin: 10px;"><i class="fas fa-trash-alt"></i></a>
+
                       </div>
+
+
+
+
+
                     </div>
                   </div>
                 </div>
