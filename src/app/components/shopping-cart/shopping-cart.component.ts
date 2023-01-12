@@ -16,26 +16,71 @@ export class ShoppingCartComponent implements OnInit {
   totalQuantity: number= 0;
   totalPriceWithTaxes: number=0;
   totalTaxes:number=0;
+  productQuantityTextInput:number=0;
+
+
+
+  discountPercentage: number=0;
+  discountCode: string="";
+  discountValidation: string="";
+  discounts={
+    code1:"carolina30",
+    code2:"carolina20"
+  }
+  
+
  
 
   constructor( private cartService: CartServiceService) { }
 
   ngOnInit(): void {
     this.updateCartStatus();
+    
   }
+
+  applyDiscount(){
+
+
+    // for(let i=0; this.discounts; i++){
+    //   this.discounts.[i]
+    // }
+
+    if(this.discountCode === this.discounts.code1){
+        this.discountPercentage = 30;
+        console.log('you have a '+"% " + this.discountPercentage )  
+        
+    }else{
+
+     this.discountValidation ="no code found"
+
+     }
+
+     
+    if (this.discountPercentage > 0){
+
+      this.totalPriceWithTaxes = this.totalPriceWithTaxes - (this.totalPriceWithTaxes* this.discountPercentage)/100;
+      
+     }
+  }
+  
 
 
   updateCartStatus(){
 
    this.cartItems = this.cartService.cartItems;
 
-   console.log("shooing cart items :" +this.cartItems);
 
-   this.cartService.totalPrice.subscribe(
-    data=>{
-      this.totalPrice= data
-    } 
-   )
+    this.cartService.totalPrice.subscribe(
+      data=>{
+        this.totalPrice= data
+      } 
+     )
+
+
+     console.log("sadasdas" + this.totalPrice)
+   
+
+  
 
    this.cartService.totalQuantity.subscribe(
     data=> this.totalQuantity= data
@@ -58,10 +103,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
 
-  
-
-
-
   incrementQuantity(cartItem: CartItem) {
     this.cartService.addToCard(cartItem)
     }
@@ -70,11 +111,15 @@ export class ShoppingCartComponent implements OnInit {
   decrementQuantity(cartItem: CartItem){
     this.cartService.decrementQuantity(cartItem)
   }
-    
+  
 
+  discountCodeInput(){
+    console.log(this.discountCode)
 
+    console.log('total discount: '+ this.discountPercentage)
 
-    
+    console.log(this.discounts.code1)
+  }
 
 
 

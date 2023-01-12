@@ -28,7 +28,7 @@
             <div class="-mx-3 md:flex items-start">
                 <div class="px-3 md:w-7/12 lg:pr-10">
                     <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6" >
-                        <div class="w-full flex items-center" style="margin: 10px;"  *ngFor="let tempCartItem of cartItems"   >
+                        <div class="w-full flex items-center" style="margin: 10px;"  *ngFor="let tempCartItem of cartItems">
                             <div class="overflow-hidden rounded-lg w-16 h-25 bg-gray-50 border border-gray-200">
                                 <img src="{{tempCartItem.imageUrl}}" alt="">
                             </div>
@@ -76,17 +76,39 @@
                     </div>
                     <div class="mb-6 pb-6 border-b border-gray-200" *ngIf="cartItems.length!=0">
                         <div class="-mx-2 flex items-end justify-end">
-                            <div class="flex-grow px-2 lg:max-w-xs">
-                                <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Discount code</label>
-                                <div>
-                                    <input class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="XXXXXX" type="text"/>
+                            
+                                <div class="flex-grow px-2 lg:max-w-xs">
+                                    <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Discount code</label>
+                                    <div>
+                                        <input class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" 
+                                               placeholder="XXXXXX" type="text" 
+                                               [(ngModel)]="discountCode" 
+                                               name="discountCode"
+                                               (input)="discountCodeInput()"
+                                               />
+                                    </div>
                                 </div>
-                            </div>
+
+
+
                             <div class="px-2">
-                                <button class="block w-full max-w-xs mx-auto border border-transparent bg-gray-400 hover:bg-gray-500 focus:bg-gray-500 text-white rounded-md px-5 py-2 font-semibold">APPLY</button>
+                                <button   (click)="applyDiscount()" class="block w-full max-w-xs mx-auto border border-transparent bg-gray-400 hover:bg-gray-500 focus:bg-gray-500 text-white rounded-md px-5 py-2 font-semibold"  >APPLY</button>
                             </div>
                         </div>
+
+                   <div class="mb-6 pb-6 border-b border-gray-200" *ngIf="discountValidation == 'no code found' ">
+                    <div class="alert alert-danger " role="alert" style="margin: 20px;" >
+                        No se escontro ningun codigo de descuento
                     </div>
+                   </div>
+                    
+
+
+                    </div>
+
+
+
+
                     <div class="mb-6 pb-6 border-b border-gray-200 text-gray-800" *ngIf="cartItems.length!=0">
                         <div class="w-full flex mb-3 items-center">
                             <div class="flex-grow">
@@ -101,9 +123,21 @@
                                 <span class="text-gray-600">Taxes (18%)</span>
                             </div>
                             <div class="pl-3">
-                                <span class="font-semibold">${{totalTaxes}}</span>
+                                <span class="font-semibold"> ${{totalTaxes}}</span>
                             </div>
                         </div>
+
+
+                        <div class="w-full flex items-center" *ngIf="discountPercentage > 0">
+                            <div class="flex-grow">
+                                <span class="text-gray-600">Descuento ({{discountPercentage}}%)</span>
+                            </div>
+                            <div class="pl-3">
+                                <span class="font-semibold">- ${{(totalPriceWithTaxes * discountPercentage)/100 }}</span>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="mb-6 pb-6 border-b border-gray-200 md:border-none text-gray-800 text-xl" *ngIf="cartItems.length!=0">
                         <div class="w-full flex items-center">

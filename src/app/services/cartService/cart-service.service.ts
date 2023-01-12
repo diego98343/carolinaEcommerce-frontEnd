@@ -78,12 +78,13 @@ export class CartServiceService {
    this.totalPrice.next(totalPriceValue);
    this.totalQuantity.next(totalQuantityValue);
   
-
-
    
      //publish the new values .... all subscribers will receive the new data 
+  }
 
-  
+
+  applyDiscountCode(){
+    
   }
 
 
@@ -97,9 +98,6 @@ export class CartServiceService {
     }else{
       this.computeCartTotals();
     }
-
-
-
 }
 
 remove(cartItem:CartItem){
