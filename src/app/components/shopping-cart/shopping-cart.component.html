@@ -110,6 +110,7 @@
 
 
                     <div class="mb-6 pb-6 border-b border-gray-200 text-gray-800" *ngIf="cartItems.length!=0">
+
                         <div class="w-full flex mb-3 items-center">
                             <div class="flex-grow">
                                 <span class="text-gray-600">Subtotal</span>
@@ -118,6 +119,8 @@
                                 <span class="font-semibold">${{totalPrice}}</span>
                             </div>
                         </div>
+
+                        
                         <div class="w-full flex items-center">
                             <div class="flex-grow">
                                 <span class="text-gray-600">Taxes (18%)</span>
@@ -128,7 +131,7 @@
                         </div>
 
 
-                        <div class="w-full flex items-center" *ngIf="discountPercentage > 0">
+                        <div style="margin-top: 20px;" class="w-full flex items-center" *ngIf="discountPercentage > 0"  >
                             <div class="flex-grow">
                                 <span class="text-gray-600">Descuento ({{discountPercentage}}%)</span>
                             </div>

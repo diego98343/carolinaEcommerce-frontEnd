@@ -84,7 +84,7 @@ export class CartServiceService {
 
 
   applyDiscountCode(){
-    
+
   }
 
 
@@ -94,7 +94,15 @@ export class CartServiceService {
     cartItem.quantity--;
 
     if(cartItem.quantity===0){
-     this.remove(cartItem);
+
+    if(confirm("Seguro quieres eliminar el producto?")){
+
+      this.remove(cartItem);
+    }
+
+    cartItem.quantity=1
+
+    
     }else{
       this.computeCartTotals();
     }

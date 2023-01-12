@@ -40,7 +40,6 @@ export class ShoppingCartComponent implements OnInit {
 
   applyDiscount(){
 
-
     // for(let i=0; this.discounts; i++){
     //   this.discounts.[i]
     // }
@@ -61,6 +60,12 @@ export class ShoppingCartComponent implements OnInit {
       this.totalPriceWithTaxes = this.totalPriceWithTaxes - (this.totalPriceWithTaxes* this.discountPercentage)/100;
       
      }
+  }
+
+
+
+  deleteProductFromCart(){
+    
   }
   
 
