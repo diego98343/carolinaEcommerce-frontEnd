@@ -15,6 +15,7 @@ export class ShoppingCartComponent implements OnInit {
   totalPrice: number = 0;
   totalQuantity: number= 0;
   totalPriceWithTaxes: number=0;
+  totalTaxes:number=0;
  
 
   constructor( private cartService: CartServiceService) { }
@@ -37,7 +38,14 @@ export class ShoppingCartComponent implements OnInit {
    )
 
    this.cartService.totalQuantity.subscribe(
-    data=>this.totalQuantity= data
+    data=> this.totalQuantity= data
+   )
+
+
+   this.cartService.totalTax.subscribe(
+    data=>{
+      this.totalTaxes=data;
+    }
    )
 
 
@@ -48,6 +56,9 @@ export class ShoppingCartComponent implements OnInit {
    this.cartService.computeCartTotals();
 
   }
+
+
+  
 
 
 

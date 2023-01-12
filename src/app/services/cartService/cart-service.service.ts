@@ -12,6 +12,7 @@ export class CartServiceService {
   totalPrice: Subject<number> =new Subject<number>();
   totalQuantity:Subject<number>= new Subject<number>();
   totalQuantityVWithTaxes:Subject<number>= new Subject<number>();
+  totalTax:Subject<number>= new Subject<number>();
 
   constructor() { }
 
@@ -54,6 +55,7 @@ export class CartServiceService {
    let totalPriceValue: number = 0;
    let totalQuantityValue: number =0;
    let totalValueWithTax: number =0;
+   let totalTaxA:number =0;
 
    for(let currentCartItem of this.cartItems){
     
@@ -66,15 +68,16 @@ export class CartServiceService {
     let totalTax = (totalPriceValue/100)*18
 
     totalValueWithTax = totalPriceValue + totalTax;
-
-    console.log('total price'+ totalPriceValue);
-    console.log('total quantity'+ totalQuantityValue);
-    console.log('total items'+ this.cartItems);
+ 
+    this.totalTax.next(totalTax);
+  
    }
 
+   
    this.totalQuantityVWithTaxes.next(totalValueWithTax);
    this.totalPrice.next(totalPriceValue);
    this.totalQuantity.next(totalQuantityValue);
+  
 
 
    

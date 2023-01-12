@@ -1,181 +1,233 @@
 
 
 
-<div class="logo-section">
- <section class="h-100 h-custom" style="background-color: rgb(255, 253, 253);">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card">
-          <div class="card-body p-4">
-
-            <div class="row">
-
-              <div class="col-lg-7">
-                <h5 class="mb-3"><a href="#!" class="text-body" routerLink="/products"><i
-                      class="fas fa-long-arrow-alt-left me-2" ></i>Continuar comprando</a></h5>
-                <hr>
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <div>
-                    <p class="mb-1">Tú compra</p>
-                    <p class="mb-0">tienes {{totalQuantity}} productos en el carrito</p>
-                  </div>
-                  <div>
-                    <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
-                        class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
-                  </div>
-                </div>
-
-
-                <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert" *ngIf="cartItems.length===0">
-                  <p class="font-bold">Mensaje</p>
-                  <p class="text-sm">No se ha añadido nada al carrito</p>
-                </div>
-
-
-
-                <div class="card mb-3" >
-                  <div class="card-body" *ngFor="let tempCartItem of cartItems" >
-                    <div class="d-flex justify-content-between" style="margin: 5px;" >
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
-                          <img
-                            src="{{tempCartItem.imageUrl}}"
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
-                        </div>
-
-                        <div class="ms-3">
-                          <h5>{{tempCartItem.name}}</h5>
-                          <p class="small mb-0">{{tempCartItem.reference}}</p>
-                        </div>
-                        
-                      </div>
-                      <div class="d-flex flex-row align-items-center">
-
-                        <div style="width: 80px; margin: 10px;">
-                          <h5 class="mb-0">${{tempCartItem.unitPrice}}</h5>
-                        </div>
-                        
-                        <div >
-                          <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
-                           <i class="fas fa-plus" ></i>
-                          </button>
-                        </div>
-                       
-                        <div style="margin: 10px;">
-                          <h5 class="fw-normal mb-0">{{tempCartItem.quantity}}</h5>
-                        </div>
-                        
-                        <div >
-                          <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
-                            <i class="fas fa-minus"></i>
-                           </button>
-                        </div>
-
-                        <a href="#!" style="color: #cecece; margin: 10px;"><i class="fas fa-trash-alt"></i></a>
-
-                      </div>
-
-
-
-
-
-                    </div>
-                  </div>
-                </div>
-
-                
-
-              </div>
-
-
-
-              <div class="col-lg-5">
-                <div class="card bg-primary text-white rounded-3">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                      <h5 class="mb-0">Card details</h5>
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                        class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
-                    </div>
-
-                    <p class="small mb-2">Card type</p>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-visa fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i
-                        class="fab fa-cc-amex fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
-
-                    <form class="mt-4">
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                          placeholder="Cardholder's Name" />
-                        <label class="form-label" for="typeName">Cardholder's Name</label>
-                      </div>
-
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                          placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                        <label class="form-label" for="typeText">Card Number</label>
-                      </div>
-
-                      <div class="row mb-4">
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="text" id="typeExp" class="form-control form-control-lg"
-                              placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />
-                            <label class="form-label" for="typeExp">Expiration</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="password" id="typeText" class="form-control form-control-lg"
-                              placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                            <label class="form-label" for="typeText">Cvv</label>
-                          </div>
-                        </div>
-                      </div>
-
-                    </form>
-
-                    <hr class="my-4">
-
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">${{totalPrice}}</p>
-                    </div>
-
-                   
-                    <div class="d-flex justify-content-between mb-4">
-                      <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">${{totalPriceWithTaxes}}</p>
-                    </div>
-
-                    <button type="button" class="btn btn-info btn-block btn-lg">
-                      <div class="d-flex justify-content-between">
-                        <span>${{totalPriceWithTaxes}}&ensp;</span>
-                        <span> Pagar <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                      </div>
-                    </button>
-
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
- </section>
- </div>
  
+
+
+
+
+
+ 
+
+<div class="logo-section"></div>
+<div class="min-w-screen min-h-screen bg-gray-50 py-5">
+
+  <div class="px-5">
+    
+  
+
+
+   
+
+
+
+
+    
+    <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-10 text-gray-800">
+        <div class="w-full">
+            <div class="-mx-3 md:flex items-start">
+                <div class="px-3 md:w-7/12 lg:pr-10">
+                    <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6" >
+                        <div class="w-full flex items-center" style="margin: 10px;"  *ngFor="let tempCartItem of cartItems"   >
+                            <div class="overflow-hidden rounded-lg w-16 h-25 bg-gray-50 border border-gray-200">
+                                <img src="{{tempCartItem.imageUrl}}" alt="">
+                            </div>
+                            <div class="flex-grow pl-3">
+                                <h6 class="font-semibold uppercase text-gray-600">{{tempCartItem.name}}</h6>
+                                <p class="text-gray-400">REF {{tempCartItem.reference}}</p>
+                                <p class="text-gray-400">${{tempCartItem.unitPrice}}</p>
+                               
+                            </div>
+                            
+                            <div class="d-flex flex-row align-items-center" style="margin-right: 60px;">
+                              <div >
+                                <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                                 <i class="fas fa-plus" ></i>
+                                </button>
+                              </div>
+                             
+                              <div style="margin: 15px;">
+                                <!-- <h5 class="fw-normal mb-0">{{tempCartItem.quantity}}</h5> -->
+                                <input type="text" class="fw-normal col-xs-2 w-10 text-black-400 fw-bold text-center" value="{{tempCartItem.quantity}}">
+                              </div>
+                              
+                              <div >
+                                <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                                  <i class="fas fa-minus"></i>
+                                 </button>
+                              </div>
+                            </div>
+
+                            <div style="width: 80px; margin: 13px;">
+                              <span class="font-semibold text-gray-600 text-xl">${{ tempCartItem.quantity * (tempCartItem.unitPrice)!}}</span>
+                            </div>
+                           
+                            <a href="#!" style="color: #cecece; margin: 10px;"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+
+
+                        <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert" *ngIf="cartItems.length===0">
+                          <p class="font-bold">Mensaje</p>
+                          <p class="text-sm">No se ha añadido nada al carrito</p>
+                        </div>
+
+
+
+                    </div>
+                    <div class="mb-6 pb-6 border-b border-gray-200" *ngIf="cartItems.length!=0">
+                        <div class="-mx-2 flex items-end justify-end">
+                            <div class="flex-grow px-2 lg:max-w-xs">
+                                <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Discount code</label>
+                                <div>
+                                    <input class="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="XXXXXX" type="text"/>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <button class="block w-full max-w-xs mx-auto border border-transparent bg-gray-400 hover:bg-gray-500 focus:bg-gray-500 text-white rounded-md px-5 py-2 font-semibold">APPLY</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-6 pb-6 border-b border-gray-200 text-gray-800" *ngIf="cartItems.length!=0">
+                        <div class="w-full flex mb-3 items-center">
+                            <div class="flex-grow">
+                                <span class="text-gray-600">Subtotal</span>
+                            </div>
+                            <div class="pl-3">
+                                <span class="font-semibold">${{totalPrice}}</span>
+                            </div>
+                        </div>
+                        <div class="w-full flex items-center">
+                            <div class="flex-grow">
+                                <span class="text-gray-600">Taxes (18%)</span>
+                            </div>
+                            <div class="pl-3">
+                                <span class="font-semibold">${{totalTaxes}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-6 pb-6 border-b border-gray-200 md:border-none text-gray-800 text-xl" *ngIf="cartItems.length!=0">
+                        <div class="w-full flex items-center">
+                            <div class="flex-grow">
+                                <span class="text-gray-600">Total</span>
+                            </div>
+                            <div class="pl-3">
+                                <span class="font-semibold text-gray-400 text-sm">AUD</span> <span class="font-semibold">${{totalPriceWithTaxes}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-3 md:w-5/12" >
+                    <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
+                        <div class="w-full flex mb-3 items-center">
+                            <div class="w-32">
+                                <span class="text-gray-600 font-semibold">Contact</span>
+                            </div>
+                            <div class="flex-grow pl-3">
+                                <span>Scott Windon</span>
+                            </div>
+                        </div>
+                        <div class="w-full flex items-center">
+                            <div class="w-32">
+                                <span class="text-gray-600 font-semibold">Billing Address</span>
+                            </div>
+                            <div class="flex-grow pl-3">
+                                <span>123 George Street, Sydney, NSW 2000 Australia</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
+                        <div class="w-full p-3 border-b border-gray-200">
+                            <div class="mb-5">
+                                <label for="type1" class="flex items-center cursor-pointer">
+                                    <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked>
+                                    <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" class="h-6 ml-3">
+                                </label>
+                            </div>
+                            <div>
+                                <div class="mb-3">
+                                    <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Name on card</label>
+                                    <div>
+                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Card number</label>
+                                    <div>
+                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text"/>
+                                    </div>
+                                </div>
+                                <div class="mb-3 -mx-2 flex items-end">
+                                    <div class="px-2 w-1/4">
+                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Expiration date</label>
+                                        <div>
+                                            <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                                <option value="01">01 - January</option>
+                                                <option value="02">02 - February</option>
+                                                <option value="03">03 - March</option>
+                                                <option value="04">04 - April</option>
+                                                <option value="05">05 - May</option>
+                                                <option value="06">06 - June</option>
+                                                <option value="07">07 - July</option>
+                                                <option value="08">08 - August</option>
+                                                <option value="09">09 - September</option>
+                                                <option value="10">10 - October</option>
+                                                <option value="11">11 - November</option>
+                                                <option value="12">12 - December</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="px-2 w-1/4">
+                                        <select class="form-select w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
+                                            <option value="2027">2027</option>
+                                            <option value="2028">2028</option>
+                                            <option value="2029">2029</option>
+                                        </select>
+                                    </div>
+                                    <div class="px-2 w-1/4">
+                                        <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">Security code</label>
+                                        <div>
+                                            <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full p-3">
+                            <label for="type2" class="flex items-center cursor-pointer">
+                                <input type="radio" class="form-radio h-5 w-5 text-indigo-500" name="type" id="type2">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" width="80" class="ml-3"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i class="mdi mdi-lock-outline mr-1"></i> PAY NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-5">
+        <div class="text-center text-gray-400 text-sm">
+            <a href="https://www.buymeacoffee.com/scottwindon" target="_blank" class="focus:outline-none underline text-gray-400"><i class="mdi mdi-beer-outline"></i>Buy me a beer</a> and help support open-resource
+        </div>
+    </div>
+</div>
+
+<!-- BUY ME A BEER AND HELP SUPPORT OPEN-SOURCE RESOURCES -->
+<div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+    <div>
+        <a title="Buy me a beer" href="https://www.buymeacoffee.com/scottwindon" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+            <img class="object-cover object-center w-full h-full rounded-full" src="https://i.pinimg.com/originals/60/fd/e8/60fde811b6be57094e0abc69d9c2622a.jpg"/>
+        </a>
+    </div>
+</div>
 
 
  
