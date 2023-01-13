@@ -65,7 +65,14 @@ export class ShoppingCartComponent implements OnInit {
 
 
   deleteProductFromCart(){
-    
+
+  }
+
+
+  deleteProducto(cartItem:CartItem){
+    if(confirm("Seguro quieres eliminar el producto?")){
+    this.cartService.remove(cartItem)
+    }
   }
   
 
