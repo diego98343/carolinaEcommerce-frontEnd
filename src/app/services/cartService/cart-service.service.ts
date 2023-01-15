@@ -67,7 +67,7 @@ export class CartServiceService {
 
     let totalTax = (totalPriceValue/100)*18
 
-    totalValueWithTax = totalPriceValue + totalTax;
+    totalValueWithTax += totalPriceValue + totalTax;
  
     this.totalTax.next(totalTax);
   
@@ -99,9 +99,7 @@ export class CartServiceService {
 
       this.remove(cartItem);
     }
-
     cartItem.quantity=1
-
     
     }else{
       this.computeCartTotals();

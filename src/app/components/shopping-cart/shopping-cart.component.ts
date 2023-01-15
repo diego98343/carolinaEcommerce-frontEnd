@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { CartItem } from 'src/app/common/cart-item';
 import { CartServiceService } from 'src/app/services/cartService/cart-service.service';
 
@@ -11,6 +14,10 @@ export class ShoppingCartComponent implements OnInit {
 
 
 
+ 
+
+  checkOutFormGroup!: FormGroup;
+
   cartItems: CartItem[]=[];
   totalPrice: number = 0;
   totalQuantity: number= 0;
@@ -18,31 +25,65 @@ export class ShoppingCartComponent implements OnInit {
   totalTaxes:number=0;
   productQuantityTextInput:number=0;
 
-
+  
 
   discountPercentage: number=0;
   discountCode: string="";
   discountValidation: string="";
+
   discounts={
     code1:"carolina30",
     code2:"carolina20"
   }
+
+  discounts2:string[]=["carolina30","carolina20","carolina10"]
+   
+    
   
 
- 
-
-  constructor( private cartService: CartServiceService) { }
+  constructor( private cartService: CartServiceService,
+               private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
     this.updateCartStatus();
-    
+    this.discountCodeInput();
+
+
+    this.checkOutFormGroup= this.formBuilder.group({
+      costumer: this.formBuilder.group({
+        firstName:[''],
+        lastName:[''],
+        email:['']
+      })
+    })
   }
+
 
   applyDiscount(){
 
-    // for(let i=0; this.discounts; i++){
-    //   this.discounts.[i]
-    // }
+    
+
+    for(let i=0; i< this.discounts2.length; i++){
+
+      let codeWasFound: boolean = false;
+    
+       if(this.discounts2[i]===this.discountCode){
+
+         codeWasFound = true
+
+       }
+       
+       if(codeWasFound){
+
+       
+
+       break;
+       
+
+       }
+
+
+    }
 
     if(this.discountCode === this.discounts.code1){
         this.discountPercentage = 30;
@@ -54,7 +95,6 @@ export class ShoppingCartComponent implements OnInit {
 
      }
 
-     
     if (this.discountPercentage > 0){
 
       this.totalPriceWithTaxes = this.totalPriceWithTaxes - (this.totalPriceWithTaxes* this.discountPercentage)/100;
@@ -63,16 +103,16 @@ export class ShoppingCartComponent implements OnInit {
   }
 
 
-
-  deleteProductFromCart(){
-
-  }
-
-
   deleteProducto(cartItem:CartItem){
     if(confirm("Seguro quieres eliminar el producto?")){
+
     this.cartService.remove(cartItem)
+
+    console.log(this.cartItems)
+
     }
+
+    
   }
   
 
@@ -126,13 +166,11 @@ export class ShoppingCartComponent implements OnInit {
   
 
   discountCodeInput(){
-    console.log(this.discountCode)
+   
 
-    console.log('total discount: '+ this.discountPercentage)
-
-    console.log(this.discounts.code1)
   }
 
 
 
 }
+``
