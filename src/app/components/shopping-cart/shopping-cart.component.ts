@@ -48,14 +48,6 @@ export class ShoppingCartComponent implements OnInit {
     this.updateCartStatus();
     this.discountCodeInput();
 
-
-    this.checkOutFormGroup= this.formBuilder.group({
-      costumer: this.formBuilder.group({
-        firstName:[''],
-        lastName:[''],
-        email:['']
-      })
-    })
   }
 
 
@@ -68,37 +60,23 @@ export class ShoppingCartComponent implements OnInit {
       let codeWasFound: boolean = false;
     
        if(this.discounts2[i]===this.discountCode){
-
          codeWasFound = true
-
        }
-       
+      
        if(codeWasFound){
-
-       
-
        break;
-       
-
+  
        }
-
-
     }
 
     if(this.discountCode === this.discounts.code1){
         this.discountPercentage = 30;
-        console.log('you have a '+"% " + this.discountPercentage )  
-        
+          
     }else{
-
      this.discountValidation ="no code found"
-
      }
-
     if (this.discountPercentage > 0){
-
-      this.totalPriceWithTaxes = this.totalPriceWithTaxes - (this.totalPriceWithTaxes* this.discountPercentage)/100;
-      
+      this.totalPriceWithTaxes = this.totalPriceWithTaxes - (this.totalPriceWithTaxes* this.discountPercentage)/100;  
      }
   }
 
@@ -107,12 +85,7 @@ export class ShoppingCartComponent implements OnInit {
     if(confirm("Seguro quieres eliminar el producto?")){
 
     this.cartService.remove(cartItem)
-
-    console.log(this.cartItems)
-
     }
-
-    
   }
   
 
@@ -121,23 +94,15 @@ export class ShoppingCartComponent implements OnInit {
 
    this.cartItems = this.cartService.cartItems;
 
-
     this.cartService.totalPrice.subscribe(
       data=>{
         this.totalPrice= data
       } 
      )
 
-
-     console.log("sadasdas" + this.totalPrice)
-   
-
-  
-
    this.cartService.totalQuantity.subscribe(
     data=> this.totalQuantity= data
    )
-
 
    this.cartService.totalTax.subscribe(
     data=>{
@@ -145,9 +110,9 @@ export class ShoppingCartComponent implements OnInit {
     }
    )
 
-
    this.cartService.totalQuantityVWithTaxes.subscribe( data=>{
     this.totalPriceWithTaxes=data;
+    console.log(this.totalPriceWithTaxes)
    })
 
    this.cartService.computeCartTotals();

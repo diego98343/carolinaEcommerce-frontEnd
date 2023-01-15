@@ -22,15 +22,14 @@
             <div class="-mx-3 md:flex items-start ">
                 <div class="px-3 md:w-7/12 lg:pr-10 border rounded">
                     <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6 m-5 "  >
-                        <div class="w-full flex items-center" style="margin: 10px;"  *ngFor="let tempCartItem of cartItems">
+                        <div class="w-full flex items-center col-xs-12 col-centered" style="margin: 10px;"  *ngFor="let tempCartItem of cartItems">
                             <div class="overflow-hidden rounded-lg w-16 h-25 bg-gray-50 border border-gray-200">
                                 <img src="{{tempCartItem.imageUrl}}" alt="">
                             </div>
-                            <div class="flex-grow pl-3">
-                                <h6 class="font-semibold uppercase text-gray-600">{{tempCartItem.name}}</h6>
-                                <p class="text-gray-400">REF {{tempCartItem.reference}}</p>
-                                <p class="text-gray-400">${{tempCartItem.unitPrice}}</p>
-                               
+                            <div class="flex-grow pl-3  columns-xs">
+                                <h6 class="font-semibold uppercase text-gray-600 columns-xs">{{tempCartItem.name}}</h6>
+                                <p class="text-gray-400 columns-xs">REF {{tempCartItem.reference}}</p>
+                                <p class="text-gray-400 columns-xs ">${{tempCartItem.unitPrice}}</p>
                             </div>
                             
                             <div class="d-flex flex-row align-items-center" style="margin-right: 60px;">
@@ -133,7 +132,7 @@
 
 
 
-                 <img src="/assets/images/6134225.jpg" height="800px" width="500" style="margin: 40px;">
+                 <img class="img-responsive" src="/assets/images/6134225.jpg" height="800px" width="500" style="margin: 40px;">
 
 
 
