@@ -14,6 +14,8 @@ export class CartServiceService {
   totalQuantityVWithTaxes:Subject<number>= new Subject<number>();
   totalTax:Subject<number>= new Subject<number>();
 
+
+
   constructor() { }
 
 
@@ -34,19 +36,19 @@ export class CartServiceService {
       //check if we found the product 
       alreadyExistInCart = (existingCartItem != undefined);
     }
-    
+
     if(alreadyExistInCart){
       // increment the quantity
       existingCartItem.quantity++;
-
     }else {
-
       this.cartItems.push(cartItem);
-      
     }
-
    //compute cart totral price and total quantity
-    this.computeCartTotals();
+    this.computeCartTotals(); 
+  }
+
+
+  computeQuantity(){
     
   }
 
@@ -55,11 +57,10 @@ export class CartServiceService {
    let totalPriceValue: number = 0;
    let totalQuantityValue: number =0;
    let totalValueWithTax: number =0;
-   let totalTaxA:number =0;
+  
 
    for(let currentCartItem of this.cartItems){
     
-
     console.log('content of the cart')
 
     totalPriceValue += currentCartItem.quantity * currentCartItem.unitPrice!;
@@ -83,8 +84,8 @@ export class CartServiceService {
   }
 
 
-  applyDiscountCode(){
-
+  applyDiscountCode(quantity:number){
+   
   }
 
 

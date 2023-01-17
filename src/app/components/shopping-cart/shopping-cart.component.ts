@@ -54,7 +54,6 @@ export class ShoppingCartComponent implements OnInit {
   applyDiscount(){
 
     
-
     for(let i=0; i< this.discounts2.length; i++){
 
       let codeWasFound: boolean = false;

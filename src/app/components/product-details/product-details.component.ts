@@ -15,6 +15,9 @@ export class ProductDetailsComponent implements OnInit {
 
  product!:Product;
 
+ productQuantity:number=0;
+
+ productSize:string='';
 
 
   constructor(private productService: ProductService,
@@ -27,9 +30,20 @@ export class ProductDetailsComponent implements OnInit {
       this.handleProductDetails();
     })
   }
+
+
+
+  increaseQuantity(){
+    this.productQuantity++
+  }
+
+  decreaseQuantity(){
+    this.productQuantity--
+  }
+
+
   handleProductDetails() {
     // get the id and convert it to a number 
-
     const theProductId: number = +this.route.snapshot.paramMap.get('id')!
 
     this.productService.getProductById(theProductId).subscribe(
@@ -43,16 +57,14 @@ export class ProductDetailsComponent implements OnInit {
 
   addProductToCart(product:Product) {
 
-
-  
     const cartItem = new CartItem(product);
 
-    if(confirm("quieres añardir este producto al carrito?"))
+    if(confirm("quieres añardir este producto al carrito?")){
 
-    this.cartService.addToCard(cartItem);
-    this._router.navigateByUrl("/products")
+     this.cartService.addToCard(cartItem);
+     this._router.navigateByUrl("/products")
 
-
+   }
 
     }
 
