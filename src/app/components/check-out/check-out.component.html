@@ -65,6 +65,16 @@
                        placeholder="Street" 
                        aria-label="Address">
             </div>
+
+            <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="address.errors?.['required']">
+                    direcion no puede estar vacio
+                </div>
+                <div *ngIf="address.errors?.['minlength']">
+                    direcion tiene que tener mas de 6 caracteres
+                </div>
+            </div>
+
             <div class="mt-2">
                 <label class="text-sm block text-gray-600" for="cus_email">City</label>
                 <input 
@@ -76,6 +86,16 @@
                        placeholder="City" 
                        aria-label="City">
             </div>
+
+            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="city.errors?.['required']">
+                    direcion no puede estar vacio
+                </div>
+                <div *ngIf="city.errors?.['minlength']">
+                    ciudad tiene que tener almenos 3 caracteres 
+                </div>
+            </div>
+
             <div class="inline-block mt-2 w-1/2 pr-1">
                 <label class="block text-sm text-gray-600" for="cus_email">Country</label>
                 <input 
@@ -85,6 +105,16 @@
                        placeholder="Country" 
                        aria-label="Email">
             </div>
+
+            <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="country.errors?.['required']">
+                    direcion no puede estar vacio
+                </div>
+                <div *ngIf="country.errors?.['minlength']">
+                    ciudad tiene que tener almenos 3 caracteres 
+                </div>
+            </div>
+
             <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                 <label class="block text-sm text-gray-600" for="cus_email">Zip</label>
                 <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" 
@@ -96,18 +126,23 @@
                        placeholder="Zip" 
                        aria-label="Email">
             </div>
+
+            <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="zipCode.errors?.['required']">
+                    codigo postal no puede estar vacio
+                </div>
+                <div *ngIf="zipCode.errors?.['minlength']">
+                    codigo postal tiene que tener almenos 4 caracteres 
+                </div>
+            </div>
+
         </div>
           
        
 
-
-
-        
         <div formGroupName="shippingInfo">
 
             <p class="text-gray-800 font-medium mt-4">Direccion de envio</p>     
-
-
             <div class="form-check">
                 <input  
                         type="checkbox"
@@ -117,7 +152,6 @@
                   usar misma direction del recibo
                 </label>
             </div>
-
 
             <div class="mt-2">
                 <label class=" block text-sm text-gray-600" for="cus_email">Address</label>
@@ -131,6 +165,19 @@
                        placeholder="Street" 
                        aria-label="Address">
             </div>
+
+            <div *ngIf="shippingAddress.invalid && (shippingAddress.dirty || shippingAddress.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="shippingAddress.errors?.['required']">
+                    direcion no puede estar vacio
+                </div>
+                <div *ngIf="shippingAddress.errors?.['minlength']">
+                    direcion tiene que tener mas de 6 caracteres
+                </div>
+            </div>
+
+
+
+
             <div class="mt-2">
                 <label class="text-sm block text-gray-600" for="cus_email">City</label>
                 <input 
@@ -142,6 +189,19 @@
                        placeholder="City" 
                        aria-label="City">
             </div>
+
+            <div *ngIf="shippingCity.invalid && (shippingCity.dirty || shippingCity.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="shippingCity.errors?.['required']">
+                    direcion no puede estar vacio
+                </div>
+                <div *ngIf="shippingCity.errors?.['minlength']">
+                    ciudad tiene que tener almenos 3 caracteres 
+                </div>
+            </div>
+
+
+
+
             <div class="inline-block mt-2 w-1/2 pr-1">
                 <label class="block text-sm text-gray-600" for="cus_email">Country</label>
                 <input 
@@ -151,6 +211,18 @@
                        placeholder="Country" 
                        aria-label="Email">
             </div>
+
+            <div *ngIf="shippingCountry.invalid && (shippingCountry.dirty || shippingCountry.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="shippingCountry.errors?.['required']">
+                    direcion no puede estar vacio
+                </div>
+                <div *ngIf="shippingCountry.errors?.['minlength']">
+                    ciudad tiene que tener almenos 3 caracteres 
+                </div>
+            </div>
+
+
+
             <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                 <label class="block text-sm text-gray-600" for="cus_email">Zip</label>
                 <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" 
@@ -161,6 +233,15 @@
                        required="" 
                        placeholder="Zip" 
                        aria-label="Email">
+            </div>
+
+            <div *ngIf="shippingZipCode.invalid && (shippingZipCode.dirty || shippingZipCode.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="shippingZipCode.errors?.['required']">
+                    codigo postal no puede estar vacio
+                </div>
+                <div *ngIf="shippingZipCode.errors?.['minlength']">
+                    codigo postal tiene que tener almenos 4 caracteres 
+                </div>
             </div>
         </div>
 
