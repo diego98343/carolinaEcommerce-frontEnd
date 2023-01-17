@@ -17,6 +17,17 @@
                        placeholder="Your Name"
                        aria-label="Name">
             </div>
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="name.errors?.['required'] || name.errors?.['noOnlyWhiteSpace']">
+                    nombre no puede estar vacio
+                </div>
+
+                <div *ngIf="name.errors?.['minlength']">
+                    nombre debe terner mas de dos caracteres
+                </div>
+            </div>
+           
             <div class="mt-2">
                 <label class="block text-sm text-gray-600" for="cus_email">Email</label>
                 <input 
@@ -28,6 +39,16 @@
                         placeholder="Your Email" 
                         aria-label="Email">
             </div> 
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="email.errors?.['required']">
+                    email no puede estar vacio
+                </div>
+                <div *ngIf="email.errors?.['pattern']">
+                    email debe der valido
+                </div>
+            </div>
+
         </div>
 
         <div formGroupName="receiptAddress">
@@ -83,14 +104,20 @@
 
         
         <div formGroupName="shippingInfo">
+
             <p class="text-gray-800 font-medium mt-4">Direccion de envio</p>     
 
+
             <div class="form-check">
-                <input (change)="copyShippingAddressToBuildingAddress($event)" class="form-check-input" type="checkbox"  id="flexCheckIndeterminate">
+                <input  
+                        type="checkbox"
+                        (change)="copyShippingAddressToBillingAddress($event)"
+                         >
                 <label class="form-check-label" for="flexCheckIndeterminate">
                   usar misma direction del recibo
                 </label>
-              </div>
+            </div>
+
 
             <div class="mt-2">
                 <label class=" block text-sm text-gray-600" for="cus_email">Address</label>
