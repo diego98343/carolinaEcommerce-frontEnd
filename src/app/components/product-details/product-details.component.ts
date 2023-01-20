@@ -15,7 +15,7 @@ export class ProductDetailsComponent implements OnInit {
 
  product!:Product;
 
- productQuantity:number=0;
+ productQuantity:number=1;
 
  productSize:string='';
 
@@ -28,10 +28,8 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(()=>{
       this.handleProductDetails();
-    })
+    }) 
   }
-
-
 
   increaseQuantity(){
     this.productQuantity++
@@ -49,7 +47,6 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProductById(theProductId).subscribe(
       data=>{
         this.product = data
-        // console.log(this.product)
       }
     )
   }
@@ -58,18 +55,15 @@ export class ProductDetailsComponent implements OnInit {
   addProductToCart(product:Product) {
 
     const cartItem = new CartItem(product);
+  //   if(confirm("quieres añardir este producto al carrito?")){
 
-    if(confirm("quieres añardir este producto al carrito?")){
-
-     this.cartService.addToCard(cartItem);
-     this._router.navigateByUrl("/products")
-
-   }
-
+  //    this.cartService.addToCard(cartItem);
+  //    this._router.navigateByUrl("/products")
+  //  }
+   this.cartService.addToCard(cartItem);
+  
+  
     }
-
-    
-
-
+ 
 
 }

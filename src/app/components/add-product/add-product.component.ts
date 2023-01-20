@@ -104,7 +104,7 @@ export class AddProductComponent implements OnInit {
           this._router.navigateByUrl("/productList")
         }
       )
-      }
+   }
 
 
 

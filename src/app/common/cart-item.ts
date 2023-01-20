@@ -8,7 +8,10 @@ imageUrl: string | undefined ='';
 unitPrice: number | undefined =0;
 reference: string | undefined =''
 
+
+
 quantity: number =0;
+size:string ='';
 
 
 constructor(product:Product){
@@ -20,7 +23,7 @@ constructor(product:Product){
     this.reference = product.productReference;
 
     this.quantity=1;
-
+    this.size= product.size;
 }
 
 

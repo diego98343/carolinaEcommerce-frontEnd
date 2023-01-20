@@ -7,6 +7,7 @@ import { CartItem } from 'src/app/common/cart-item';
 })
 export class CartServiceService {
 
+
   cartItems: CartItem[] =[];
 
   totalPrice: Subject<number> =new Subject<number>();
@@ -14,43 +15,69 @@ export class CartServiceService {
   totalQuantityVWithTaxes:Subject<number>= new Subject<number>();
   totalTax:Subject<number>= new Subject<number>();
 
-
+  sQuantity:number=0;
+ 
 
   constructor() { }
 
 
-
   addToCard(cartItem:CartItem){
-
-    console.log(this.totalPrice);
 
     //chenck if we have the item in the cart
 
     let alreadyExistInCart:boolean=false;
+    let alreadyExistingCartItemByIdAndSize:boolean=false;
+
     let existingCartItem: CartItem= undefined!;
+    let existingCartItemByIdAndSize: CartItem= undefined!;
+
+    let array:CartItem[]=[];
+
+
 
     if(this.cartItems.length>0){
-      
       // we are looping thr all the items in the cartItems Array 
-      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id ===cartItem.id)!
+      existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id ===cartItem.id)! 
+      existingCartItemByIdAndSize = this.cartItems.find(tempCartItem => (tempCartItem.id === cartItem.id) && (tempCartItem.size != cartItem.size))! 
+      
+     for(let tempArray of array){   
+      array.push(existingCartItemByIdAndSize);
+      console.log(tempArray);
+       
+     }
+      
+     
       //check if we found the product 
-      alreadyExistInCart = (existingCartItem != undefined);
+      alreadyExistInCart = (existingCartItem != undefined) ;
+      alreadyExistingCartItemByIdAndSize = (existingCartItemByIdAndSize!=undefined)
+
+      
+
     }
 
+
+  
     if(alreadyExistInCart){
       // increment the quantity
-      existingCartItem.quantity++;
-    }else {
-      this.cartItems.push(cartItem);
+      existingCartItem.quantity++; 
+
+    } else {  
+      this.cartItems.push(cartItem);  
     }
+
+
    //compute cart totral price and total quantity
     this.computeCartTotals(); 
   }
 
 
-  computeQuantity(){
-    
+
+
+
+  computeQuantity(quantity:number){
+    this.sQuantity += quantity;
   }
+
 
   computeCartTotals() {
    

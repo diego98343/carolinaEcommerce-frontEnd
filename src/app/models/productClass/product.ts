@@ -16,6 +16,7 @@ export class Product {
         public unitsInStock?:number,
         public productCategory?:ProductCategory,
         public productPrice?:number,
+        public size?:string
         // public productImage?:FileHandle[]
     ){
         

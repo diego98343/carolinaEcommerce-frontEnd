@@ -92,6 +92,7 @@ export class ShoppingCartComponent implements OnInit {
   updateCartStatus(){
 
    this.cartItems = this.cartService.cartItems;
+ 
 
     this.cartService.totalPrice.subscribe(
       data=>{
@@ -111,7 +112,7 @@ export class ShoppingCartComponent implements OnInit {
 
    this.cartService.totalQuantityVWithTaxes.subscribe( data=>{
     this.totalPriceWithTaxes=data;
-    console.log(this.totalPriceWithTaxes)
+   
    })
 
    this.cartService.computeCartTotals();
