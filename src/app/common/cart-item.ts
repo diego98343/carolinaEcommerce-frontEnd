@@ -2,11 +2,11 @@ import { Product} from "../models/productClass/product";
 
 export class CartItem {
  
-id: number | undefined =0;
-name: string | undefined ='';
-imageUrl: string | undefined ='';
-unitPrice: number | undefined =0;
-reference: string | undefined =''
+id?: number =0;
+name?: string ='';
+imageUrl?: string ='';
+unitPrice?: number =0;
+reference?: string ='';
 
 
 

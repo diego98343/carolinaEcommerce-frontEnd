@@ -29,12 +29,14 @@ export class CheckOutComponent implements OnInit {
   constructor(private cartService: CartServiceService,
               private formBuilder: FormBuilder,
               private checkOutService:CheckOutService,
-              private route:Router
+              private router:Router
   ) { }
 
   ngOnInit(): void {
 
     this.updateTotalWithTaxes();
+
+    this.check()
 
     this.checkOutFormGroup = this.formBuilder.group({
       custumer: this.formBuilder.group({
@@ -189,6 +191,12 @@ export class CheckOutComponent implements OnInit {
     }
   }
 
+
+  check(){
+    const cartitems= this.cartService.cartItems;
+    console.log(cartitems);
+  }
+
   //function that runs when checkout form botton is clicked 
   onSubmit() {
 
@@ -202,17 +210,16 @@ export class CheckOutComponent implements OnInit {
 
     order.totalPrice = this.totalPriceWithTaxes;
     order.totalQuantity= this.totalQuantity;
-
     //get cart items
     const cartitems= this.cartService.cartItems;
-
     //create orderItems
     let orderItems: OrderItems[]=[];
 
-    for(let i=0; cartitems.length; i++){
+    for(let i=0; i < cartitems.length; i++){
       orderItems[i] = new OrderItems(cartitems[i]);
     }
 
+    
 
     //set up purchese
     let purchase = new Purchase();
@@ -230,12 +237,24 @@ export class CheckOutComponent implements OnInit {
 
     //call REST API via chackOut Serivece
 
-    this.checkOutService.placeOrder(purchase).subscribe(
-      {
-      
-      }
+    this.checkOutService.placeOrder(purchase).subscribe({
+        next: response=>{
+          alert(`tu orden ha sido recibida. numero de ordern:${response.orderTrackingNumber}`)
+          this.reset();
+        },
+        error: err=>{
+          alert(' se produjó un error')
+        }
+    }
     )
   
+  }
+  reset() {
+
+    
+    
+    this.checkOutFormGroup.reset();
+    this.router.navigateByUrl('/products')
   }
 
 
