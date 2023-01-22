@@ -89,7 +89,7 @@
 
             <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger mt-1">
                 <div *ngIf="city.errors?.['required']">
-                    direcion no puede estar vacio
+                    ciudad no puede estar vacio
                 </div>
                 <div *ngIf="city.errors?.['minlength']">
                     ciudad tiene que tener almenos 3 caracteres 
@@ -108,10 +108,10 @@
 
             <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger mt-1">
                 <div *ngIf="country.errors?.['required']">
-                    direcion no puede estar vacio
+                    Pais no puede estar vacio
                 </div>
                 <div *ngIf="country.errors?.['minlength']">
-                    ciudad tiene que tener almenos 3 caracteres 
+                    Pais tiene que tener almenos 3 caracteres 
                 </div>
             </div>
 
@@ -192,10 +192,10 @@
 
             <div *ngIf="shippingCity.invalid && (shippingCity.dirty || shippingCity.touched)" class="alert alert-danger mt-1">
                 <div *ngIf="shippingCity.errors?.['required']">
-                    direcion no puede estar vacio
+                    Ciudad no puede estar vacio
                 </div>
                 <div *ngIf="shippingCity.errors?.['minlength']">
-                    ciudad tiene que tener almenos 3 caracteres 
+                    Ciudad tiene que tener almenos 3 caracteres 
                 </div>
             </div>
 
@@ -214,10 +214,10 @@
 
             <div *ngIf="shippingCountry.invalid && (shippingCountry.dirty || shippingCountry.touched)" class="alert alert-danger mt-1">
                 <div *ngIf="shippingCountry.errors?.['required']">
-                    direcion no puede estar vacio
+                     Pais no puede estar vacio
                 </div>
                 <div *ngIf="shippingCountry.errors?.['minlength']">
-                    ciudad tiene que tener almenos 3 caracteres 
+                    Pais tiene que tener almenos 3 caracteres 
                 </div>
             </div>
 
@@ -259,6 +259,18 @@
                        placeholder="Card Number" 
                        aria-label="Name">
             </div>
+
+            <div *ngIf="creditCartNumber.invalid && (creditCartNumber.dirty || creditCartNumber.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="creditCartNumber.errors?.['required']">
+                    Numero de tarjeta no puede estar vacio
+                </div>
+                <div *ngIf="creditCartNumber.errors?.['minlength']">
+                    Numero de tarjeta  tiene que tener almenos 16 caracteres 
+                </div>
+            </div>
+
+
+
             <div class="inline-block mt-2 w-1/2 pr-1">
                 <label class="hidden block text-sm text-gray-600" for="cus_email">Expiration data</label>
                 <!-- <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cus_email" name="cus_email" type="text" required="" placeholder="fecha de caducidad" aria-label="Email"> -->
@@ -293,6 +305,7 @@
                 </select>
                 <input class="inputCard" type="hidden" name="expiry" id="expiry" maxlength="4" />
             </div>
+
             <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                 <label class="hidden block text-sm text-gray-600" for="cus_email">Security code</label>
                 <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
@@ -304,6 +317,17 @@
                        placeholder="codigo de seguridad" 
                        aria-label="Email">
             </div>
+
+            <div *ngIf="creditSecurityCode.invalid && (creditSecurityCode.dirty || creditSecurityCode.touched)" class="alert alert-danger mt-1">
+                <div *ngIf="creditSecurityCode.errors?.['required']">
+                    Codigo de seguridad de tarjeta no puede estar vacio
+                </div>
+                <div *ngIf="creditSecurityCode.errors?.['minlength']">
+                    Codigo de seguridad tiene que tener almenos 3 caracteres 
+                </div>
+            </div>
+            
+
             <div class="mt-4">
                 <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
                         type="submit" >${{totalPriceWithTaxes}}</button>

@@ -1,9 +1,22 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Purchase } from '../common/purchase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckOutService {
 
-  constructor() { }
+  private purchaseUrl: string= "http://localhost:8090/api/purchase"
+
+  constructor( private _httpClient: HttpClient) { }
+
+
+  placeOrder(purchase: Purchase):Observable<any>{
+  return this._httpClient.post<Purchase>(this.purchaseUrl,purchase);
+  }
+
+
+
 }

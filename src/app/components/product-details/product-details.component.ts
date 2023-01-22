@@ -17,7 +17,6 @@ export class ProductDetailsComponent implements OnInit {
 
  productQuantity:number=1;
 
- productSize:string='';
 
 
   constructor(private productService: ProductService,

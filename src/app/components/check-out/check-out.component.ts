@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { response } from 'express';
+import { Order } from 'src/app/common/order';
+import { OrderItems } from 'src/app/common/order-items';
+import { Purchase } from 'src/app/common/purchase';
 import { CartServiceService } from 'src/app/services/cartService/cart-service.service';
+import { CheckOutService } from 'src/app/services/check-out.service';
 import { EcommerceValidator } from 'src/app/validator/ecommerce-validator';
 
 
@@ -18,9 +24,12 @@ export class CheckOutComponent implements OnInit {
   checkOutFormGroup!: FormGroup;
   totalPriceWithTaxes: number = 0;
   checkBox: boolean = false;
+  totalQuantity: number;
 
   constructor(private cartService: CartServiceService,
-    private formBuilder: FormBuilder,
+              private formBuilder: FormBuilder,
+              private checkOutService:CheckOutService,
+              private route:Router
   ) { }
 
   ngOnInit(): void {
@@ -158,6 +167,13 @@ export class CheckOutComponent implements OnInit {
   }
 
 
+  updataCartComponent(){
+    this.cartService.totalQuantity.subscribe(data=>{
+      this.totalQuantity=data;
+    })
+  }
+
+
   //copy billing address info feature
   copyShippingAddressToBillingAddress(event: any) {
     console.log(event.target.checked)
@@ -178,12 +194,48 @@ export class CheckOutComponent implements OnInit {
 
     if(this.checkOutFormGroup.invalid){
       this.checkOutFormGroup.markAllAsTouched();
+      return;
     }
-    console.log(this.checkOutFormGroup.get('custumer')?.value)
-    console.log(this.checkOutFormGroup.get('receiptAddress')?.value)
-    console.log(this.checkOutFormGroup.get('shippingInfo')?.value)
-    console.log(this.checkOutFormGroup.get('creditCardInfo')?.value)
-    console.log(this.checkBox);
+
+    //set up order
+    let order =new Order();
+
+    order.totalPrice = this.totalPriceWithTaxes;
+    order.totalQuantity= this.totalQuantity;
+
+    //get cart items
+    const cartitems= this.cartService.cartItems;
+
+    //create orderItems
+    let orderItems: OrderItems[]=[];
+
+    for(let i=0; cartitems.length; i++){
+      orderItems[i] = new OrderItems(cartitems[i]);
+    }
+
+
+    //set up purchese
+    let purchase = new Purchase();
+    //populate purchese -costumer
+    purchase.customer = this.checkOutFormGroup.controls['custumer'].value;
+    //populate purchese -shipping address
+    purchase.shippingAddress = this.checkOutFormGroup.controls['shippingInfo'].value;
+    //populate purchese -shipping billing address
+    purchase.billingAddress = this.checkOutFormGroup.controls['receiptAddress'].value;
+
+    
+    //populate puchase -- order and order items
+    purchase.order =order;
+    purchase.orderItems= orderItems;
+
+    //call REST API via chackOut Serivece
+
+    this.checkOutService.placeOrder(purchase).subscribe(
+      {
+      
+      }
+    )
+  
   }
 
 

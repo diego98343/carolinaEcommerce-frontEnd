@@ -30,6 +30,9 @@ export class CartServiceService {
 
     let existingCartItem: CartItem= undefined!;
     let existingCartItemByIdAndSize: CartItem= undefined!;
+    let existingCartItemByIdNotSize: CartItem= undefined!;
+    let existingCartItemBySizeNotId: CartItem= undefined!;
+    
 
     let array:CartItem[]=[];
 
@@ -38,25 +41,19 @@ export class CartServiceService {
     if(this.cartItems.length>0){
       // we are looping thr all the items in the cartItems Array 
       existingCartItem = this.cartItems.find(tempCartItem => tempCartItem.id ===cartItem.id)! 
-      existingCartItemByIdAndSize = this.cartItems.find(tempCartItem => (tempCartItem.id === cartItem.id) && (tempCartItem.size != cartItem.size))! 
-      
-     for(let tempArray of array){   
-      array.push(existingCartItemByIdAndSize);
-      console.log(tempArray);
-       
-     }
-      
+      existingCartItemByIdAndSize = this.cartItems.find(tempCartItem => (tempCartItem.id === cartItem.id) && (tempCartItem.size === cartItem.size))! 
+      existingCartItemByIdNotSize = this.cartItems.find(tempCartItem => (tempCartItem.id === cartItem.id) && (tempCartItem.size != cartItem.size))!
+      existingCartItemBySizeNotId = this.cartItems.find(tempCartItem => (tempCartItem.id != cartItem.id) && (tempCartItem.size === cartItem.size))!
      
+    
+      
       //check if we found the product 
       alreadyExistInCart = (existingCartItem != undefined) ;
       alreadyExistingCartItemByIdAndSize = (existingCartItemByIdAndSize!=undefined)
 
-      
-
     }
 
 
-  
     if(alreadyExistInCart){
       // increment the quantity
       existingCartItem.quantity++; 
@@ -64,6 +61,25 @@ export class CartServiceService {
     } else {  
       this.cartItems.push(cartItem);  
     }
+
+
+
+
+    // if(alreadyExistingCartItemByIdAndSize){
+
+    //   existingCartItemByIdAndSize.quantity++
+
+    // }else if(existingCartItem){
+      
+    //   existingCartItem.quantity++; 
+
+    // }else if(existingCartItemByIdNotSize!=undefined){
+  
+    //   this.cartItems.push(cartItem);  
+
+    // } else {  
+    //   this.cartItems.push(cartItem);  
+    // }
 
 
    //compute cart totral price and total quantity
