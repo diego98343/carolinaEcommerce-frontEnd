@@ -197,6 +197,9 @@ export class CheckOutComponent implements OnInit {
     console.log(cartitems);
   }
 
+
+
+
   //function that runs when checkout form botton is clicked 
   onSubmit() {
 
@@ -239,7 +242,7 @@ export class CheckOutComponent implements OnInit {
 
     this.checkOutService.placeOrder(purchase).subscribe({
         next: response=>{
-          alert(`tu orden ha sido recibida. numero de ordern:${response.orderTrackingNumber}`)
+          alert(`tu orden ha sido recibida.\nnumero de ordern:${response.orderTrackingNumber}`)
           this.reset();
         },
         error: err=>{
@@ -249,10 +252,12 @@ export class CheckOutComponent implements OnInit {
     )
   
   }
+  
   reset() {
-
-    
-    
+    this.cartService.cartItems=[];
+    this.cartService.totalQuantityVWithTaxes.next(0);
+    this.cartService.totalQuantity.next(0);
+    this.cartService.totalPrice.next(0);
     this.checkOutFormGroup.reset();
     this.router.navigateByUrl('/products')
   }

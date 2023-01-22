@@ -54,11 +54,7 @@ export class ProductDetailsComponent implements OnInit {
   addProductToCart(product:Product) {
 
     const cartItem = new CartItem(product);
-  //   if(confirm("quieres añardir este producto al carrito?")){
-
-  //    this.cartService.addToCard(cartItem);
-  //    this._router.navigateByUrl("/products")
-  //  }
+    alert(`se ha añadido al carrito`)
    this.cartService.addToCard(cartItem);
   
   

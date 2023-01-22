@@ -1,12 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
 import { Product } from 'src/app/models/productClass/product';
 import { ProductService } from 'src/app/services/productService/product.service';
+import { EcommerceValidator } from 'src/app/validator/ecommerce-validator';
 import { ProductCategory } from '../../models/productCategoryClass/product-category';
 import { ProductCategoryService } from '../../services/productCategoryService/product-category.service';
 
@@ -19,7 +20,7 @@ export class AddProductComponent implements OnInit {
 
 
 
-
+checkOutFormGroup!: FormGroup;
   
   productCategories?: ProductCategory[]=[];
   products?: Product[]=[];
@@ -32,12 +33,45 @@ export class AddProductComponent implements OnInit {
               private _productService:ProductService,
               private sanitizer:DomSanitizer,
               private _routerActive:ActivatedRoute,
-              private _router:Router
+              private _router:Router,
+              private _formBuilder: FormBuilder
     ) { }
 
   ngOnInit(): void {
    this.displayProductCategories();
    this.editProduct();
+
+   this.checkOutFormGroup= this._formBuilder.group({
+    product: new FormControl('',[Validators.required,
+                                 Validators.minLength(5),
+                                 EcommerceValidator.noOnlyWhiteSpace]),
+     
+    reference: new FormControl('',[Validators.required,
+                                 Validators.minLength(3),
+                                 EcommerceValidator.noOnlyWhiteSpace]),
+    
+    quantity: new FormControl('',[Validators.required,
+                                 Validators.minLength(1),
+                                 EcommerceValidator.noOnlyWhiteSpace]),
+                                 
+    price: new FormControl('',[Validators.required,
+                                 Validators.minLength(2),
+                                 EcommerceValidator.noOnlyWhiteSpace]),
+                                 
+    imageUrl: new FormControl('',[Validators.required,
+                                 Validators.minLength(5),
+                                 EcommerceValidator.noOnlyWhiteSpace]),     
+                                 
+    Category: new FormControl('',[Validators.required]),
+
+    imageFile: new FormControl(''),
+    
+    decription: new FormControl('',[Validators.required,
+                                 Validators.minLength(10),
+                                 EcommerceValidator.noOnlyWhiteSpace]),
+   })
+
+
   }
 
 
