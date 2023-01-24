@@ -21,7 +21,6 @@ export class ListOfProductsComponent implements OnInit {
 
   constructor(private _productService:ProductService,
               private _productCategoryService: ProductCategoryService,
-              private _dialogRef: MatDialog
              ) { }
 
   ngOnInit(): void {
@@ -30,38 +29,28 @@ export class ListOfProductsComponent implements OnInit {
   }
 
 
-
   displayProducts(){
     this._productService.getProduct().subscribe(data=>{
-      console.log(data);
       this.products=data
     })
   }
 
 
   displayProductCategories(){
-
     this._productCategoryService.getCategories().subscribe(
       data=>{
         console.log(data)
-        this.productCategories=data
       } 
     )
   }
 
 
-   editProduct(productId: number|undefined) {
-    console.log(productId)
-    }
-
-    
-    
     deleteProduct(productId: number|undefined) {
       if(confirm("Seguro quieres eliminar el productos?"))
       this._productService.deleteExpense(productId).subscribe(
         data=>{
           console.log('deleted object',data)
-          this.loadListProducts()
+          this.displayProducts();
         }
       )
       }

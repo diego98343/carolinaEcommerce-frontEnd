@@ -22,8 +22,8 @@ export class AddProductComponent implements OnInit {
   allProducts: FormGroup;
   
   productCategories?: ProductCategory[]=[];
-  products?: Product[]=[];
 
+  products?: Product[]=[];
 
   product: Product = new Product();
 
@@ -40,7 +40,7 @@ export class AddProductComponent implements OnInit {
 
 
    this.displayProductCategories();
-  //  this.editProduct();
+   this.editProduct();
 
    this.allProducts= this._formBuilder.group({
 
@@ -141,9 +141,6 @@ get productCategory(){
     productTry.productCategory = allProducts.category;
     productTry.description = allProducts.decription;
 
-
-    this.products.push(productTry);
-
      console.log(productTry);
 
     this._productService.addProduct(productTry).subscribe(
@@ -159,20 +156,35 @@ get productCategory(){
   
 
 
-  // editProduct(){
+  editProduct(){
 
-  //   const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
+    const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
 
-  //   if(isIdPresent){
+    if(isIdPresent){
       
-  //     const id =+ this._routerActive.snapshot.paramMap.get("id")!
-      
-  //     this._productService.editProductById(id).subscribe(
-  //       data=> this.product = data
+      const id =+ this._routerActive.snapshot.paramMap.get("id")!
 
-  //     )
-  //   }
-  // }
+      this._productService.editProductById(id).subscribe(
+        data=>{
+
+        
+          let productTry = new Product();
+    
+          let allProducts = this.allProducts.controls['productInputs'].value
+      
+          productTry.productName = allProducts.product
+          productTry.productReference = allProducts.reference
+          productTry.unitsInStock = allProducts.quantity;
+          productTry.productPrice = allProducts.price;
+          productTry.imageURl = allProducts.imageUrl;
+          productTry.productCategory = allProducts.category;
+          productTry.description = allProducts.decription;
+
+          productTry =data;
+        } 
+      )
+    }
+  }
 
   displayProductCategories(){
 
