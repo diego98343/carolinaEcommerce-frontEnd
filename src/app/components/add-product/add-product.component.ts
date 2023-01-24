@@ -40,9 +40,9 @@ export class AddProductComponent implements OnInit {
 
 
    this.displayProductCategories();
-   this.editProduct();
+  //  this.editProduct();
 
-  this.allProducts= this._formBuilder.group({
+   this.allProducts= this._formBuilder.group({
 
     productInputs: this._formBuilder.group({ 
       
@@ -84,10 +84,43 @@ export class AddProductComponent implements OnInit {
 //   })   
 
 })
-
-
 }
 
+
+//get form group validators
+
+get productName(){
+  return this.allProducts.get('productInputs.product');
+}
+
+get productReference(){
+  return this.allProducts.get('productInputs.reference');
+}
+
+get productQuantity(){
+  return this.allProducts.get('productInputs.quantity');
+}
+
+get productPrice(){
+  return this.allProducts.get('productInputs.price');
+}
+
+get productImageUrl(){
+  return this.allProducts.get('productInputs.imageUrl');
+}
+
+get productDescription(){
+  return this.allProducts.get('productInputs.decription');
+}
+
+get productCategory(){
+  return this.allProducts.get('productInputs.category');
+}
+
+
+
+
+// send data to the data base
 
   onSubmit() {
 
@@ -96,11 +129,9 @@ export class AddProductComponent implements OnInit {
       return;
     }
 
-
-     let productTry = new Product();
+    let productTry = new Product();
     
-
-    let  allProducts= this.allProducts.controls['productInputs'].value
+    let allProducts = this.allProducts.controls['productInputs'].value
 
     productTry.productName = allProducts.product
     productTry.productReference = allProducts.reference
@@ -110,11 +141,14 @@ export class AddProductComponent implements OnInit {
     productTry.productCategory = allProducts.category;
     productTry.description = allProducts.decription;
 
+
+    this.products.push(productTry);
+
      console.log(productTry);
 
     this._productService.addProduct(productTry).subscribe(
       (response:Product)=>{
-        //  this._router.navigateByUrl("/productList") 
+         this._router.navigateByUrl("/productList") 
       },
       (error:HttpErrorResponse)=>{
         console.log(error)
@@ -125,23 +159,20 @@ export class AddProductComponent implements OnInit {
   
 
 
-  editProduct(){
+  // editProduct(){
 
-    
-    const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
+  //   const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
 
-    if(isIdPresent){
+  //   if(isIdPresent){
       
-      const id =+ this._routerActive.snapshot.paramMap.get("id")!
+  //     const id =+ this._routerActive.snapshot.paramMap.get("id")!
       
-      this._productService.editProductById(id).subscribe(
-        data=> this.product = data
+  //     this._productService.editProductById(id).subscribe(
+  //       data=> this.product = data
 
-      )
-    }
-
-
-  }
+  //     )
+  //   }
+  // }
 
   displayProductCategories(){
 

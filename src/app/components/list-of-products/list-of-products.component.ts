@@ -69,7 +69,11 @@ export class ListOfProductsComponent implements OnInit {
 
       loadListProducts(){
         this._productService.getProduct().subscribe(
-          data=> this.products= data
+          data=>{
+            this.products= data
+            console.log(this.products)
+          } 
+          
         )
       }
 
