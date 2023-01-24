@@ -16,7 +16,11 @@ export class ListOfProductsComponent implements OnInit {
 
 
   products: Product[]=[];
-  productCategories: ProductCategory[]=[];
+  
+
+  filters= {
+    keyword:''
+   }
 
 
   constructor(private _productService:ProductService,
@@ -35,14 +39,13 @@ export class ListOfProductsComponent implements OnInit {
     })
   }
 
-
-  displayProductCategories(){
-    this._productCategoryService.getCategories().subscribe(
-      data=>{
-        console.log(data)
-      } 
-    )
+  filderProduct(products:Product[]) {
+    //everytime the a product enters its gonne be filter and compare with the array of products 
+    return products.filter((p)=>{
+      return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
+     })
   }
+
 
 
     deleteProduct(productId: number|undefined) {
@@ -56,6 +59,8 @@ export class ListOfProductsComponent implements OnInit {
       }
 
 
+
+
       loadListProducts(){
         this._productService.getProduct().subscribe(
           data=>{
@@ -65,5 +70,8 @@ export class ListOfProductsComponent implements OnInit {
           
         )
       }
+
+
+   
 
 }

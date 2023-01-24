@@ -54,16 +54,13 @@ export class ProductsComponent implements OnInit {
 
   filderProduct(products:Product[]) {
 
-
-    
-
     //everytime the a product enters its gonne be filter and compare with the array of products 
     return products.filter((p)=>{
       return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
      })
 
 
-    }
+  }
     
 
 

@@ -13,10 +13,9 @@ import { ProductService } from 'src/app/services/productService/product.service'
 export class ProductDetailsComponent implements OnInit {
 
 
- product!:Product;
+ product:Product;
 
  productQuantity:number=1;
-
 
 
   constructor(private productService: ProductService,

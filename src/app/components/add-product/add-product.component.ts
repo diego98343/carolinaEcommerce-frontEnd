@@ -167,7 +167,6 @@ get productCategory(){
       this._productService.editProductById(id).subscribe(
         data=>{
 
-        
           let productTry = new Product();
     
           let allProducts = this.allProducts.controls['productInputs'].value

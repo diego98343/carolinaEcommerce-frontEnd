@@ -25,11 +25,9 @@
               <th scope="col">ID</th>
               <th scope="col">Nombre</th>
               <th scope="col">Referencia</th>
-
               <th scope="col">Ultima actualization</th>
               <th scope="col">Precio</th>
               <th scope="col">disponibles</th>
-              <th scope="col">Mostrar</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -41,7 +39,7 @@
               <td  >{{tempProduct.lastUpdated}}</td>
               <td  >{{tempProduct.productPrice}}</td>
               <td  >{{tempProduct.unitsInStock}}</td>
-              <td  >{{tempProduct.displayProduct}}</td>
+            
               <td  ><button type="button" class="btn btn-primary"  routerLink="/editProduct/{{tempProduct.productId}}">Editar</button></td>
               <td  ><button type="button" class="btn btn-danger" (click)="deleteProduct(tempProduct.productId)">Eliminar</button></td>
 
