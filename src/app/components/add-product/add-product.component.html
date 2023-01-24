@@ -1,191 +1,110 @@
-
-
-<div >
+<div class="mt-5">
   <div class="container col-md-4">
 
-    <form #productForm="ngForm"  (ngSubmit)="addProduct(productForm)">
-  
-      <h1 class="text-center" style="margin-top: 20px ;" *ngIf="product.productId; displayAddProduct "  style="color: red;" > Editar Producto</h1>
-     
-      <div class="mb-3">
-        <div class="mb-5"></div>
-        <div class="mb-3">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Producto</label>
-            <input [(ngModel)]="product.productName"
-                  name="productName"
-                  type="email" 
-                  class="form-control" 
-                  id="exampleInputEmail1" 
-                  placeholder="nombre del producto"
-                  >       
+    <form [formGroup]="allProducts" (ngSubmit)="onSubmit()">
+
+      <div formGroupName="productInputs" class="mb-3">
+        <div >
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Producto</label>
+              <input formControlName="product" 
+                     type="email" class="form-control" 
+                     id="exampleInputEmail1"
+                     placeholder="nombre del producto">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Referencia</label>
+              <input type="text" 
+                     class="form-control" 
+                     id="exampleInputPassword1" 
+                     placeholder="numero de referencia"
+                     formControlName="reference"
+                      >
+                      
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Cantidad</label>
+              <input type="text" 
+                     class="form-control" 
+                     id="exampleInputPassword1"
+                     placeholder="cantidad total en inventario" 
+                     formControlName="quantity">
+
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Precio</label>
+              <input type="text"
+                     class="form-control" 
+                     id="exampleInputPassword1"
+                     placeholder="precio del producto" 
+                     formControlName="price">
+
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Link de imagen</label>
+              <input type="url" class="form-control" id="exampleInputPassword1" placeholder="Link"
+                formControlName="imageUrl">
+
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <select formControlName="category" name="productCategory" class="form-select">
+              <option [ngValue]="undefined">Categoria</option>
+              <option *ngFor="let productCategory of productCategories" [ngValue]="productCategory">
+                {{productCategory.categoryName}}</option>
+            </select>
+          </div>
+
+
+          <div class="mb-3">
+            <div class="form-group">
+              <div class="form-group">
+                <label for="exampleInputPassword1">Description</label>
+                <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="6"
+                  placeholder="description del producto" formControlName="decription"> </textarea>
+              </div>
+            </div>
           </div>
         </div>
 
 
-        <div class="alert alert-danger" role="alert" *ngIf="product.productName === null">
-          Nombre no puede estar vacio
-        </div>
 
-        <!-- <div class="alert alert-danger" role="alert" *ngIf="product.productName?.length === 0 ">
-          Nombre no puede estar vacio
-        </div> -->
-
-  
-        <div class="mb-3">
-          <div class="form-group">
-            <label for="exampleInputPassword1">Referencia</label>
-            <input  
-                   type="text" 
-                   class="form-control" 
-                   id="exampleInputPassword1" 
-                   placeholder="numero de referencia"
-                   [(ngModel)]="product.productReference"
-                   name="productReference">  
-          </div>
-        </div>
-
-       
-    
-        <div class="alert alert-danger" role="alert" *ngIf="product.productReference === null">
-          Referencia no puede estar vacia
-        </div>
-        
-      
-        <div class="mb-3">
-          <div class="form-group">
-            <label for="exampleInputPassword1">Cantidad</label>
-            <input type="number" 
-                   class="form-control" 
-                   id="exampleInputPassword1" 
-                   placeholder="cantidad total en inventario"
-                   [(ngModel)]="product.unitsInStock"
-                   name="unitsInStock"
-                   >
-                   
-          </div>
-        </div>
-
-        <div class="alert alert-danger" role="alert" *ngIf="product.unitsInStock === 0">
-          Cantidad tiene que ser mayor que 0
-        </div>
-  
-  
-  
-        <div class="mb-3">
-          <div class="form-group">
-            <label for="exampleInputPassword1">Precio</label>
-            <input type="number"
-                   min="0.00"
-                   class="form-control" 
-                   id="exampleInputPassword1" 
-                   placeholder="precio del producto"
-                   [(ngModel)]="product.productPrice"
-                   name="productPrice"
-                   >
-                   
-          </div>
-        </div>
-
-        <div class="alert alert-danger" role="alert" *ngIf="product.productPrice === 0">
-          Precio tiene que ser mayor que 0
-        </div>
-  
-    
-        <!-- <div class="mb-3">
-          <div class="form-group">
-            <label for="exampleInputPassword1">Mostras producto</label>
-            <input type="checkbox" 
-                
-                   id="exampleInputPassword1" 
-                   [(ngModel)]="product.displayProduct"
-                   name="dateCreated" >
-          </div>
-        </div> -->
-  
-  
-  
-        <div class="mb-3">
-          <div class="form-group">
-            <label for="exampleInputPassword1">Link de imagen</label>
-            <input  
-                   type="url" 
-                   class="form-control" 
-                   id="exampleInputPassword1" 
-                   placeholder="Link"
-                   [(ngModel)]="product.imageURl"
-                   name="imageURl">
-                   
-          </div>
-        </div>
-
-
-        <div class="alert alert-danger" role="alert" *ngIf="product.productReference === null">
-          Imagen Url no puede estar vacio 
-        </div>
-        
-       
-        <div class="mb-3">
-          <select [(ngModel)]="product.productCategory" name="productCategory" class="form-select">
-            <option [ngValue]="undefined">Categoria</option>
-            <option  *ngFor="let productCategory of productCategories" 
-                     [ngValue]="productCategory" 
-                     >
-                     {{productCategory.categoryName}}</option>
-          </select>
-        </div>
-
-
-       
-
-        <div class="mb-3">
+        <!-- <div class="mb-3" formGroupName="file">
           <div class="form-group">
             <label for="exampleInputPassword1">Foto del producto</label>
-            <input
-                
+            <input formControlName="imageFile"         
                    class="form-control"
                    type="file"
                    multiple value="select"
-                   #selectFile
-                   
+                   #selectFile     
                    >
           </div>
-        </div>
+        </div> -->
 
-
-          
-        <div class="mb-3">
-          <div class="form-group">
-                 <div class="form-group">
-                    <label for="exampleInputPassword1">Description</label>
-                    <textarea 
-                       class="form-control rounded-0" 
-                       id="exampleFormControlTextarea2" 
-                       rows="6"
-                       placeholder="description del producto"
-                       [(ngModel)]="product.description"
-                       name="description"> </textarea>
-                  </div>
-          </div>
-        </div>
-
-        <div class="alert alert-danger" role="alert" *ngIf="product.description === null">
-          Description no puede estar vacia
-        </div>
-        
-  
-  
-        <button type="submit" class="btn btn-primary" *ngIf="!product.productId" ><span  >Agregar</span></button>
-        <button type="submit" class="btn btn-primary" *ngIf="product.productId" ><span  >Aplicar cambios</span></button>
-<!--         
-        <button type="button" class="btn btn-danger"  *ngIf="product.productId"   (click)="deleteProduct(product.productId)">Eliminar producto</button> -->
       </div>
+      <button type="submit" class="btn btn-primary"><span>Agregar</span></button>
     </form>
-    <button type="button" routerLink="/productList"   class="btn btn-primary">Ver Inventario</button>
-    </div>
-    <div class="mb-5"></div>
-    <div class="mb-5"></div>
-  
-</div>
+    <button type="button" routerLink="/productList" class="btn btn-primary mt-5">Ver Inventario</button>
+  </div>
+  <div class="mb-5"></div>
+  <div class="mb-5"></div>
 
- 
+</div>
