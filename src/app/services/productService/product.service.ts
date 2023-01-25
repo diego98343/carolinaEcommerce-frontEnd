@@ -4,6 +4,7 @@ import { response } from 'express';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/productClass/product';
 import { map } from 'rxjs';
+import { ProductCategory } from 'src/app/models/productCategoryClass/product-category';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,11 @@ import { map } from 'rxjs';
 export class ProductService {
   
   
- private baseUrl: string= "http://localhost:8090/api/products"
+ private baseUrl: string= "http://localhost:8090/api/products";
 
- private baseUrl2: string= "http://localhost:8090/api/addNewProduct"
+ private baseUrl2: string= "http://localhost:8090/api/addNewProduct";
+
+ private categoryBaseUrl: string= "http://localhost:8090/api/productCategories";
 
   constructor(private _httpClient:HttpClient) { }
 
@@ -44,6 +47,13 @@ export class ProductService {
 
     return this._httpClient.get<Product>(productUrl);
     
+  }
+
+  getProductCategoryById(theCategoryId:Number):Observable<ProductCategory>{
+
+    const productCategoryUrl=`${this.categoryBaseUrl}/${theCategoryId}`;
+
+    return this._httpClient.get<ProductCategory>(productCategoryUrl);
   }
 
 }

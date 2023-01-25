@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductCategory } from 'src/app/models/productCategoryClass/product-category';
 import { Product } from 'src/app/models/productClass/product';
 import { ProductCategoryService } from 'src/app/services/productCategoryService/product-category.service';
@@ -25,6 +26,7 @@ export class ProductsComponent implements OnInit {
 
   constructor( private _productService:ProductService,
                private _productCategoryService: ProductCategoryService,
+               private route:ActivatedRoute
                ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,6 @@ export class ProductsComponent implements OnInit {
   productCategory(){
     this._productCategoryService.getCategories().subscribe(
       data=>{
-        // console.log(data)
         this.productCategories=data
       }
     )
@@ -44,12 +45,28 @@ export class ProductsComponent implements OnInit {
 
   displayProducts(){
 
-    this._productService.getProduct().subscribe(data=>{
-      // console.log(data)
-      this.products= this.filderProduct(data)
+    const theProductCategoryId: number = +this.route.snapshot.paramMap.get('id')!
 
-      // console.log(this.products)
-    })
+    console.log(theProductCategoryId);
+
+    if(theProductCategoryId===0){
+      this._productService.getProduct().subscribe(
+        data=>{
+        this.products= this.filderProduct(data)
+       }
+      )
+    }else{
+
+      this._productService.getProductCategoryById(theProductCategoryId).subscribe(
+        data=>{
+                let getProductByCategory = data.product;
+                console.log(getProductByCategory);
+
+      }
+      )
+    }
+
+
   }
 
   filderProduct(products:Product[]) {
