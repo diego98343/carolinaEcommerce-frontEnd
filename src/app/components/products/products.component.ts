@@ -53,14 +53,24 @@ export class ProductsComponent implements OnInit {
       this._productService.getProduct().subscribe(
         data=>{
         this.products= this.filderProduct(data)
+        console.log(this.products);
        }
       )
     }else{
 
       this._productService.getProductCategoryById(theProductCategoryId).subscribe(
         data=>{
-                let getProductByCategory = data.product;
-                console.log(getProductByCategory);
+                //get product from product category and then push it into getProductsByCategory 
+                let getProductsByCategory:Product[]=[];
+                getProductsByCategory.push(data.product);
+             
+                let products;
+
+                for(let i=0; i<getProductsByCategory.length; i++){
+                   products = getProductsByCategory[i];
+                }
+
+                this.products= products;
 
       }
       )
