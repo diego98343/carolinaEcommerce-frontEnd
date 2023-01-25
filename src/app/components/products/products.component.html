@@ -53,7 +53,7 @@
     </div>
   
 
-    
+
     <div class="alert alert-dark text-center" role="alert" *ngIf="products.length ===0"  style="margin-top: 30px;">
       <h4 class="alert-heading">OH NO!</h4>
       <p>Lo sentimos pero creemos que el producto que esta buscando podria no estar en inventario .</p>
@@ -68,7 +68,7 @@
 
         <a style=" text-decoration: none;" href="#" class="group"  routerLink="/products/{{tempProduct.productId}}">
           <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="{{tempProduct.imageURl}}" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
+            <img src="{{tempProduct.imageURl}}" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class=" object-fill h-80 w-80  object-center group-hover:opacity-75">
           </div>
           <h3 class="mt-4 text-sm text-gray-700">{{tempProduct.productName}}</h3>
         
