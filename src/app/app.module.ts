@@ -41,9 +41,11 @@ const routers: Routes=[
   {path:'productCategories',component: ProductsComponent},
   {path:'cart',component: ShoppingCartComponent},
   {path:'products/:id',component: ProductDetailsComponent},
-  {path:'productCategories/:id',component: ProductCategory},
+  {path:'productCategories/:id',component: ProductsComponent},
   {path:'contact',component: ContactComponent},
   {path:'checkOut',component:CheckOutComponent},
+  {path:'',redirectTo:'productCategories/:5',pathMatch:'full'},
+  {path:'**',redirectTo:'productCategories/:5',pathMatch:'full'},
   
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
