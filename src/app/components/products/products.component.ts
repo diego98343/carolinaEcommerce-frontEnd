@@ -16,18 +16,18 @@ export class ProductsComponent implements OnInit {
 
 
 
- products: Product[]=[];
- productCategories: ProductCategory[]=[];
+  products: Product[] = [];
+  productCategories: ProductCategory[] = [];
 
- filters= {
-  keyword:''
- }
+  filters = {
+    keyword: ''
+  }
 
 
-  constructor( private _productService:ProductService,
-               private _productCategoryService: ProductCategoryService,
-               private route:ActivatedRoute
-               ) { }
+  constructor(private _productService: ProductService,
+    private _productCategoryService: ProductCategoryService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.displayProducts();
@@ -35,69 +35,67 @@ export class ProductsComponent implements OnInit {
   }
 
 
-  productCategory(){
+  productCategory() {
     this._productCategoryService.getCategories().subscribe(
-      data=>{
-        this.productCategories=data
+      data => {
+        this.productCategories = data
       }
     )
   }
 
-  displayProducts(){
+  displayProducts() {
 
     const theProductCategoryId: number = +this.route.snapshot.paramMap.get('id')!
 
     console.log(theProductCategoryId);
 
-    if(theProductCategoryId===0){
+    if (theProductCategoryId === 0) {
       this._productService.getProduct().subscribe(
-        data=>{
-        this.products= this.filderProduct(data)
-        console.log(this.products);
-       }
+        data => {
+          this.products = this.filderProduct(data)
+          console.log(this.products);
+        }
       )
-    }else{
+    } else {
 
       this._productService.getProductCategoryById(theProductCategoryId).subscribe(
-        data=>{
-                //get product from product category and then push it into getProductsByCategory 
-                let getProductsByCategory:Product[]=[];
-                getProductsByCategory.push(data.product);
-             
-                let products;
+        data => {
+          //get product from product category and then push it into getProductsByCategory 
+          let getProductsByCategory: Product[] = [];
+          getProductsByCategory.push(data.product);
 
-                for(let i=0; i<getProductsByCategory.length; i++){
-                   products = getProductsByCategory[i];
-                }
+          let products;
 
-                this.products= products;
-
-      }
+          for (let i = 0; i < getProductsByCategory.length; i++) {
+            products = getProductsByCategory[i];
+          }
+          this.products = products;
+        }
       )
     }
 
 
   }
 
-  filderProduct(products:Product[]) {
+  filderProduct(products: Product[]) {
 
     //everytime the a product enters its gonne be filter and compare with the array of products 
-    return products.filter((p)=>{
+    return products.filter((p) => {
       return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
-     })
+    })
 
 
   }
-    
 
 
 
 
 
 
-  }
- 
-  
+
+}
+
+
 
 
 

@@ -48,11 +48,9 @@
               <td  >{{tempProduct.lastUpdated}}</td>
               <td  >{{tempProduct.productPrice}}</td>
               <td  >{{tempProduct.unitsInStock}}</td>
-            
+          
               <td  ><button type="button" class="btn btn-primary"  routerLink="/editProduct/{{tempProduct.productId}}">Editar</button></td>
-              <td  ><button type="button" class="btn btn-danger" (click)="deleteProduct(tempProduct.productId)">Eliminar</button></td>
-
-             
+              <td  ><button type="button" class="btn btn-danger" (click)="deleteProduct(tempProduct.productId)">Eliminar</button></td>         
             </tr>
   
            

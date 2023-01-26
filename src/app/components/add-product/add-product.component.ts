@@ -160,26 +160,50 @@ get productCategory(){
 
     const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
 
+    console.log(isIdPresent);
+
     if(isIdPresent){
       
       const id =+ this._routerActive.snapshot.paramMap.get("id")!
 
+      console.log(id);
+
       this._productService.editProductById(id).subscribe(
         data=>{
 
-          let productTry = new Product();
-    
-          let allProducts = this.allProducts.controls['productInputs'].value
+          this.product = data;
+          console.log(this.product);
+          // let allProducts = this.allProducts.controls['productInputs'].value
       
-          productTry.productName = allProducts.product
-          productTry.productReference = allProducts.reference
-          productTry.unitsInStock = allProducts.quantity;
-          productTry.productPrice = allProducts.price;
-          productTry.imageURl = allProducts.imageUrl;
-          productTry.productCategory = allProducts.category;
-          productTry.description = allProducts.decription;
+          
+          // this.product.productName = allProducts.product
+          // this.product.productReference = allProducts.reference
+          // this.product.unitsInStock = allProducts.quantity;
+          // this.product.productPrice = allProducts.price;
+          // this.product.imageURl = allProducts.imageUrl;
+          // this.product.productCategory = allProducts.category;
+          // this.product.description = allProducts.decription;
 
-          productTry =data;
+          this.allProducts.patchValue({
+
+            productInputs:{
+
+              product:this.product.productName,
+
+              reference:this.product.productReference,
+
+              quantity:this.product.unitsInStock.toString(),
+
+              price: this.product.productPrice .toString(),
+
+              imageUrl:this.product.imageURl, 
+
+              category:this.product.productCategory,    
+
+              decription: this.product.description 
+
+            }
+          })
         } 
       )
     }
