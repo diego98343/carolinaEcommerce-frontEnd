@@ -40,7 +40,7 @@ export class AddProductComponent implements OnInit {
 
 
    this.displayProductCategories();
-   this.displayProductById();
+  //  this.displayProductById();
 
    this.allProducts= this._formBuilder.group({
 
@@ -154,37 +154,37 @@ get productCategory(){
   }
 
   
-  displayProductById(){
+  // displayProductById(){
 
-    const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
+  //   const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
 
-    if(isIdPresent){
+  //   if(isIdPresent){
 
-      const id =+ this._routerActive.snapshot.paramMap.get("id")!
+  //     const id =+ this._routerActive.snapshot.paramMap.get("id")!
 
-      this._productService.getProductById(id).subscribe(
-        data=>{
+  //     this._productService.getProductById(id).subscribe(
+  //       data=>{
 
-          this.product = data;
-          console.log(this.product);
+  //         this.product = data;
+  //         console.log(this.product);
          
-          this.allProducts.patchValue({
+  //         this.allProducts.patchValue({
 
-            productInputs:{
-              product:this.product.productName,
-              reference:this.product.productReference,
-              quantity:this.product.unitsInStock.toString(),
-              price: this.product.productPrice .toString(),
-              imageUrl:this.product.imageURl, 
-              category:this.product.productCategory,    
-              decription: this.product.description 
-            }
-          })
-        } 
-      )
-    }
+  //           productInputs:{
+  //             product:this.product.productName,
+  //             reference:this.product.productReference,
+  //             quantity:this.product.unitsInStock.toString(),
+  //             price: this.product.productPrice .toString(),
+  //             imageUrl:this.product.imageURl, 
+  //             category:this.product.productCategory,    
+  //             decription: this.product.description 
+  //           }
+  //         })
+  //       } 
+  //     )
+  //   }
 
-  }
+  // }
 
 
   editProduct(){

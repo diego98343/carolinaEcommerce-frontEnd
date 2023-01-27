@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductCategory } from 'src/app/models/productCategoryClass/product-category';
+import { Product } from 'src/app/models/productClass/product';
 import { ProductCategoryService } from 'src/app/services/productCategoryService/product-category.service';
 import { ProductService } from 'src/app/services/productService/product.service';
 import { EcommerceValidator } from 'src/app/validator/ecommerce-validator';
@@ -12,11 +13,13 @@ import { EcommerceValidator } from 'src/app/validator/ecommerce-validator';
   styleUrls: ['./update-product.component.css']
 })
 export class UpdateProductComponent implements OnInit {
-editProduct() {
-throw new Error('Method not implemented.');
-}
+
   
+  
+
   allProducts: FormGroup;
+
+  product: Product = new Product();
 
   productCategories?: ProductCategory[]=[];
 
@@ -28,6 +31,10 @@ throw new Error('Method not implemented.');
     private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+
+    this.displayProductCategories();
+
+    this.displayProductById();
 
     this.allProducts= this._formBuilder.group({
 
@@ -103,7 +110,6 @@ get productCategory(){
   return this.allProducts.get('productInputs.category');
 }
 
-
 displayProductCategories(){
 
   this._productCategoryService.getCategories().subscribe(
@@ -113,6 +119,54 @@ displayProductCategories(){
     } 
   )
 }
+
+
+
+
+editProduct() {
+
+  const id =+ this._routerActive.snapshot.paramMap.get("id")!
+
+  this._productService.editProduct(id,this.product);
+
+  this._router.navigateByUrl('/productList')
+}
+
+
+displayProductById(){
+
+  const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
+
+  if(isIdPresent){
+
+    const id =+ this._routerActive.snapshot.paramMap.get("id")!
+
+    this._productService.getProductById(id).subscribe(
+      data=>{
+
+        this.product = data;
+        console.log(this.product);
+       
+        this.allProducts.patchValue({
+
+          productInputs:{
+            product:this.product.productName,
+            reference:this.product.productReference,
+            quantity:this.product.unitsInStock.toString(),
+            price: this.product.productPrice .toString(),
+            imageUrl:this.product.imageURl, 
+            category:this.product.productCategory,    
+            decription: this.product.description 
+          }
+        })
+      } 
+    )
+  }
+
+}
+
+
+
 
 
 

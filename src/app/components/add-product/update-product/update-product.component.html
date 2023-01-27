@@ -1,9 +1,9 @@
 <div class="mt-5">
     <div class="container col-md-4">
   
-        <h2>Editar producto</h2>
-        
-      <form [formGroup]="allProducts"  >
+        <h2 class="m-5">Editar producto</h2>
+
+      <form [formGroup]="allProducts"  (ngSubmit)="editProduct()" >
   
         <div formGroupName="productInputs" class="mb-3">
           <div >
@@ -181,8 +181,7 @@
           </div> -->
   
         </div>
-        <button type="submit" class="btn btn-primary mt-5"><span>Agregar</span></button>
-        <button type="submit" (click)="editProduct()" class="btn btn-primary mt-5"><span>Editar</span></button>
+        <button type="submit" (click)="editProduct()" class="btn btn-primary mt-5"><span>Aplicar cambios</span></button>
       </form>
      
   
