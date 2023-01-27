@@ -20,21 +20,26 @@ export class ProductService {
 
   constructor(private _httpClient:HttpClient) { }
 
+
+
   getProduct():Observable<Product[]> {
     return this._httpClient.get<Product[]>(this.baseUrl).pipe(
       map(response=>response)
     )
   }
 
+
   addProduct(product:Product){
      return this._httpClient.post<Product>(this.baseUrl,product)
   }
+
 
   editProduct(id:number,product:Product){
     
     return this._httpClient.put(`${this.baseUrl}/${id}`,product);
       
    }
+
 
   deleteExpense(id:number|undefined){
     return this._httpClient.delete(`${this.baseUrl}/${id}`,{responseType: 'text'})

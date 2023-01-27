@@ -154,46 +154,6 @@ get productCategory(){
   }
 
   
-  // displayProductById(){
-
-  //   const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
-
-  //   if(isIdPresent){
-
-  //     const id =+ this._routerActive.snapshot.paramMap.get("id")!
-
-  //     this._productService.getProductById(id).subscribe(
-  //       data=>{
-
-  //         this.product = data;
-  //         console.log(this.product);
-         
-  //         this.allProducts.patchValue({
-
-  //           productInputs:{
-  //             product:this.product.productName,
-  //             reference:this.product.productReference,
-  //             quantity:this.product.unitsInStock.toString(),
-  //             price: this.product.productPrice .toString(),
-  //             imageUrl:this.product.imageURl, 
-  //             category:this.product.productCategory,    
-  //             decription: this.product.description 
-  //           }
-  //         })
-  //       } 
-  //     )
-  //   }
-
-  // }
-
-
-  editProduct(){
-
-      this._productService.editProduct(this.product.productId,this.product);
-  
-  }
-
-
 
 
   displayProductCategories(){
@@ -212,20 +172,6 @@ get productCategory(){
     })
   }
 
-  // addProduct(productForm:NgForm) {
-
-  // //  const productFormData =this.prepareFormData(this.product)
-
-
-  //   this._productService.addProduct(this.product).subscribe(
-  //     (response:Product)=>{
-  //        this._router.navigateByUrl("/productList")  
-  //     },
-  //     (error:HttpErrorResponse)=>{
-  //       console.log(error)
-  //     }
-  //    );
-  //   }
 
     deleteProduct(id: number|undefined) {
       if(confirm("Seguro quieres eliminar el producto?"))

@@ -3,6 +3,9 @@ import { ProductCategory } from "../productCategoryClass/product-category";
 
 
 export class Product {
+    value(id: number, value: any) {
+      throw new Error('Method not implemented.');
+    }
     constructor(
         public productId?:number,
         public productName?:string, 

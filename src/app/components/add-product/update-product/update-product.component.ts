@@ -19,13 +19,12 @@ export class UpdateProductComponent implements OnInit {
 
   allProducts: FormGroup;
 
-  product: Product = new Product();
+  product: Product;
 
   productCategories?: ProductCategory[]=[];
 
   constructor(private _productCategoryService: ProductCategoryService,
     private _productService:ProductService,
-   
     private _routerActive:ActivatedRoute,
     private _router:Router,
     private _formBuilder: FormBuilder) { }
@@ -110,6 +109,25 @@ get productCategory(){
   return this.allProducts.get('productInputs.category');
 }
 
+displayProductById(){
+
+  // const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
+
+
+    const id =+ this._routerActive.snapshot.paramMap.get("id")!
+    console.log(id);
+
+    this._productService.getProductById(id).subscribe(
+      data=>{
+
+        this.product = data;
+        console.log(this.product);
+       
+      } 
+    )
+  
+}
+
 displayProductCategories(){
 
   this._productCategoryService.getCategories().subscribe(
@@ -122,48 +140,20 @@ displayProductCategories(){
 
 
 
-
 editProduct() {
 
   const id =+ this._routerActive.snapshot.paramMap.get("id")!
 
-  this._productService.editProduct(id,this.product);
+  
+  this._productService.editProduct(id,this.product).subscribe(data=>{
+    console.log(data);
+  });
 
   this._router.navigateByUrl('/productList')
 }
 
 
-displayProductById(){
 
-  const isIdPresent= this._routerActive.snapshot.paramMap.has("id");
-
-  if(isIdPresent){
-
-    const id =+ this._routerActive.snapshot.paramMap.get("id")!
-
-    this._productService.getProductById(id).subscribe(
-      data=>{
-
-        this.product = data;
-        console.log(this.product);
-       
-        this.allProducts.patchValue({
-
-          productInputs:{
-            product:this.product.productName,
-            reference:this.product.productReference,
-            quantity:this.product.unitsInStock.toString(),
-            price: this.product.productPrice .toString(),
-            imageUrl:this.product.imageURl, 
-            category:this.product.productCategory,    
-            decription: this.product.description 
-          }
-        })
-      } 
-    )
-  }
-
-}
 
 
 
