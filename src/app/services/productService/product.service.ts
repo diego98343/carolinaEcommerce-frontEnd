@@ -30,10 +30,10 @@ export class ProductService {
      return this._httpClient.post<Product>(this.baseUrl,product)
   }
 
-  editProductById(id:number): Observable<Product>{
-    return this._httpClient.get<Product>(`${this.baseUrl}/${id}`).pipe(
-      map(response=>response)
-    )
+  editProduct(id:number,product:Product){
+    
+    return this._httpClient.put(`${this.baseUrl}/${id}`,product);
+      
    }
 
   deleteExpense(id:number|undefined){
@@ -41,7 +41,7 @@ export class ProductService {
   }
 
 
-  getProductById(id:number|undefined):Observable<Product>{
+  getProductById(id:number):Observable<Product>{
 
     const productUrl=`${this.baseUrl}/${id}`
 
@@ -55,5 +55,7 @@ export class ProductService {
 
     return this._httpClient.get<ProductCategory>(productCategoryUrl);
   }
+
+
 
 }

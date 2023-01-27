@@ -25,6 +25,7 @@ import { ProductCategory } from './models/productCategoryClass/product-category'
 import { ContactComponent } from './components/contact/contact.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
+import { UpdateProductComponent } from './components/add-product/update-product/update-product.component';
 
 
 
@@ -37,15 +38,15 @@ const routers: Routes=[
   {path:'userLogIn',component: UserLogInComponent},
   {path:'userRegistration',component: UserRegistrationComponent},
   {path:'productList',component: ListOfProductsComponent},
-  {path:'editProduct/:id',component: AddProductComponent},
+  {path:'editProduct/:id',component: UpdateProductComponent},
   {path:'productCategories',component: ProductsComponent},
   {path:'cart',component: ShoppingCartComponent},
   {path:'products/:id',component: ProductDetailsComponent},
   {path:'productCategories/:id',component: ProductsComponent},
   {path:'contact',component: ContactComponent},
   {path:'checkOut',component:CheckOutComponent},
-  {path:'',redirectTo:'productCategories/:5',pathMatch:'full'},
-  {path:'**',redirectTo:'productCategories/:5',pathMatch:'full'},
+  {path:'',redirectTo:'home',pathMatch:'full'},
+  {path:'**',redirectTo:'home',pathMatch:'full'},
   
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
@@ -64,6 +65,7 @@ const routers: Routes=[
     ContactComponent,
     NavBarComponent,
     CheckOutComponent,
+    UpdateProductComponent,
    
     
   ],
