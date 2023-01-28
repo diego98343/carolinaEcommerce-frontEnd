@@ -6,9 +6,10 @@ export class OrderClass {
 
     constructor(
         public orderId: number,
+        public orderTrackingNumber:string,
         public totalQuantity:number,
         public totalPrice:number,
-        public dataCreated:Date,
+        public dateCreated:Date,
         public lastUpdated:Date,
         public orderitems:OrderItems[],
         public customer:Costumer,
