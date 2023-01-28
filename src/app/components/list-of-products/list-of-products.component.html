@@ -5,64 +5,73 @@
 
 <div class="container " style="margin-top: 50px;">
   <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button routerLink="/addProduct" ><span  >Agregar producto</span></button>
-  <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button routerLink="/addCategory" ><span  >Agregar Categoria</span></button>
-  <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button routerLink="/ordersList" ><span  >Lista de ordenes</span></button>
-  <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button routerLink="/addCuponCode" ><span  >Agregar codigo de promocion</span></button>
-  <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button routerLink="/productList" ><span  >Lista de productos</span></button>
+  <!-- <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button routerLink="/addCategory" ><span  >Agregar Categoria</span></button> -->
+  <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button  routerLink="/ordersList"  ><span  >Lista de ordenes</span></button>
+  <!-- <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button routerLink="/addCuponCode" ><span  >Agregar codigo de promocion</span></button> -->
+  <button class="btn btn-primary btn-md center-block btn btn-primary m-2" type="button"  mat-raised-button routerLink="/addProduct"  ><span  >Lista de productos</span></button>
 </div>
 
 
-
-  <div class="container" style="margin-top: 50px ;">
-    <div class="form-outline mb-4">
-      <input type="search" class="form-control" id="datatable-search-input">
-      <label class="form-label" for="datatable-search-input">Search</label>
-    </div>
-  </div>
-  
-  <div id="datatable">
-
-    <div  class="container">
-      <table   class="table table-hover">
-          <thead >
-            <tr >
-              <th scope="col">ID</th>
-              <th scope="col">Img</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Referencia</th>
-              <th scope="col">Ultima actualization</th>
-              <th scope="col">Precio</th>
-              <th scope="col">disponibles</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let tempProduct of products" >
-              <th  scope="row">{{tempProduct.productId}}</th>
-              <td>
-                <div class="overflow-hidden rounded-lg w-16 h-25 bg-gray-50 border border-gray-200">
-                <img src="{{tempProduct.imageURl}}" alt="">
-                </div></td>
-              <td  >{{tempProduct.productName}}</td>
-              <td  >{{tempProduct.productReference}}</td>
-              <td  >{{tempProduct.lastUpdated}}</td>
-              <td  >{{tempProduct.productPrice}}</td>
-              <td  >{{tempProduct.unitsInStock}}</td>
-          
-              <td  ><button type="button" class="btn btn-primary"  routerLink="/editProduct/{{tempProduct.productId}}">Editar</button></td>
-              <td  ><button type="button" class="btn btn-danger" (click)="deleteProduct(tempProduct.productId)">Eliminar</button></td>         
-            </tr>
-  
-           
-          </tbody>
-        </table>
+  <div >
     
+    <div class="container" style="margin-top: 50px ;">
+      <h2 class="m-5">Lista de productos en inventatio</h2>
+      <div class="form-outline mb-4">
+        <input type="search" class="form-control" id="datatable-search-input">
+        <label class="form-label" for="datatable-search-input">Search</label>
+      </div>
     </div>
-    <div class="mb-5"></div>
-    <div class="mb-5"></div>
+    
+    <div id="datatable">
+  
+      <div  class="container">
+        <table   class="table table-hover">
+            <thead >
+              <tr >
+                <th scope="col">ID</th>
+                <th scope="col">Img</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Referencia</th>
+                <th scope="col">Ultima actualization</th>
+                <th scope="col">Precio</th>
+                <th scope="col">disponibles</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tempProduct of products" >
+                <th  scope="row">{{tempProduct.productId}}</th>
+                <td>
+                  <div class="overflow-hidden rounded-lg w-16 h-25 bg-gray-50 border border-gray-200">
+                  <img src="{{tempProduct.imageURl}}" alt="">
+                  </div></td>
+                <td  >{{tempProduct.productName}}</td>
+                <td  >{{tempProduct.productReference}}</td>
+                <td  >{{tempProduct.lastUpdated}}</td>
+                <td  >{{tempProduct.productPrice}}</td>
+                <td  >{{tempProduct.unitsInStock}}</td>
+            
+                <td  ><button type="button" class="btn btn-primary"  routerLink="/editProduct/{{tempProduct.productId}}">Editar</button></td>
+                <td  ><button type="button" class="btn btn-danger" (click)="deleteProduct(tempProduct.productId)">Eliminar</button></td>         
+              </tr>
+    
+             
+            </tbody>
+          </table>
+      
+      </div>
+      <div class="mb-5"></div>
+      <div class="mb-5"></div>
+  
+    </div>
 
   </div>
 
+
+
+
+ 
+  
 
 
   <!-- <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">

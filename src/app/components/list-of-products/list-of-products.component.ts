@@ -6,6 +6,9 @@ import { ProductService } from 'src/app/services/productService/product.service'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Order } from 'src/app/common/order';
+import { OrderService } from 'src/app/services/orderService/order.service';
+import { OrderClass } from 'src/app/models/orderClass/order-class';
 
 @Component({
   selector: 'app-list-of-products',
@@ -16,6 +19,10 @@ export class ListOfProductsComponent implements OnInit {
 
 
   products: Product[]=[];
+
+  orders: OrderClass[]=[];
+
+
   
 
   filters= {
@@ -25,18 +32,37 @@ export class ListOfProductsComponent implements OnInit {
 
   constructor(private _productService:ProductService,
               private _productCategoryService: ProductCategoryService,
+              private _orderService:OrderService
              ) { }
 
   ngOnInit(): void {
     this.displayProducts();
     this.loadListProducts()
+    this.displayOrders();
+
+ 
   }
 
 
+  displayOrders() {
+    this._orderService.getOrder().subscribe(
+      data=>{
+        this.orders=data;
+        console.log(this.orders);
+      }
+    )
+  }
+
+
+
   displayProducts(){
-    this._productService.getProduct().subscribe(data=>{
-      this.products=data
-    })
+
+    
+      this._productService.getProduct().subscribe(data=>{
+        this.products=data
+      })
+    
+   
   }
 
   filderProduct(products:Product[]) {
@@ -45,7 +71,6 @@ export class ListOfProductsComponent implements OnInit {
       return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
      })
   }
-
 
 
     deleteProduct(productId: number|undefined) {
@@ -58,18 +83,16 @@ export class ListOfProductsComponent implements OnInit {
       )
       }
 
-
-
-
       loadListProducts(){
         this._productService.getProduct().subscribe(
           data=>{
             this.products= data
             console.log(this.products)
-          } 
-          
+          }         
         )
       }
+      
+
 
 
    

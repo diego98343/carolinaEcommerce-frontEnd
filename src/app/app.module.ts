@@ -26,6 +26,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { UpdateProductComponent } from './components/add-product/update-product/update-product.component';
+import { ListOfOrdersComponent } from './components/list-of-orders/list-of-orders.component';
 
 
 
@@ -45,6 +46,7 @@ const routers: Routes=[
   {path:'productCategories/:id',component: ProductsComponent},
   {path:'contact',component: ContactComponent},
   {path:'checkOut',component:CheckOutComponent},
+  {path:'ordersList',component:ListOfOrdersComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'**',redirectTo:'home',pathMatch:'full'},
   
@@ -66,6 +68,7 @@ const routers: Routes=[
     NavBarComponent,
     CheckOutComponent,
     UpdateProductComponent,
+    ListOfOrdersComponent,
    
     
   ],
