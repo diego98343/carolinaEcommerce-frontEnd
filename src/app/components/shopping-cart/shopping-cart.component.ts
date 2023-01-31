@@ -93,7 +93,7 @@ export class ShoppingCartComponent implements OnInit {
 
    this.cartItems = this.cartService.cartItems;
  
-
+   console.log(this.cartItems);
     this.cartService.totalPrice.subscribe(
       data=>{
         this.totalPrice= data
