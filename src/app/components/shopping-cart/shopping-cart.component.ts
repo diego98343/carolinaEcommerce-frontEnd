@@ -84,6 +84,7 @@ export class ShoppingCartComponent implements OnInit {
     if(confirm("Seguro quieres eliminar el producto?")){
 
     this.cartService.remove(cartItem)
+    this.updateCartStatus();
     }
   }
   

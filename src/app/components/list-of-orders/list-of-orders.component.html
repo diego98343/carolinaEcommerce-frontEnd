@@ -23,17 +23,9 @@
                     direccion de envio
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Cantidad
+                    total
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Precio Total
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    orden
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Ultima actulizacion
-                </th>
+            
               
                 <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Edit</span>
@@ -41,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let tempOrder of orders"  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr *ngFor="let tempOrder of orders "  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{tempOrder.orderTrackingNumber}}
                 </th>
@@ -49,20 +41,13 @@
                     {{tempOrder.customer}}
                 </td>
                 <td class="px-6 py-4">
-                    {{tempOrder.orderitems}}
+                    {{tempOrder.shippingAddres}}
                 </td>
                 <td class="px-6 py-4">
-                    {{tempOrder.totalQuantity}}
+                    {{tempOrder.totalPrice}}
                 </td>
-                <td class="px-6 py-4">
-                    ${{tempOrder.totalPrice}}
-                </td>
-                <td class="px-6 py-4">
-                   
-                </td>
-                <td class="px-6 py-4">
-                    ${{tempOrder.lastUpdated}}
-                </td>
+             
+             
                 <td class="px-6 py-4 text-right">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>

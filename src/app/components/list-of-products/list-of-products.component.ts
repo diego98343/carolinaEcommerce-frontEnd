@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/common/order';
 import { OrderService } from 'src/app/services/orderService/order.service';
 import { OrderClass } from 'src/app/models/orderClass/order-class';
+import { CustomerClass } from 'src/app/models/customerClass/customer-class';
 
 @Component({
   selector: 'app-list-of-products',
@@ -22,9 +23,10 @@ export class ListOfProductsComponent implements OnInit {
 
   orders: OrderClass[]=[];
 
+  customers:CustomerClass[]=[];
+
 
   
-
   filters= {
     keyword:''
    }
@@ -39,8 +41,7 @@ export class ListOfProductsComponent implements OnInit {
     this.displayProducts();
     this.loadListProducts()
     this.displayOrders();
-
- 
+   
   }
 
 
@@ -53,11 +54,12 @@ export class ListOfProductsComponent implements OnInit {
     )
   }
 
+ 
+
 
 
   displayProducts(){
 
-    
       this._productService.getProduct().subscribe(data=>{
         this.products=data
       })

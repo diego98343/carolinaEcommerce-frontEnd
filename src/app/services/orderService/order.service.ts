@@ -13,7 +13,7 @@ export class OrderService {
 
   private OrderUrl: string="http://localhost:8090/api/orders"
 
-  private customerUrl: string="http://localhost:8090/api/costomers"
+  private customerUrl: string="http://localhost:8090/api/customers"
 
   constructor(private _httpClient:HttpClient) { }
 
@@ -24,10 +24,9 @@ export class OrderService {
 
   }
 
-  getCustomer():Observable<CustomerClass[]>{
+  getAllCustomer():Observable<CustomerClass[]>{
     return this._httpClient.get<CustomerClass[]>(this.customerUrl).pipe(response=>response);
   }
 
   
-
 }

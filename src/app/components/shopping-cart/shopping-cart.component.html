@@ -8,7 +8,7 @@
     <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-10 text-gray-800">
         <div class="w-full">
             <div class="-mx-3 md:flex items-start ">
-                <div class="px-3 md:w-7/12 lg:pr-10 border rounded">
+                <div class="px-3 md:w-7/12 lg:pr-20 border rounded">
                     <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6 m-5 "  >
                         <div class="w-full flex items-center col-xs-12 col-centered" style="margin: 10px;"  *ngFor="let tempCartItem of cartItems">
                             <div class="overflow-hidden rounded-lg w-16 h-25 bg-gray-50 border border-gray-200">
@@ -21,33 +21,45 @@
                                 <p class="text-gray-400 columns-xs">Size {{tempCartItem.size}}</p>
                                 <p class="text-gray-400 columns-xs ">${{tempCartItem.unitPrice}}</p>
                             </div>
-                            
-                            <div class="d-flex flex-row align-items-center" style="margin-right: 60px;">
-                              <div >
-                                <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
-                                 <i class="fas fa-plus" ></i>
-                                </button>
-                              </div>
-                             
-                              <div style="margin: 15px;">
-                                <!-- <h5 class="fw-normal mb-0">{{tempCartItem.quantity}}</h5> -->
-                                <input type="text" class="fw-normal col-xs-2 w-10 text-black-400 fw-bold text-center" value="{{tempCartItem.quantity}}">
-                              </div>
-                              
-                              <div >
-                                <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
-                                  <i class="fas fa-minus"></i>
-                                 </button>
-                              </div>
+
+
+                            <div class="d-flex flex-row align-items-center m-6" >
+                                <div >
+                                  <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                                   <i class="fas fa-plus" ></i>
+                                  </button>
+                                </div>
+                               
+                                <div style="margin: 5px;">
+                                  <!-- <h5 class="fw-normal mb-0">{{tempCartItem.quantity}}</h5> -->
+                                  <input type="text" class="fw-normal col-xs-2 w-10 text-black-400 fw-bold text-center" value="{{tempCartItem.quantity}}">
+                                </div>
+                                
+                                <div >
+                                  <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-minus"></i>
+                                   </button>
+                                </div>
                             </div>
+                            
+                         
 
                             <div style="width: 80px; margin: 13px;">
                               <span class="font-semibold text-gray-600 text-xl">${{ tempCartItem.quantity * (tempCartItem.unitPrice)!}}</span>
                             </div>
                            
                             <span style="color: #cecece; margin: 10px;" (click)="deleteProducto(tempCartItem)"><i class="fas fa-trash-alt" ></i></span>
+
+
                             
+
+
+                       
                         </div>
+
+                        
+
+                        
 
 
                         <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert" *ngIf="cartItems.length===0">
