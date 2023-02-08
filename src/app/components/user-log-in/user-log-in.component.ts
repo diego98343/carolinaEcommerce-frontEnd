@@ -5,6 +5,8 @@ import { LogINService } from 'src/app/services/logInService/log-in.service';
 import myAppConfig from 'src/app/config/my-app-config';
 import { OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
+import OktaSignIn from '@okta/okta-signin-widget'
+import { response } from 'express';
 
 @Component({
   selector: 'app-user-log-in',
@@ -21,10 +23,37 @@ export class UserLogInComponent implements OnInit {
 
 
   constructor(private userService:LogINService,
-              @Inject(OKTA_AUTH)private oktaAuth:OktaAuth) { }
+              @Inject(OKTA_AUTH)private oktaAuth:OktaAuth) {
+
+       this.oktaSignin = new OktaSignIn({
+        logo: 'assets/images/logo.png',
+        baseUrl: myAppConfig.oidc.issuer.split('/oauth2')[0],
+        clientId: myAppConfig.oidc.clientId,
+        redirectUrl: myAppConfig.oidc.redirectUrl,
+        authParams:{
+          pkce: true,
+          issuer: myAppConfig.oidc.issuer,
+          scopes: myAppConfig.oidc.scopes
+        }
+       });
+
+      }
 
   ngOnInit(): void {
-    // this.userLogIn();
+
+    this.oktaSignin.remove();
+    this.oktaSignin.renderEl({
+      el: '#okta-signin-widget'},//this name should be the same as the html id
+      (response:any)=>{
+        if(response.status==='SUCCESS'){
+          this.oktaAuth.signInWithRedirect();
+        }
+      },
+      (error:any)=>{
+        throw error;
+      }
+      )
+  
   }
 
   // userLogIn(){
@@ -33,5 +62,7 @@ export class UserLogInComponent implements OnInit {
   //   },error=>alert("sorry enter the right password"));
     
   // }
+
+
 
 }

@@ -27,6 +27,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
 import { UpdateProductComponent } from './components/add-product/update-product/update-product.component';
 import { ListOfOrdersComponent } from './components/list-of-orders/list-of-orders.component';
+import { LogInStatusComponent } from './components/log-in-status/log-in-status.component';
 
 
 
@@ -69,6 +70,7 @@ const routers: Routes=[
     CheckOutComponent,
     UpdateProductComponent,
     ListOfOrdersComponent,
+    LogInStatusComponent,
    
     
   ],
