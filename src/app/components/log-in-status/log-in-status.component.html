@@ -1,1 +1,5 @@
-<p>log-in-status works!</p>
+<div>
+    <div class="text-gray-800 text-base font-semibold  " *ngIf="isAuthenticated && userFullName">
+        welcome {{userFullName}}!
+    </div>
+</div>

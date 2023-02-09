@@ -30,6 +30,20 @@ import { ListOfOrdersComponent } from './components/list-of-orders/list-of-order
 import { LogInStatusComponent } from './components/log-in-status/log-in-status.component';
 
 
+// import{
+// OktaAuthModule,
+// OktaCallbackComponent,
+// OKTA_CONFIG
+// }from '@okta/okta-angular';
+
+// import{OktaAuth} from '@okta/okta-auth-js';
+
+// import myAppConfig from './config/my-app-config';
+
+
+
+// const oktaConfig = myAppConfig.oidc;
+// const oktaAuth = new OktaAuth(oktaConfig);
 
 
 
@@ -37,7 +51,8 @@ const routers: Routes=[
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
   {path:'addProduct',component: AddProductComponent},
-  {path:'userLogIn',component: UserLogInComponent},
+  {path:'login',component: UserLogInComponent},
+  // {path:'login/callback',component: OktaCallbackComponent},
   {path:'userRegistration',component: UserRegistrationComponent},
   {path:'productList',component: ListOfProductsComponent},
   {path:'editProduct/:id',component: UpdateProductComponent},
@@ -48,8 +63,10 @@ const routers: Routes=[
   {path:'contact',component: ContactComponent},
   {path:'checkOut',component:CheckOutComponent},
   {path:'ordersList',component:ListOfOrdersComponent},
+  {path:'',component: FrontPageComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'**',redirectTo:'home',pathMatch:'full'},
+
   
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
@@ -87,6 +104,10 @@ const routers: Routes=[
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+   
+
+   
+    
     
   ],
   providers: [],

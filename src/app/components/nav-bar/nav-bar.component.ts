@@ -11,8 +11,12 @@ export class NavBarComponent implements OnInit {
 
    totalQuantity: number =0;
 
+   isAuthenticated: boolean = false;
+   userFullName: string='';
 
-  constructor(private _cartService:CartServiceService) { }
+
+  constructor(private _cartService:CartServiceService,
+              ) { }
 
   ngOnInit(): void {
 
