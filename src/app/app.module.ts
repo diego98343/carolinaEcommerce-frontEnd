@@ -30,6 +30,7 @@ import { ListOfOrdersComponent } from './components/list-of-orders/list-of-order
 import { LogInStatusComponent } from './components/log-in-status/log-in-status.component';
 
 
+
 // import{
 // OktaAuthModule,
 // OktaCallbackComponent,
@@ -104,6 +105,7 @@ const routers: Routes=[
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    // OktaAuthModule
    
 
    
