@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http";
@@ -29,31 +29,27 @@ import { UpdateProductComponent } from './components/add-product/update-product/
 import { ListOfOrdersComponent } from './components/list-of-orders/list-of-orders.component';
 import { LogInStatusComponent } from './components/log-in-status/log-in-status.component';
 
-
-
-// import{
-// OktaAuthModule,
-// OktaCallbackComponent,
-// OKTA_CONFIG
-// }from '@okta/okta-angular';
-
-// import{OktaAuth} from '@okta/okta-auth-js';
-
-// import myAppConfig from './config/my-app-config';
+//okta imports
+import { OktaAuthModule, OktaCallbackComponent, OKTA_CONFIG } from '@okta/okta-angular';
+import { OktaAuth } from '@okta/okta-auth-js';
+import myAppConfig from './config/my-app-config';
+import { ProductService } from './services/productService/product.service';
 
 
 
-// const oktaConfig = myAppConfig.oidc;
-// const oktaAuth = new OktaAuth(oktaConfig);
+const oktaConfig = myAppConfig.oidc;
+const oktaAuth = new OktaAuth(oktaConfig);
 
 
 
 const routers: Routes=[
+
+  {path:'login',component: UserLogInComponent},
+  {path:'login/callback',component: OktaCallbackComponent},
+
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
   {path:'addProduct',component: AddProductComponent},
-  {path:'login',component: UserLogInComponent},
-  // {path:'login/callback',component: OktaCallbackComponent},
   {path:'userRegistration',component: UserRegistrationComponent},
   {path:'productList',component: ListOfProductsComponent},
   {path:'editProduct/:id',component: UpdateProductComponent},
@@ -71,6 +67,8 @@ const routers: Routes=[
   
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
+
+
 
 @NgModule({
   declarations: [
@@ -105,14 +103,11 @@ const routers: Routes=[
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    // OktaAuthModule
+    OktaAuthModule
    
-
-   
-    
-    
   ],
-  providers: [],
+  providers: [
+    ProductService,{provide:OKTA_CONFIG,useValue:{oktaAuth}}],
   bootstrap: [AppComponent],
   entryComponents:[AddProductComponent]
 })

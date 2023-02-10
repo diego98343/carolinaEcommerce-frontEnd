@@ -53,8 +53,17 @@ export class CartServiceService {
 
     }
 
+    let tempCartItem: CartItem;
 
-    if(alreadyExistInCart){
+    for(let i =0; i< this.cartItems.length; i++){
+
+      tempCartItem = this.cartItems[i];
+
+      
+    }
+
+
+    if(alreadyExistInCart ){
       // increment the quantity
       existingCartItem.quantity++; 
 

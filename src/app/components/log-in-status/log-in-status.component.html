@@ -1,5 +1,5 @@
 <div>
-    <div class="text-gray-800 text-base font-semibold  " *ngIf="isAuthenticated && userFullName">
+    <div *ngIf="isAuthenticated && userFullName" class="text-gray-800 text-base font-semibold  " >
         welcome {{userFullName}}!
     </div>
 </div>

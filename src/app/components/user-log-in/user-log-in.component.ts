@@ -6,7 +6,7 @@ import myAppConfig from 'src/app/config/my-app-config';
 import { OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 import OktaSignIn from '@okta/okta-signin-widget'
-import { response } from 'express';
+
 
 @Component({
   selector: 'app-user-log-in',
@@ -26,24 +26,25 @@ export class UserLogInComponent implements OnInit {
               @Inject(OKTA_AUTH)private oktaAuth:OktaAuth) {
 
        this.oktaSignin = new OktaSignIn({
-        logo: 'assets/images/logo.png',
+        logo: '',
         baseUrl: myAppConfig.oidc.issuer.split('/oauth2')[0],
         clientId: myAppConfig.oidc.clientId,
-        redirectUrl: myAppConfig.oidc.redirectUrl,
+        redirectUrl: myAppConfig.oidc.redirectUri,
         authParams:{
+
           pkce: true,
           issuer: myAppConfig.oidc.issuer,
           scopes: myAppConfig.oidc.scopes
+
         }
        });
-
       }
 
   ngOnInit(): void {
 
     this.oktaSignin.remove();
     this.oktaSignin.renderEl({
-      el: '#okta-signin-widget'},//this name should be the same as the html id
+      el:'#okta-signin-widget'},//this name should be the same as the html id
       (response:any)=>{
         if(response.status==='SUCCESS'){
           this.oktaAuth.signInWithRedirect();
@@ -52,7 +53,7 @@ export class UserLogInComponent implements OnInit {
       (error:any)=>{
         throw error;
       }
-      )
+      );
   
   }
 
