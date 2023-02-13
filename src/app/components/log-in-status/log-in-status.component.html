@@ -1,5 +1,6 @@
 <div>
-    <div *ngIf="isAuthenticated && userFullName" class="text-gray-800 text-base font-semibold  " >
-        welcome {{userFullName}}!
+    <div *ngIf="auth.user$ | async as user" class="text-gray-800 text-base font-semibold  " >
+         {{user.name}} welcome!
+        <div>
     </div>
 </div>

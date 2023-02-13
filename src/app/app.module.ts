@@ -9,7 +9,6 @@ import { ProductsComponent } from './components/products/products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './components/add-product/add-product.component';
-import { Router } from 'express';
 import { UserLogInComponent } from './components/user-log-in/user-log-in.component';
 import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
 
@@ -30,22 +29,28 @@ import { ListOfOrdersComponent } from './components/list-of-orders/list-of-order
 import { LogInStatusComponent } from './components/log-in-status/log-in-status.component';
 
 //okta imports
-import { OktaAuthModule, OktaCallbackComponent, OKTA_CONFIG } from '@okta/okta-angular';
-import { OktaAuth } from '@okta/okta-auth-js';
-import myAppConfig from './config/my-app-config';
-import { ProductService } from './services/productService/product.service';
+// import { OktaAuthModule, OktaCallbackComponent, OKTA_CONFIG } from '@okta/okta-angular';
+// import { OktaAuth } from '@okta/okta-auth-js';
+// import myAppConfig from './config/my-app-config';
+// import { ProductService } from './services/productService/product.service';
 
 
 
-const oktaConfig = myAppConfig.oidc;
-const oktaAuth = new OktaAuth(oktaConfig);
+// const oktaConfig = myAppConfig.oidc;
+// const oktaAuth = new OktaAuth(oktaConfig);
+
+//auth0 imports
+
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from './auth0config/environments';
+
 
 
 
 const routers: Routes=[
 
   {path:'login',component: UserLogInComponent},
-  {path:'login/callback',component: OktaCallbackComponent},
+  // {path:'login/callback',component: OktaCallbackComponent},
 
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
@@ -103,11 +108,15 @@ const routers: Routes=[
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    OktaAuthModule
+    // OktaAuthModule,
+
+
+    AuthModule.forRoot(environment.auth),
    
   ],
   providers: [
-    ProductService,{provide:OKTA_CONFIG,useValue:{oktaAuth}}],
+    // ProductService,{provide:OKTA_CONFIG,useValue:{oktaAuth}}
+  ],
   bootstrap: [AppComponent],
   entryComponents:[AddProductComponent]
 })

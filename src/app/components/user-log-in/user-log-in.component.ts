@@ -6,6 +6,7 @@ import myAppConfig from 'src/app/config/my-app-config';
 import { OKTA_AUTH } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 import OktaSignIn from '@okta/okta-signin-widget'
+import { AuthService } from '@auth0/auth0-angular';
 
 
 @Component({
@@ -23,37 +24,38 @@ export class UserLogInComponent implements OnInit {
 
 
   constructor(private userService:LogINService,
-              @Inject(OKTA_AUTH)private oktaAuth:OktaAuth) {
+              // @Inject(OKTA_AUTH)private oktaAuth:OktaAuth,
+              ) {
 
-       this.oktaSignin = new OktaSignIn({
-        logo: '',
-        baseUrl: myAppConfig.oidc.issuer.split('/oauth2')[0],
-        clientId: myAppConfig.oidc.clientId,
-        redirectUrl: myAppConfig.oidc.redirectUri,
-        authParams:{
+      //  this.oktaSignin = new OktaSignIn({
+      //   logo: '',
+      //   baseUrl: myAppConfig.oidc.issuer.split('/oauth2')[0],
+      //   clientId: myAppConfig.oidc.clientId,
+      //   redirectUrl: myAppConfig.oidc.redirectUri,
+      //   authParams:{
 
-          pkce: true,
-          issuer: myAppConfig.oidc.issuer,
-          scopes: myAppConfig.oidc.scopes
+      //     pkce: true,
+      //     issuer: myAppConfig.oidc.issuer,
+      //     scopes: myAppConfig.oidc.scopes
 
-        }
-       });
+      //   }
+      //  });
       }
 
   ngOnInit(): void {
 
-    this.oktaSignin.remove();
-    this.oktaSignin.renderEl({
-      el:'#okta-signin-widget'},//this name should be the same as the html id
-      (response:any)=>{
-        if(response.status==='SUCCESS'){
-          this.oktaAuth.signInWithRedirect();
-        }
-      },
-      (error:any)=>{
-        throw error;
-      }
-      );
+    // this.oktaSignin.remove();
+    // this.oktaSignin.renderEl({
+    //   el:'#okta-signin-widget'},//this name should be the same as the html id
+    //   (response:any)=>{
+    //     if(response.status==='SUCCESS'){
+    //       this.oktaAuth.signInWithRedirect();
+    //     }
+    //   },
+    //   (error:any)=>{
+    //     throw error;
+    //   }
+    //   );
   
   }
 
