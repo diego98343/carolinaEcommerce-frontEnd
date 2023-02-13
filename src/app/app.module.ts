@@ -42,7 +42,7 @@ import { LogInStatusComponent } from './components/log-in-status/log-in-status.c
 //auth0 imports
 
 import { AuthModule } from '@auth0/auth0-angular';
-import { environment } from './auth0config/environments';
+
 
 
 
@@ -50,7 +50,7 @@ import { environment } from './auth0config/environments';
 const routers: Routes=[
 
   {path:'login',component: UserLogInComponent},
-  // {path:'login/callback',component: OktaCallbackComponent},
+
 
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
@@ -68,8 +68,6 @@ const routers: Routes=[
   {path:'',component: FrontPageComponent},
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'**',redirectTo:'home',pathMatch:'full'},
-
-  
   {path:'',redirectTo:'/home',pathMatch:'full'},
 ]
 
@@ -111,11 +109,18 @@ const routers: Routes=[
     // OktaAuthModule,
 
 
-    AuthModule.forRoot(environment.auth),
+    AuthModule.forRoot({
+      domain: 'dev-w5321ximnia6xn5y.us.auth0.com',
+      clientId: 'uifSYOTm1J4rlQt7Zizj2VG913fXIAtN',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    })
+,
    
   ],
   providers: [
-    // ProductService,{provide:OKTA_CONFIG,useValue:{oktaAuth}}
+  
   ],
   bootstrap: [AppComponent],
   entryComponents:[AddProductComponent]

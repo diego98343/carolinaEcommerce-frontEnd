@@ -13,7 +13,8 @@ export class LogInStatusComponent implements OnInit {
   isAuthenticated: boolean = false;
   userFullName: string='';
 
-  constructor( private oktaAuthService: OktaAuthStateService,
+  constructor( 
+              // private oktaAuthService: OktaAuthStateService,
               //  @Inject(OKTA_AUTH) private OktaAuth:OktaAuth ,
               public auth: AuthService
 

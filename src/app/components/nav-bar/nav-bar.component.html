@@ -3,8 +3,8 @@
 
   <div>
     <div *ngIf="auth.isAuthenticated$ | async else loggedOut">
-      <button class="btn btn-warning" 
-      (click)="auth.logout()">Cerrar sesion</button>
+      <button class="text-gray-800 text-base font-semibold hover:text-red-600 m-2.5" 
+      (click)="auth.logout()">CERRAR SESION</button>
      </div>
   
   
