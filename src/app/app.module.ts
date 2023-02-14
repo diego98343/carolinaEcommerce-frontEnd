@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { FrontPageComponent } from './components/home-page/front-page.component';
 import { ProductsComponent } from './components/products/products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { UserLogInComponent } from './components/user-log-in/user-log-in.component';
 import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { ProductCategory } from './models/productCategoryClass/product-category';
+
 import { ContactComponent } from './components/contact/contact.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { CheckOutComponent } from './components/check-out/check-out.component';
@@ -32,7 +32,7 @@ import { LogInStatusComponent } from './components/log-in-status/log-in-status.c
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -101,6 +101,7 @@ const routers: Routes=[
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    NgbModule,
     
   
    

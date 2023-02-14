@@ -29,6 +29,24 @@ export class ProductService {
   }
 
 
+
+
+  getProductPagination( thePageSize: number,
+                        theTotalPages:number,
+                        theCategoryId:number):Observable<getResponseProducts> {
+
+    const paginationUrl = "http://localhost:8090/api/products/pagination/1/3"
+
+   return this._httpClient.get<getResponseProducts>(`${this.baseUrl}/pagination/${thePageSize}/${theTotalPages}`);
+  }
+
+  getProductWithPage():Observable<Product[]> {
+    return this._httpClient.get<Product[]>(this.baseUrl).pipe(
+      map(response=>response)
+    )
+  }
+
+
   addProduct(product:Product){
      return this._httpClient.post<Product>(this.baseUrl,product)
   }
@@ -63,4 +81,13 @@ export class ProductService {
 
 
 
+
+
+}
+
+interface getResponseProducts{
+  content:Product[];
+  totalPages: number,
+  totalElements: number,
+  size: number,
 }

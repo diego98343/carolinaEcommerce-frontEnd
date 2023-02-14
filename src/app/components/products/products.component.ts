@@ -17,33 +17,55 @@ import { ProductService } from 'src/app/services/productService/product.service'
 export class ProductsComponent implements OnInit {
 
 
+
   products: Product[] = [];
   productCategories: ProductCategory[] = [];
+  searchMode:boolean=false;
+  currentProductCategoryId:number=0;
+  previousCategoryId: number;
 
-  dataSource = new MatTableDataSource<Product>(this.products);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
- 
+  productsWithPag:Product[]=[];
+
+  //pagination properties
+  thePageNumber: number =1;
+  thePageSize: number= 4;
+  theTotalElements: number =0;
 
   filters = {
     keyword: ''
   }
+  
 
 
   constructor(private _productService: ProductService,
     private _productCategoryService: ProductCategoryService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productPagination: ProductService
   ) { }
 
   ngOnInit(): void {
 
-    this.dataSource.paginator = this.paginator;
-  
+ 
     this.displayProducts();
     this.productCategory();
-
+    this.displayProductWithPagination();
      
   }
+
+
+  displayProductWithPagination() {
+    this._productService.getProductPagination(0,2,this.currentProductCategoryId).subscribe(
+      data => {
+        this.productsWithPag= data.content;
+        
+      }
+    )
+  }
+
+  listProducts() {
+    throw new Error('Method not implemented.');
+    }
 
 
   productCategory() {
@@ -54,17 +76,33 @@ export class ProductsComponent implements OnInit {
     )
   }
 
+
   displayProducts() {
 
     const theProductCategoryId: number = +this.route.snapshot.paramMap.get('id')!
 
+    // if(this.previousCategoryId != this.currentProductCategoryId){
+    //   this.thePageNumber=1;
+    // }
 
+    // this.previousCategoryId =this.currentProductCategoryId;
 
-    if (theProductCategoryId === 0) {
-      this._productService.getProduct().subscribe(
+    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+
+    if (hasCategoryId === false) {
+
+      
+      this._productService.getProductPagination(this.thePageNumber -1,
+                                                this.thePageSize,
+                                                 this.currentProductCategoryId).subscribe(
         data => {
-          this.products = this.filderProduct(data)
-          console.log(this.dataSource);
+
+          this.products = this.filderProduct(data.content);
+          this.thePageNumber= data.totalPages +1;
+          this.thePageSize=data.size;
+          this.theTotalElements=data.totalElements;
+          console.log(data);
+
         }
       )
     } else {
