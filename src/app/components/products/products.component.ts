@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit,Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ProductCategory } from 'src/app/models/productCategoryClass/product-category';
 import { Product } from 'src/app/models/productClass/product';
@@ -10,14 +11,19 @@ import { ProductService } from 'src/app/services/productService/product.service'
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+  
 })
 export class ProductsComponent implements OnInit {
 
 
-
   products: Product[] = [];
   productCategories: ProductCategory[] = [];
+
+  dataSource = new MatTableDataSource<Product>(this.products);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+ 
 
   filters = {
     keyword: ''
@@ -30,8 +36,13 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.dataSource.paginator = this.paginator;
+  
     this.displayProducts();
     this.productCategory();
+
+     
   }
 
 
@@ -47,13 +58,13 @@ export class ProductsComponent implements OnInit {
 
     const theProductCategoryId: number = +this.route.snapshot.paramMap.get('id')!
 
-    console.log(theProductCategoryId);
+
 
     if (theProductCategoryId === 0) {
       this._productService.getProduct().subscribe(
         data => {
           this.products = this.filderProduct(data)
-          console.log(this.products);
+          console.log(this.dataSource);
         }
       )
     } else {

@@ -28,20 +28,10 @@ import { UpdateProductComponent } from './components/add-product/update-product/
 import { ListOfOrdersComponent } from './components/list-of-orders/list-of-orders.component';
 import { LogInStatusComponent } from './components/log-in-status/log-in-status.component';
 
-//okta imports
-// import { OktaAuthModule, OktaCallbackComponent, OKTA_CONFIG } from '@okta/okta-angular';
-// import { OktaAuth } from '@okta/okta-auth-js';
-// import myAppConfig from './config/my-app-config';
-// import { ProductService } from './services/productService/product.service';
 
-
-
-// const oktaConfig = myAppConfig.oidc;
-// const oktaAuth = new OktaAuth(oktaConfig);
-
-//auth0 imports
 
 import { AuthModule } from '@auth0/auth0-angular';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -69,6 +59,7 @@ const routers: Routes=[
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'**',redirectTo:'home',pathMatch:'full'},
   {path:'',redirectTo:'/home',pathMatch:'full'},
+
 ]
 
 
@@ -90,6 +81,9 @@ const routers: Routes=[
     UpdateProductComponent,
     ListOfOrdersComponent,
     LogInStatusComponent,
+    
+    
+    
    
     
   ],
@@ -106,9 +100,10 @@ const routers: Routes=[
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    // OktaAuthModule,
-
-
+    MatPaginatorModule,
+    
+  
+   
     AuthModule.forRoot({
       domain: 'dev-w5321ximnia6xn5y.us.auth0.com',
       clientId: 'uifSYOTm1J4rlQt7Zizj2VG913fXIAtN',
