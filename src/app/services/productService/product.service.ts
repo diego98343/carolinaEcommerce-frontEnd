@@ -38,6 +38,13 @@ export class ProductService {
     return this._httpClient.get<Product[]>(`${this.baseUrl}/searchByCategory/${productCategory}`)
   }
 
+
+  searchProductByReference(productReference:String):Observable<Product[]> {
+    return this._httpClient.get<Product[]>(`${this.baseUrl}/searchByReference/${productReference}`)
+  }
+
+
+
   
   getProductPagination( thePageSize: number,
                         theTotalPages:number,
