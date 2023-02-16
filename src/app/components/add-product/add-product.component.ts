@@ -154,8 +154,6 @@ get productCategory(){
   }
 
   
-
-
   displayProductCategories(){
 
     this._productCategoryService.getCategories().subscribe(

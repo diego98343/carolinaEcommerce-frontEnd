@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   productCategories: ProductCategory[] = [];
   searchMode:boolean=false;
-  currentCategoryId:number=0;
+  currentProductCategoryId:number=0;
   previousCategoryId: number;
 
 
@@ -77,38 +77,31 @@ export class ProductsComponent implements OnInit {
   }
 
   displayProductByCategory(){
+
+    //get the id from the router link
     const theProductCategoryId: number = +this.route.snapshot.paramMap.get('id')!
+    //return true if the id is present 
+    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
-    this._productService.sortProductByCategory(theProductCategoryId).subscribe(
-      data=>{
-        this.products= data;  
-    })
-
+    if(hasCategoryId===true){
+      this._productService.sortProductByCategory(theProductCategoryId).subscribe(
+        data=>{
+          this.products= data;  
+      })
+  
+    }else{
+      this.displayProducts();
+    }
   }
 
   displayProducts() {
 
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
-   if(hasCategoryId){
-    this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
-   }else{
-    this.currentCategoryId =1;
-   }
-
-   
-
     if (hasCategoryId === false) {
-
-      this._productService.getProductPagination(this.thePageNumber -1,
-                                                this.thePageSize,
-                                                 this.currentCategoryId).subscribe(
+      this._productService.getProduct().subscribe(
         data => {
-          this.products = data.content;
-          this.thePageNumber= data.totalPages +1 ;
-          this.thePageSize=data.size;
-          this.theTotalElements=data.totalElements;
-         
+          this.products = data;
         }
       )
   }

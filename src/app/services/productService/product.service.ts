@@ -29,7 +29,6 @@ export class ProductService {
   }
 
 
-
   searchProductByName(productName:String):Observable<Product[]> {
     return this._httpClient.get<Product[]>(`${this.baseUrl}/searchByName/${productName}`)
   }
@@ -45,7 +44,6 @@ export class ProductService {
 
 
 
-  
   getProductPagination( thePageSize: number,
                         theTotalPages:number,
                         theCategoryId:number):Observable<getResponseProducts> {
