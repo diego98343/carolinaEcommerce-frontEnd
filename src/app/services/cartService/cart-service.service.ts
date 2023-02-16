@@ -97,8 +97,6 @@ export class CartServiceService {
 
 
 
-
-
   computeQuantity(quantity:number){
     this.sQuantity += quantity;
   }

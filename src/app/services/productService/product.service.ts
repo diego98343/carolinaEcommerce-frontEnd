@@ -50,7 +50,7 @@ export class ProductService {
                         theTotalPages:number,
                         theCategoryId:number):Observable<getResponseProducts> {
 
-    const paginationUrl = "http://localhost:8090/api/products/pagination/1/3"
+    
 
    return this._httpClient.get<getResponseProducts>(`${this.baseUrl}/pagination/${thePageSize}/${theTotalPages}`);
   }

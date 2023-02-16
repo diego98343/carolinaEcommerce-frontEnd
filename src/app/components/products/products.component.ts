@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   productCategories: ProductCategory[] = [];
   searchMode:boolean=false;
-  currentProductCategoryId:number=0;
+  currentCategoryId:number=0;
   previousCategoryId: number;
 
 
@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
 
   //pagination properties
   thePageNumber: number =1;
-  thePageSize: number= 6;
+  thePageSize: number= 8;
   theTotalElements: number =0;
 
   filters = {
@@ -49,6 +49,7 @@ export class ProductsComponent implements OnInit {
  
     this.displayProducts();
     this.productCategory();
+    this.displayProductByCategory();
     // this.displayProductWithPagination();
      
   }
@@ -75,68 +76,52 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-  displayProducts() {
-
+  displayProductByCategory(){
     const theProductCategoryId: number = +this.route.snapshot.paramMap.get('id')!
 
-    // if(this.previousCategoryId != this.currentProductCategoryId){
-    //   this.thePageNumber=1;
-    // }
+    this._productService.sortProductByCategory(theProductCategoryId).subscribe(
+      data=>{
+        this.products= data;  
+    })
 
-    // this.previousCategoryId =this.currentProductCategoryId;
+  }
+
+  displayProducts() {
 
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+
+   if(hasCategoryId){
+    this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
+   }else{
+    this.currentCategoryId =1;
+   }
+
+   
 
     if (hasCategoryId === false) {
 
       this._productService.getProductPagination(this.thePageNumber -1,
                                                 this.thePageSize,
-                                                 this.currentProductCategoryId).subscribe(
+                                                 this.currentCategoryId).subscribe(
         data => {
-          this.products = this.filderProduct(data.content);
-          this.thePageNumber= data.totalPages ;
+          this.products = data.content;
+          this.thePageNumber= data.totalPages +1 ;
           this.thePageSize=data.size;
           this.theTotalElements=data.totalElements;
-          console.log(data);
+         
         }
       )
-
-  
-    } else {
-
-      this._productService.getProductCategoryById(theProductCategoryId).subscribe(
-        data => {
-          //get product from product category and then push it into getProductsByCategory 
-          let getProductsByCategory: Product[] = [];
-          getProductsByCategory.push(data.product);
-
-          let products;
-
-          for (let i = 0; i < getProductsByCategory.length; i++) {
-            products = getProductsByCategory[i];
-          }
-          this.products = products;
-        }
-      )
-    }
-
-    // this._productService.getProduct().subscribe(
-      
-    //   data=>{
-    //   this.products =data;
-    //  })
-
   }
 
-  filderProduct(products: Product[]) {
+  // filderProduct(products: Product[]) {
 
-    //everytime the a product enters its gonne be filter and compare with the array of products 
-    return products.filter((p) => {
-      return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
-    })
+  //   //everytime the a product enters its gonne be filter and compare with the array of products 
+  //   return products.filter((p) => {
+  //     return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
+  //   })
 
 
-  }
+  // }
 
 
 
@@ -148,7 +133,7 @@ export class ProductsComponent implements OnInit {
 
 
 
-
+}
 
 
 
