@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
 
   //pagination properties
   thePageNumber: number =1;
-  thePageSize: number= 4;
+  thePageSize: number= 6;
   theTotalElements: number =0;
 
   filters = {
@@ -49,24 +49,23 @@ export class ProductsComponent implements OnInit {
  
     this.displayProducts();
     this.productCategory();
-    this.displayProductWithPagination();
+    // this.displayProductWithPagination();
      
   }
 
 
-  displayProductWithPagination() {
-    this._productService.getProductPagination(0,2,this.currentProductCategoryId).subscribe(
-      data => {
-        this.productsWithPag= data.content;
+  // displayProductWithPagination() {
+  //   this._productService.getProductPagination(0,2,this.currentProductCategoryId).subscribe(
+  //     data => {
+  //       this.productsWithPag= data.content;
         
-      }
-    )
-  }
+  //     }
+  //   )
+  // }
 
   listProducts() {
-    throw new Error('Method not implemented.');
+     
     }
-
 
   productCategory() {
     this._productCategoryService.getCategories().subscribe(
@@ -75,7 +74,6 @@ export class ProductsComponent implements OnInit {
       }
     )
   }
-
 
   displayProducts() {
 
@@ -91,20 +89,19 @@ export class ProductsComponent implements OnInit {
 
     if (hasCategoryId === false) {
 
-      
       this._productService.getProductPagination(this.thePageNumber -1,
                                                 this.thePageSize,
                                                  this.currentProductCategoryId).subscribe(
         data => {
-
           this.products = this.filderProduct(data.content);
-          this.thePageNumber= data.totalPages +1;
+          this.thePageNumber= data.totalPages ;
           this.thePageSize=data.size;
           this.theTotalElements=data.totalElements;
           console.log(data);
-
         }
       )
+
+  
     } else {
 
       this._productService.getProductCategoryById(theProductCategoryId).subscribe(
@@ -123,6 +120,11 @@ export class ProductsComponent implements OnInit {
       )
     }
 
+    // this._productService.getProduct().subscribe(
+      
+    //   data=>{
+    //   this.products =data;
+    //  })
 
   }
 
