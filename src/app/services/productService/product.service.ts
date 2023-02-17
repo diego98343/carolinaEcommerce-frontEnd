@@ -38,6 +38,11 @@ export class ProductService {
   }
 
 
+  sortByField(field:String):Observable<Product[]>{
+    return this._httpClient.get<Product[]>(`${this.baseUrl}/sortBy/${field}`)
+  }
+
+
   searchProductByReference(productReference:String):Observable<Product[]> {
     return this._httpClient.get<Product[]>(`${this.baseUrl}/searchByReference/${productReference}`)
   }

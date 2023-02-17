@@ -33,8 +33,10 @@ export class ProductsComponent implements OnInit {
   theTotalElements: number =0;
 
   filters = {
-    keyword: ''
+    keyword: "Camisa ingeniero dama"
   }
+
+  searchWord: String =""
   
 
 
@@ -44,14 +46,13 @@ export class ProductsComponent implements OnInit {
     private productPagination: ProductService
   ) { }
 
-  ngOnInit(): void {
 
- 
+  ngOnInit(): void {
     this.displayProducts();
     this.productCategory();
     this.displayProductByCategory();
     // this.displayProductWithPagination();
-     
+   
   }
 
 
@@ -68,6 +69,32 @@ export class ProductsComponent implements OnInit {
      
     }
 
+
+  sortByField(field:String){
+    this._productService.sortByField(field).subscribe(
+      data=>{
+        this.products=data;
+      }
+    )
+  }
+
+
+
+  searchProductByName(){
+    this._productService.searchProductByName(this.searchWord).subscribe(
+      data=>{
+      this.products=data;
+    })
+  }
+
+
+  searchProductByReference(){
+    this._productService.searchProductByReference("").subscribe(data=>{
+      this.products=data;
+    })
+  }
+
+
   productCategory() {
     this._productCategoryService.getCategories().subscribe(
       data => {
@@ -77,7 +104,6 @@ export class ProductsComponent implements OnInit {
   }
 
   displayProductByCategory(){
-
     //get the id from the router link
     const theProductCategoryId: number = +this.route.snapshot.paramMap.get('id')!
     //return true if the id is present 
@@ -94,6 +120,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  
   displayProducts() {
 
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
@@ -102,6 +129,7 @@ export class ProductsComponent implements OnInit {
       this._productService.getProduct().subscribe(
         data => {
           this.products = data;
+          console.log(this.searchWord)
         }
       )
   }
