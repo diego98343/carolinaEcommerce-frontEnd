@@ -3,10 +3,10 @@
 
 
 
-
+ 
 
   
-    <div class="mr-10" *ngIf="auth.isAuthenticated$ | async else loggedOut">
+    <div  *ngIf="auth.isAuthenticated$ | async else loggedOut">
       <div ngbDropdown class="relative inline-block text-left">
 
         <div class="flex">
@@ -17,17 +17,17 @@
             class=" text-gray-800 text-base font-semibold flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4  text-center    dark:hover:bg-gray-600 dark:focus:ring-gray-700"
             type="button">MI CUENTA<svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor"
               viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            </svg>
-          </button>
+            </svg></button>
   
-          <div  id="dropdown"class=" dropdown-menu  z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <div  id="dropdown"class=" dropdown-menu   z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
   
             <ul ngbDropdownMenu class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
   
               <div >
                 <li>
                   <button type="button"
-                   routerLink="productList" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Añadir Producto</button>
+                   routerLink="productList" 
+                   class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Añadir Producto</button>
                 </li>
                 <li>
                   <button type="button"
@@ -41,9 +41,14 @@
                   <button type="button"
                     class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mis ordenes</button>
                 </li>
-                <li> 
+                <li>
+        
+            
+
                   <button (click)="auth.logout()" type="button"
                   class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cerrar sesion</button>
+
+
                 </li>
               </div>
             
