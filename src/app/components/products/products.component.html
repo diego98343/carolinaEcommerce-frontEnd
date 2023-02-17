@@ -80,104 +80,135 @@
   </div> -->
 
 <div class="bg-white mt-4" style="margin-bottom: none;">
-    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" >
-      <div class="flex items-baseline justify-between border-b border-gray-200 pt-10 pb-12">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900"> Nuestros productos</h1>
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-baseline justify-between border-b border-gray-200 pt-10 pb-12">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900"> Nuestros productos</h1>
 
-        <div class="flex items-center">
-          <div class="relative inline-block text-left">
-            
-              <div class="flex">
-                  <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
-                  <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">All categories <svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
-                  <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
-                      <li>
-                          <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mockups</button>
-                      </li>
-                      <li>
-                          <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Templates</button>
-                      </li>
-                      <li>
-                          <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Design</button>
-                      </li>
-                      <li>
-                          <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logos</button>
-                      </li>
-                      </ul>
-                  </div>
-                  <div class="relative w-full">
-                      <input [(ngModel)]="searchWord" type="search" id="search-dropdown" class="block p-2.5 w-96 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Mockups, Logos, Design Templates..." required>
-                      <button  (click)="searchProductByName()"  type="submit" class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                          <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                          <span class="sr-only">Search</span>
-                      </button>
-                  </div>
-              </div>
-            
+      <div class="flex items-center">
+
+        <div ngbDropdown class="relative inline-block text-left">
+
+          <div class="flex">
+            <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your
+              Email</label>
+
+            <button ngbDropdownToggle id="dropdown-button" data-dropdown-toggle="dropdown"
+              class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+              type="button">All categories <svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor"
+                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              </svg></button>
+
+            <div  id="dropdown"class=" dropdown-menu   z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+
+              <ul ngbDropdownMenu class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
+
+                <div >
+                  <li>
+                    <button type="button"
+                      class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mockups</button>
+                  </li>
+                  <li>
+                    <button type="button"
+                      class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Templates</button>
+                  </li>
+                  <li>
+                    <button type="button"
+                      class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Design</button>
+                  </li>
+                  <li>
+                    <button type="button"
+                      class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logos</button>
+  
+                  </li>
+                </div>
+              
+              </ul>
+            </div>
+            <div class="relative w-full">
+              <input [(ngModel)]="searchWord" type="search" id="search-dropdown"
+                class="block p-2.5 w-96 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                placeholder="Search Mockups, Logos, Design Templates..." required>
+              <button (click)="searchProductByName()" type="submit"
+                class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <span class="sr-only">Search</span>
+              </button>
+            </div>
           </div>
-        </div>
 
-        
+        </div>
       </div>
 
-      <section aria-labelledby="products-heading" class="pt-6 pb-24">
-        <h2 id="products-heading" class="sr-only">Products</h2>
 
-        <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-          <!-- Filters -->
-          <form class="hidden lg:block ">
-            <span class="font-medium text-gray-900 " style="margin-bottom: 10px;">Categoria</span>
-            <div class="mt-9">
-              <ul role="list" class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                <li *ngFor="let tempProductCategory of productCategories">
-                  <a href="/productCategories/{{tempProductCategory.categoryId}}">{{tempProductCategory.categoryName}}</a>
-                </li>
-                <li>
-                  <a routerLink="/products">Todos</a>
-                </li>
-  
-              </ul>
-            </div>
-       
+    </div>
 
-          
-            <span class="font-medium text-gray-900 " style="margin-bottom: 10px;">Ordenar </span>
-            
-            <div class="mt-9">
-              <ul role="list" class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                <li >
-                  <a  type="button" (click)="sortByField('unitsInStock')">Disponibilidad</a>
-                </li>
-                <li >
-                  <a type="button" (click)="sortByField('productName')">Order alfabetico</a>
-                </li>
-                <li >
-                  <a type="button" (click)="sortByField('productPrice')">Menor a mayor precio</a>
-                </li>
-                
-              </ul>
-            </div>
-          </form>
+    <section aria-labelledby="products-heading" class="pt-6 pb-24">
+      <h2 id="products-heading" class="sr-only">Products</h2>
 
-          <!-- Product grid -->
-         
-          <div class="lg:col-span-3 container mx-auto ">
+      <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
+        <!-- Filters -->
+        <form class="hidden lg:block ">
+          <span class="font-medium text-gray-900 " style="margin-bottom: 10px;">Categoria</span>
+          <div class="mt-9">
+            <ul role="list" class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+              <li *ngFor="let tempProductCategory of productCategories">
+                <a type="button" href="/productCategories/{{tempProductCategory.categoryId}}">{{tempProductCategory.categoryName}}</a>
+              </li>
+              <li>
+                <a routerLink="/products">Todos</a>
+              </li>
 
-
-            <div  *ngIf="products.length===0"  class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-              <strong class="font-bold">Error!</strong>
-              <span class="block sm:inline">No se ha encontrado el producto que busca.</span>
-              <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-              </span>
-            </div>
+            </ul>
+          </div>
 
 
 
+          <span class="font-medium text-gray-900 " style="margin-bottom: 10px;">Ordenar </span>
 
-            <div class="" >
-              <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
+          <div class="mt-9">
+            <ul role="list" class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+              <li>
+                <a type="button" (click)="sortByField('unitsInStock')">Menor disponibilidad</a>
+              </li>
+              <li>
+                <a type="button" (click)="sortByField('productName')">Order alfabetico</a>
+              </li>
+              <li>
+                <a type="button" (click)="sortByField('productPrice')">Menor a mayor precio</a>
+              </li>
+
+            </ul>
+          </div>
+        </form>
+
+        <!-- Product grid -->
+
+        <div class="lg:col-span-3 container mx-auto ">
+
+
+          <div *ngIf="products.length===0"
+            class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline">No se ha encontrado el producto que busca.</span>
+            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+              <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20">
+                <title>Close</title>
+                <path
+                  d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+              </svg>
+            </span>
+          </div>
+
+
+
+
+          <div class="">
+            <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
               style="margin: 10px;">
               <div *ngFor="let tempProduct of products">
 
@@ -194,13 +225,13 @@
                   <p class="mt-1 text-lg font-medium text-gray-900">${{tempProduct.productPrice}}</p>
                 </a>
               </div>
-              
-            </div>
 
             </div>
-            <!-- /Pagination -->
-             <!-- begin footer -->
-            <!-- <div class="footer-pagination">
+
+          </div>
+          <!-- /Pagination -->
+          <!-- begin footer -->
+          <!-- <div class="footer-pagination">
               <div class="row">
                   <div class="col-md-6"></div>
 
@@ -223,11 +254,11 @@
             </div> -->
           <!-- end footer -->
 
-            <!-- /Pagination -->
-          </div>
-          
+          <!-- /Pagination -->
         </div>
-      </section>
-    </main>
+
+      </div>
+    </section>
+  </main>
 
 </div>

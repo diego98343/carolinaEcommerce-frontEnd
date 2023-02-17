@@ -103,7 +103,7 @@ const routers: Routes=[
     MatPaginatorModule,
     NgbModule,
     
-  
+   
    
     AuthModule.forRoot({
       domain: 'dev-w5321ximnia6xn5y.us.auth0.com',

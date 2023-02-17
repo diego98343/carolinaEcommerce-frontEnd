@@ -1,20 +1,67 @@
 
 <div class="flex items-center justify-between ">
 
+
+
+
+
   
-    <div *ngIf="auth.isAuthenticated$ | async else loggedOut">
-      <button class="text-gray-800 text-base font-semibold hover:text-red-600 m-2.5" 
-      (click)="auth.logout()">CERRAR SESION</button>
+    <div class="mr-10" *ngIf="auth.isAuthenticated$ | async else loggedOut">
+      <div ngbDropdown class="relative inline-block text-left">
+
+        <div class="flex">
+          <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your
+            Email</label>
+  
+          <button ngbDropdownToggle id="dropdown-button" data-dropdown-toggle="dropdown"
+            class=" text-gray-800 text-base font-semibold flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4  text-center    dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+            type="button">MI CUENTA<svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor"
+              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            </svg>
+          </button>
+  
+          <div  id="dropdown"class=" dropdown-menu  z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+  
+            <ul ngbDropdownMenu class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
+  
+              <div >
+                <li>
+                  <button type="button"
+                   routerLink="productList" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Añadir Producto</button>
+                </li>
+                <li>
+                  <button type="button"
+                    class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mi perfil</button>
+                </li>
+                <li>
+                  <button type="button"
+                    class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Enviar mensaje</button>
+                </li>
+                <li>
+                  <button type="button"
+                    class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mis ordenes</button>
+                </li>
+                <li> 
+                  <button (click)="auth.logout()" type="button"
+                  class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cerrar sesion</button>
+                </li>
+              </div>
+            
+            </ul>
+          </div>
+        </div>
+  
+      </div>
      </div>
-  
-  
+
+
      <ng-template #loggedOut>
       <button  class="text-gray-800 text-base font-semibold hover:text-blue-600 m-2.5"           
       (click)="auth.loginWithRedirect()">INGRESAR</button>
      </ng-template>
 
-     
-    <div class="mt-2" >
+
+     <div class="mt-2"  >
       <div class="hidden sm:flex sm:itemsfa-pull-right " *ngIf="auth.isAuthenticated$ | async else nothing" >
         <div class="m-3">
           <button routerLink="/cart" role="button"
@@ -34,14 +81,10 @@
         </div>
       </div>
     </div>
-
+  
     <ng-template #nothing>
       <div type="hidden"></div>
     </ng-template>
-
-
-
-  
 
 </div>
 
