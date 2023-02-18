@@ -25,7 +25,11 @@ export class ProductsComponent implements OnInit {
   previousCategoryId: number;
 
 
-  productsWithPag:Product[]=[];
+  //search bar
+ searchByname:boolean=false;
+ searchByReference:boolean=false;
+ searchByPrice:boolean=false;
+
 
   //pagination properties
   thePageNumber: number =1;
@@ -129,7 +133,7 @@ export class ProductsComponent implements OnInit {
       this._productService.getProduct().subscribe(
         data => {
           this.products = data;
-          console.log(this.searchWord)
+          console.log("search product by name :" +this.searchByname)
         }
       )
   }
