@@ -34,7 +34,7 @@ export class ProductsComponent implements OnInit {
 //dont forget to get the values of the radio with a function taking event as parameter of the fuction
  searchModes=[
   {name:'Nombre',id:'1',value:'Nombre'},
-  {name:'Referenciaa',id:'2',value:'Referencia'},
+  {name:'Referencia',id:'2',value:'Referencia'},
   {name:'Precio',id:'3',value:'Precio'}
  ]
 
@@ -77,9 +77,26 @@ export class ProductsComponent implements OnInit {
   //   )
   // }
 
-  listProducts() {
-     
+
+  searchProductBasedOfSelection(){
+    
+    if(this.currentSearchMode==="Nombre"){
+
+     this.searchProductByName();
+
+    }else if
+      (this.currentSearchMode=="Referencia"){
+
+      this.serachProductByReference();
+
+    }else{
+      //ive got to change it for one that can take multiple paramerts
+      this.searchProductByName();
     }
+
+    
+
+  }
 
 
   sortByField(field:String){
@@ -91,7 +108,6 @@ export class ProductsComponent implements OnInit {
   }
 
 
-
   searchProductByName(){
     this._productService.searchProductByName(this.searchWord).subscribe(
       data=>{
@@ -100,10 +116,12 @@ export class ProductsComponent implements OnInit {
   }
 
 
-  searchProductByReference(){
-    this._productService.searchProductByReference("").subscribe(data=>{
-      this.products=data;
-    })
+  serachProductByReference(){
+    this._productService.searchProductByReference(this.searchWord).subscribe(
+      data=>{
+        this.products = data;
+      }
+    )
   }
 
 
