@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { CartItem } from 'src/app/common/cart-item';
 import { Product } from 'src/app/models/productClass/product';
 import { CartServiceService } from 'src/app/services/cartService/cart-service.service';
@@ -21,7 +22,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private productService: ProductService,
               private route:ActivatedRoute,
               private cartService:CartServiceService,
-              private _router:Router) { }
+              private _router:Router,
+              public auth: AuthService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(()=>{
