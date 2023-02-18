@@ -97,7 +97,7 @@
 
             <button ngbDropdownToggle id="dropdown-button" data-dropdown-toggle="dropdown"
               class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-              type="button">Buscar por <svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor"
+              type="button">{{currentSearchMode}}<svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor"
                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               </svg></button>
 
@@ -107,24 +107,15 @@
 
               <ul ngbDropdownMenu  class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input  id="list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nombre </label>
+                  
+                    <div  *ngFor="let mode of searchModes" class="flex items-center pl-3">
+                        <input [(ngModel)]="currentSearchMode" type="radio" id="{{mode.id}}" value="{{mode.value}}" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                        <label for="list-radio-license" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{mode.name}}</label>
                     </div>
+
                 </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input id="list-radio-id" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="list-radio-id" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Referencia</label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                    <div class="flex items-center pl-3">
-                        <input  id="list-radio-millitary" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="list-radio-millitary" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Precio</label>
-                    </div>
-                </li>
-            
+
+  
             </ul>
               
             

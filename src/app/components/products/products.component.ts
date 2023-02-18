@@ -1,6 +1,7 @@
 import { AfterViewInit,Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { SearchBarModes } from 'src/app/common/search-bar-modes';
 import { ProductCategory } from 'src/app/models/productCategoryClass/product-category';
 import { Product } from 'src/app/models/productClass/product';
 import { ProductCategoryService } from 'src/app/services/productCategoryService/product-category.service';
@@ -25,10 +26,17 @@ export class ProductsComponent implements OnInit {
   previousCategoryId: number;
 
 
-  //search bar
- searchByname:boolean=false;
- searchByReference:boolean=false;
- searchByPrice:boolean=false;
+  
+ //retrive reach mode values
+ currentSearchMode:String="Buscar por"
+
+//search values for the radio 
+//dont forget to get the values of the radio with a function taking event as parameter of the fuction
+ searchModes=[
+  {name:'Nombre',id:'1',value:'Nombre'},
+  {name:'Referenciaa',id:'2',value:'Referencia'},
+  {name:'Precio',id:'3',value:'Precio'}
+ ]
 
 
   //pagination properties
@@ -133,7 +141,7 @@ export class ProductsComponent implements OnInit {
       this._productService.getProduct().subscribe(
         data => {
           this.products = data;
-          console.log("search product by name :" +this.searchByname)
+          console.log("search product by name :" )
         }
       )
   }
