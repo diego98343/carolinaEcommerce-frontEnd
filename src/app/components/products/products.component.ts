@@ -27,7 +27,7 @@ export class ProductsComponent implements OnInit {
 
 
   
- //retrive reach mode values
+ //retrieve reach mode values
  currentSearchMode:String="Buscar por"
 
 //search values for the radio 
@@ -35,7 +35,8 @@ export class ProductsComponent implements OnInit {
  searchModes=[
   {name:'Nombre',id:'1',value:'Nombre'},
   {name:'Referencia',id:'2',value:'Referencia'},
-  {name:'Precio',id:'3',value:'Precio'}
+  {name:'Precio',id:'3',value:'Precio'},
+  {name:'Todos',id:'4',value:'Todos'}
  ]
 
 
@@ -85,9 +86,13 @@ export class ProductsComponent implements OnInit {
      this.searchProductByName();
 
     }else if
-      (this.currentSearchMode=="Referencia"){
+      (this.currentSearchMode==="Referencia"){
 
       this.serachProductByReference();
+
+    }else if(this.currentSearchMode==="Precio"){
+       
+      this.searchProductByPrice();
 
     }else{
       //ive got to change it for one that can take multiple paramerts
@@ -113,6 +118,17 @@ export class ProductsComponent implements OnInit {
       data=>{
       this.products=data;
     })
+  }
+
+  searchProductByPrice(){
+
+    let searchWordToANumber= +this.searchWord;
+
+    this._productService.searchProductByPrice(searchWordToANumber).subscribe(
+      data=>{
+        this.products=data
+      }
+    )
   }
 
 

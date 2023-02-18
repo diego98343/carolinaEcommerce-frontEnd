@@ -33,6 +33,11 @@ export class ProductService {
     return this._httpClient.get<Product[]>(`${this.baseUrl}/searchByName/${productName}`)
   }
 
+
+  searchProductByPrice(productPrice:number):Observable<Product[]> {
+    return this._httpClient.get<Product[]>(`${this.baseUrl}/searchByPrice/${productPrice}`)
+  }
+
   sortProductByCategory(productCategory:number):Observable<Product[]> {
     return this._httpClient.get<Product[]>(`${this.baseUrl}/searchByCategory/${productCategory}`)
   }
