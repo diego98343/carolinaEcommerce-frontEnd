@@ -26,6 +26,8 @@ export class ProductsComponent implements OnInit {
   previousCategoryId: number;
 
 
+  //retrieve the words from the search bar
+ searchWord: String =""
   
  //retrieve reach mode values
  currentSearchMode:String="Buscar por"
@@ -36,7 +38,7 @@ export class ProductsComponent implements OnInit {
   {name:'Nombre',id:'1',value:'Nombre'},
   {name:'Referencia',id:'2',value:'Referencia'},
   {name:'Precio',id:'3',value:'Precio'},
-  {name:'Todos',id:'4',value:'Todos'}
+  {name:'Filtar',id:'4',value:'Filtar'},
  ]
 
 
@@ -49,8 +51,6 @@ export class ProductsComponent implements OnInit {
     keyword: "Camisa ingeniero dama"
   }
 
-  searchWord: String =""
-  
 
 
   constructor(private _productService: ProductService,
@@ -96,12 +96,35 @@ export class ProductsComponent implements OnInit {
 
     }else{
       //ive got to change it for one that can take multiple paramerts
-      this.searchProductByName();
+      this.filterProductsByName();
     }
 
-    
-
+  
   }
+
+
+  filterProductsByName(){
+
+    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+
+    if (hasCategoryId === false) {
+      this._productService.getProduct().subscribe(
+        data => {
+          this.products = this.filderProduct(data);
+          console.log("filter is active ")
+        }
+      )
+    }
+  }
+
+
+  filderProduct(products: Product[]) {
+    //everytime the a product enters its gonne be filter and compare with the array of products 
+    return products.filter((p) => {
+      return p.productName?.toLocaleLowerCase().includes(this.searchWord.toLowerCase())
+    })
+  }
+  
 
 
   sortByField(field:String){
@@ -174,27 +197,13 @@ export class ProductsComponent implements OnInit {
     if (hasCategoryId === false) {
       this._productService.getProduct().subscribe(
         data => {
+
           this.products = data;
-          console.log("search product by name :" )
+          console.log(this.currentSearchMode)
+       
         }
       )
   }
-
-  // filderProduct(products: Product[]) {
-
-  //   //everytime the a product enters its gonne be filter and compare with the array of products 
-  //   return products.filter((p) => {
-  //     return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
-  //   })
-
-
-  // }
-
-
-
-
-
-
 
 }
 
