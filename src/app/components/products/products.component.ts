@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
   {name:'Nombre',id:'1',value:'Nombre'},
   {name:'Referencia',id:'2',value:'Referencia'},
   {name:'Precio',id:'3',value:'Precio'},
-  {name:'Filtar',id:'4',value:'Filtar'},
+ 
  ]
 
 
@@ -83,7 +83,7 @@ export class ProductsComponent implements OnInit {
     
     if(this.currentSearchMode==="Nombre"){
 
-     this.searchProductByName();
+      this.filterProductsByName();
 
     }else if
       (this.currentSearchMode==="Referencia"){
