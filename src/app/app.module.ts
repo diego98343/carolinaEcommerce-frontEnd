@@ -33,6 +33,7 @@ import { LogInStatusComponent } from './components/log-in-status/log-in-status.c
 import { AuthModule } from '@auth0/auth0-angular';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 
@@ -41,7 +42,7 @@ const routers: Routes=[
 
   {path:'login',component: UserLogInComponent},
 
-
+  {path:'profile',component: UserProfileComponent},
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
   {path:'addProduct',component: AddProductComponent},
@@ -81,6 +82,7 @@ const routers: Routes=[
     UpdateProductComponent,
     ListOfOrdersComponent,
     LogInStatusComponent,
+    UserProfileComponent,
     
     
     
