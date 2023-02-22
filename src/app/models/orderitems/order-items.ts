@@ -5,15 +5,15 @@ export class OrderItems {
 
     constructor(
        
-        private id?:number,
-        private imageUrl?:string,
-        private name?:string,
-        private reference?:string,
-        private unitPrice?:BigInt,
-        private quantity?:number,
-        private productId?:number,
-        private size?:string,
-        private order?:OrderClass
+        public id?:number,
+        public imageUrl?:string,
+        public  name?:string,
+        public  reference?:string,
+        public  unitPrice?:BigInt,
+        public  quantity?:number,
+        public  productId?:number,
+        public  size?:string,
+        public  order?:OrderClass
      
      ){}
 }

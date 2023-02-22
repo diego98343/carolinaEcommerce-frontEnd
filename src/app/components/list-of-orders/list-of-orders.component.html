@@ -23,6 +23,9 @@
                     total
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Detalles
+                </th>
+                <th scope="col" class="px-6 py-3">
                     <span class="sr-only">eliminar</span>
                 </th>
             </tr>
@@ -33,11 +36,14 @@
                     {{tempOrder.id}}
                 </td>  
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   <a href="/order/{{tempOrder.id}}">{{tempOrder.orderTrackingNumber}}</a> 
+                   <a>{{tempOrder.orderTrackingNumber}}</a> 
                 </th>
                 <td class="px-6 py-4">
                     {{tempOrder.totalPrice}}
-                </td>       
+                </td>
+                <th scope="col" class="px-6 py-3">
+                    <a href="/order/{{tempOrder.id}}">Ver Productos</a> 
+                </th>       
                 <td class="px-6 py-4 text-right">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>

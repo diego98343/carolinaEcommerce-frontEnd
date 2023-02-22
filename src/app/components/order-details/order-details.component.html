@@ -4,68 +4,48 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-6 py-3">
-                    id
+                    img
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Numero de orden
+                    name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    total
+                    reference
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    <span class="sr-only">eliminar</span>
+                    cantidad
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    talla
+                </th>
+              
             </tr>
         </thead>
         <tbody>
-            <tr   class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4">
-                    order
-                </td>  
+            <tr *ngFor="let tempItem of orderItems"  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   <a href="#">order</a> 
+                    <div class="overflow-hidden rounded-lg w-16 h-25 bg-gray-50 border border-gray-200">
+                        <img src="{{tempItem.imageUrl}}" alt="">
+                      </div>
                 </th>
                 <td class="px-6 py-4">
-                    order
-                </td>       
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-                
+                   {{tempItem.name}}
+                </td> 
+                <td class="px-6 py-4">
+                    {{tempItem.reference}}
+                </td> 
+                <td class="px-6 py-4">
+                    {{tempItem.quantity}}
+                 </td>
+                 <td class="px-6 py-4">
+                    {{tempItem.size}}
+                    0
+                 </td>             
+              
             </tr>
     
-    
-            <tr   class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4">
-                    order
-                </td>  
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   <a href="#">order</a> 
-                </th>
-                <td class="px-6 py-4">
-                    order
-                </td>       
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-                
-            </tr>
-    
-            <tr   class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="px-6 py-4">
-                    order
-                </td>  
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                   <a href="#">order</a> 
-                </th>
-                <td class="px-6 py-4">
-                    order
-                </td>       
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-                
-            </tr>
+
+          
     </table>
     
 

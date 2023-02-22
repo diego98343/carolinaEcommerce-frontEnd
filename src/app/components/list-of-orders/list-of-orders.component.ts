@@ -42,7 +42,7 @@ export class ListOfOrdersComponent implements OnInit {
        
          this.customers =data;
         
-
+         
 
          //retrieve list of orders and then create another page with router id to retrieve the order items for each order
 
