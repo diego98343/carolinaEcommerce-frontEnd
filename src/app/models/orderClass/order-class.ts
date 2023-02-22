@@ -5,7 +5,7 @@ import { OrderItems } from "src/app/common/order-items";
 export class OrderClass {
 
     constructor(
-        public orderId: number,
+        public id: number,
         public orderTrackingNumber:string,
         public totalQuantity:number,
         public totalPrice:number,

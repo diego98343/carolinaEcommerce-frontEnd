@@ -34,6 +34,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 
 
@@ -41,7 +42,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 const routers: Routes=[
 
   {path:'login',component: UserLogInComponent},
-
+  {path:'order/:id',component: OrderDetailsComponent},
   {path:'profile',component: UserProfileComponent},
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
@@ -83,6 +84,7 @@ const routers: Routes=[
     ListOfOrdersComponent,
     LogInStatusComponent,
     UserProfileComponent,
+    OrderDetailsComponent,
     
     
     

@@ -151,12 +151,11 @@
           <div class="mt-9">
             <ul role="list" class="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
               <li *ngFor="let tempProductCategory of productCategories">
-                <a type="button" href="/productCategories/{{tempProductCategory.categoryId}}">{{tempProductCategory.categoryName}}</a>
+                <a type="button"  (click)="sortProductByCategory(tempProductCategory.categoryId)">{{tempProductCategory.categoryName}}</a>
               </li>
               <li>
-                <a routerLink="/products">Todos</a>
+                <button (click)="displayProducts()">Todos</button >
               </li>
-
             </ul>
           </div>
 

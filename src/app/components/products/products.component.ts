@@ -189,6 +189,16 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+
+  sortProductByCategory(CategoryId:number){
+  
+      this._productService.sortProductByCategory(CategoryId).subscribe(
+        data=>{
+          this.products= data;  
+      }) 
+     
+  }
+
   
   displayProducts() {
 
