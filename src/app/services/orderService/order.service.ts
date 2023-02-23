@@ -18,6 +18,8 @@ export class OrderService {
 
   private orderItemsUrl: string="http://localhost:8090/api/orderItemsByProductId"
 
+  private customerByEmailUrl: string="http://localhost:8090/api/customerByEmail"
+
   constructor(private _httpClient:HttpClient) { }
 
 
@@ -27,6 +29,13 @@ export class OrderService {
 
   }
 
+
+  getCustomerByEmail(email:string):Observable<CustomerClass[]>{
+    return this._httpClient.get<CustomerClass[]>(`${this.customerByEmailUrl}/${email}`)
+  }
+
+  
+  
   getAllCustomer():Observable<CustomerClass[]>{
     return this._httpClient.get<CustomerClass[]>(this.customerUrl).pipe(response=>response);
   }
