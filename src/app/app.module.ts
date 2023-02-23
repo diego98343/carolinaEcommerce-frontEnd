@@ -35,6 +35,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { OrderHistoryDetailsComponent } from './components/order-history-details/order-history-details.component';
 
 
 
@@ -42,6 +44,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 const routers: Routes=[
 
   {path:'login',component: UserLogInComponent},
+  {path:'orderHistory',component: OrderHistoryComponent},
   {path:'order/:id',component: OrderDetailsComponent},
   {path:'profile',component: UserProfileComponent},
   {path:'home',component: FrontPageComponent},
@@ -85,6 +88,8 @@ const routers: Routes=[
     LogInStatusComponent,
     UserProfileComponent,
     OrderDetailsComponent,
+    OrderHistoryComponent,
+    OrderHistoryDetailsComponent,
     
     
     
