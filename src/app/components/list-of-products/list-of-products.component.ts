@@ -25,11 +25,10 @@ export class ListOfProductsComponent implements OnInit {
 
   customers:CustomerClass[]=[];
 
-
-  
   filters= {
     keyword:''
    }
+  searchWord: any;
 
 
   constructor(private _productService:ProductService,
@@ -40,38 +39,26 @@ export class ListOfProductsComponent implements OnInit {
   ngOnInit(): void {
     this.displayProducts();
     this.loadListProducts()
-    this.displayOrders();
+
    
   }
-
-
-  displayOrders() {
-    this._orderService.getOrder().subscribe(
-      data=>{
-        this.orders=data;
-        console.log(this.orders);
-      }
-    )
-  }
-
- 
-
 
 
   displayProducts(){
 
       this._productService.getProduct().subscribe(data=>{
-        this.products=data
+        this.products= this.filderProduct(data)
+      
       })
-    
-   
   }
 
-  filderProduct(products:Product[]) {
+
+  filderProduct(products: Product[]) {
     //everytime the a product enters its gonne be filter and compare with the array of products 
-    return products.filter((p)=>{
-      return p.productName?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
-     })
+    return products.filter((p) => {
+      return p.productReference.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase()) ||
+             p.productName.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase())
+    })
   }
 
 
