@@ -1,3 +1,13 @@
+<h3 class=" m-5 flex flex-col">Informacion del cliente</h3>
+
+<div *ngFor="let tempCustomer of  customer" class="m-5 flex flex-col">
+ 
+  <span class="m-1">Nombre: {{tempCustomer.name}}</span>
+  <span class="m-1">Email: {{tempCustomer.email}}</span>
+</div>
+
+
+<h3 class=" m-5 flex flex-col">Orden</h3>
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-5">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

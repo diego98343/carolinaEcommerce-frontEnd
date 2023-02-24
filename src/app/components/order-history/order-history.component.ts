@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { CustomerClass } from 'src/app/models/customerClass/customer-class';
+import { ProductFile } from 'src/app/models/productFileClass/product-file';
 import { OrderService } from 'src/app/services/orderService/order.service';
 
 @Component({
@@ -10,38 +11,43 @@ import { OrderService } from 'src/app/services/orderService/order.service';
 })
 export class OrderHistoryComponent implements OnInit {
 
-  profileJson: string=null;
+ 
 
-  customerEmail: string="soniavera38@hotmail.com";
+  userEmail: string="diegocolonia98@yahoo.com";
+  storage: Storage =sessionStorage;
 
-  customer:CustomerClass[]=[];
+  customer;
 
 
   constructor(public auth: AuthService,
               public orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.getUserInfo();
+  
+  }
+
+
+  getUserInfo(){
 
     this.auth.user$.subscribe(
       data=>{
-      this.profileJson = JSON.stringify(data,null,2)
-      console.log(this.profileJson)
-    })
-
-    this.getCustomerByEmail();
-
-  }
-
-
-  getCustomerByEmail(){
-
-    this.orderService.getCustomerByEmail(this.customerEmail).subscribe(
-      data=>{
-         this.customer =data;
-         console.log(this.customerEmail)
-         console.log(this.customer)
+      //get the user email
+      const theEmail = data.email;
+      console.log(theEmail)
+  
+      this.orderService.getCustomerByEmail('soniavera38@hotmail.com').subscribe(
+        data=>{
+           this.customer =data;
+           console.log(this.customer);
+      })
+    
+    
     })
   }
+
+
+
 
   
 
