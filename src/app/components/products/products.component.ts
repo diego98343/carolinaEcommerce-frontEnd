@@ -47,9 +47,6 @@ export class ProductsComponent implements OnInit {
   thePageSize: number= 8;
   theTotalElements: number =0;
 
-  filters = {
-    keyword: "Camisa ingeniero dama"
-  }
 
 
 

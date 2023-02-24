@@ -17,7 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserRegistrationComponent } from './components/user-registration/user-registration.component';
+
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
@@ -50,7 +50,7 @@ const routers: Routes=[
   {path:'home',component: FrontPageComponent},
   {path:'products',component: ProductsComponent},
   {path:'addProduct',component: AddProductComponent},
-  {path:'userRegistration',component: UserRegistrationComponent},
+
   {path:'productList',component: ListOfProductsComponent},
   {path:'editProduct/:id',component: UpdateProductComponent},
   {path:'productCategories',component: ProductsComponent},
@@ -77,7 +77,6 @@ const routers: Routes=[
     AddProductComponent,
     UserLogInComponent,
     ListOfProductsComponent,
-    UserRegistrationComponent,
     ShoppingCartComponent,
     ProductDetailsComponent,
     ContactComponent,

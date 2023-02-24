@@ -16,6 +16,11 @@ export class ListOfOrdersComponent implements OnInit {
   ordersFromCustomers;
 
   customers: CustomerClass[];
+ 
+
+  filters= {
+    keyword:''
+   }
 
   
 
@@ -30,10 +35,19 @@ export class ListOfOrdersComponent implements OnInit {
   displayOrders() {
     this._orderService.getOrder().subscribe(
       data=>{
-        this.orders=data;
+        this.orders=this.filderProduct(data);
         console.log(this.orders)
       }
     )
+  }
+
+
+  filderProduct(orders: OrderClass[]) {
+    //everytime the a product enters its gonne be filter and compare with the array of products 
+    return orders.filter((p) => {
+      return p.orderTrackingNumber?.toLocaleLowerCase().includes(this.filters.keyword.toLowerCase()) 
+            
+    })
   }
 
   displayCustomer(){
