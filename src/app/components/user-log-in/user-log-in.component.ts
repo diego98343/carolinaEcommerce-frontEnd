@@ -3,10 +3,8 @@ import { User } from 'src/app/models/userClass/user';
 import { LogINService } from 'src/app/services/logInService/log-in.service';
 
 import myAppConfig from 'src/app/config/my-app-config';
-import { OKTA_AUTH } from '@okta/okta-angular';
-import { OktaAuth } from '@okta/okta-auth-js';
-import OktaSignIn from '@okta/okta-signin-widget'
-import { AuthService } from '@auth0/auth0-angular';
+
+
 
 
 @Component({
