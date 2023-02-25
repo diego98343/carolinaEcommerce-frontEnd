@@ -10,7 +10,7 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "architect": {
+      "architect": { 
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -74,7 +74,7 @@
               "vendorChunk": false,
               "buildOptimizer": true
 
-              
+
 
             },
             "development": {
