@@ -8,7 +8,7 @@ import { User } from 'src/app/models/userClass/user';
 })
 export class LogINService {
 
-   private baseUrl: string="http://localhost:8090/user/logIn";
+   private baseUrl: string="https://joyful-birthday-production.up.railway.app/user/logIn";
 
 
   constructor( private _httpClient: HttpClient) { }

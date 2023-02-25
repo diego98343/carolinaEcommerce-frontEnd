@@ -8,7 +8,7 @@ import { Purchase } from '../common/purchase';
 })
 export class CheckOutService {
 
-  private purchaseUrl: string= "http://localhost:8090/api/purchase"
+  private purchaseUrl: string= "https://joyful-birthday-production.up.railway.app/api/purchase"
 
   constructor( private _httpClient: HttpClient) { }
 

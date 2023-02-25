@@ -9,7 +9,7 @@ import { ProductCategory } from 'src/app/models/productCategoryClass/product-cat
 export class ProductCategoryService {
 
 
-  private getCategoryUrl: string="http://localhost:8090/api/productCategories"
+  private getCategoryUrl: string="https://joyful-birthday-production.up.railway.app/api/productCategories"
 
 
   constructor(private _httpClient:HttpClient) { }

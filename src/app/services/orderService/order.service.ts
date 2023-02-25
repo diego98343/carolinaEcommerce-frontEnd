@@ -12,15 +12,15 @@ import { OrderItems } from 'src/app/models/orderitems/order-items';
 })
 export class OrderService {
 
-  private OrderUrl: string="http://localhost:8090/api/orders"
+  private OrderUrl: string="https://joyful-birthday-production.up.railway.app/api/orders"
 
-  private customerUrl: string="http://localhost:8090/api/customers"
+  private customerUrl: string="https://joyful-birthday-production.up.railway.app/api/customers"
 
-  private orderItemsUrl: string="http://localhost:8090/api/orderItemsByProductId"
+  private orderItemsUrl: string="https://joyful-birthday-production.up.railway.app/api/orderItemsByProductId"
 
-  private customerByEmailUrl: string="http://localhost:8090/api/customerByEmail"
+  private customerByEmailUrl: string="https://joyful-birthday-production.up.railway.app/api/customerByEmail"
 
-  private customerByIdUrl: string="http://localhost:8090/api/customerById"
+  private customerByIdUrl: string="https://joyful-birthday-production.up.railway.app/api/customerById"
 
   constructor(private _httpClient:HttpClient) { }
 

@@ -10,7 +10,7 @@ import { Product } from '../models/productClass/product';
 export class ProductServiceService {
 
 
- private getProductUrl: string="http://localhost:8090/api/products";
+ private getProductUrl: string="https://joyful-birthday-production.up.railway.app//api/products";
 
 
   constructor(private _httpClient:HttpClient) { }

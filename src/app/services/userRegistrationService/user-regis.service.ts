@@ -8,7 +8,7 @@ import { User } from 'src/app/models/userClass/user';
 export class UserRegisService {
 
 
-  baseUrl: string = "http://localhost:8090/api/user";
+  baseUrl: string = "https://joyful-birthday-production.up.railway.app/api/user";
   
 
   constructor(private _httpCliente:HttpClient) { }

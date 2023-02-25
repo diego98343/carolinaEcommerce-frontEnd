@@ -12,11 +12,11 @@ import { ProductCategory } from 'src/app/models/productCategoryClass/product-cat
 export class ProductService {
   
   
- private baseUrl: string= "http://localhost:8090/api/products";
+ private baseUrl: string= "https://joyful-birthday-production.up.railway.app/api/products";
 
- private baseUrl2: string= "http://localhost:8090/api/addNewProduct";
+ private baseUrl2: string= "https://joyful-birthday-production.up.railway.app/api/addNewProduct";
 
- private categoryBaseUrl: string= "http://localhost:8090/api/productCategories";
+ private categoryBaseUrl: string= "https://joyful-birthday-production.up.railway.app/api/productCategories";
 
   constructor(private _httpClient:HttpClient) { }
 
